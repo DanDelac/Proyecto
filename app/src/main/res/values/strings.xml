@@ -3,4 +3,27 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="msgwelcome">Hello there, Welcome</string>
+    <string name="logUser">Ingrese su usuario</string>
+    <string name="logedtUser">Usuario</string>
+    <string name="logPass">Ingrese su contraseña</string>
+    <string name="logedtPass">Contraseña</string>
+    <string name="txtappname">Te escucho</string>
+    <string name="logBtn">Iniciar Sesión</string>
+    <string name="logRegist"><u>Registrarse</u></string>
+    <string name="txtlogRecovP"><u>¿Olvidaste tu contraseña?</u></string>
+    <string name="RGRegister">Registro de usuarios</string>
+    <string name="RGtxtNames">Ingrese sus nombres</string>
+    <string name="RGedtNames">Nombres</string>
+    <string name="RGtxtLastName">Ingrese sus apellidos</string>
+    <string name="RGedtLastName">Apellidos</string>
+    <string name="RGtxtEmail">Ingrese un correo</string>
+    <string name="RGedtEmail">Correo</string>
+    <string name="RGtxtPassword">Ingrese una contraseña</string>
+    <string name="RGedtPassword">Contraseña</string>
+    <string name="RGtxtAccount">Ingrese una cuenta</string>
+    <string name="RGedtAccount">Cuenta</string>
+    <string name="RGbtn">Registrar</string>
+    <string name="RGtxtcancel"><u>Cancelar</u></string>
+
 </resources>

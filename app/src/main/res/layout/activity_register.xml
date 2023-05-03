@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.Register.Register">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/logols"></ImageView>
+
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtappname"
+            android:fontFamily="@font/bungee"
+            android:textSize="40sp"
+            android:layout_marginLeft="40dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/efredformulario"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:text="@string/RGRegister"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="20dp"></TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:helperText="@string/RGtxtNames"
+                app:helperTextTextColor="@color/purple_500">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edtReNames"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:hint="@string/RGedtNames"
+                    android:textSize="15dp"></android.support.design.widget.TextInputEditText>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:helperText="@string/RGtxtLastName"
+                app:helperTextTextColor="@color/purple_500">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edtReLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:hint="@string/RGedtLastName"
+                    android:textSize="15dp"></android.support.design.widget.TextInputEditText>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:helperText="@string/RGtxtEmail"
+                app:helperTextTextColor="@color/purple_500">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edtReEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:hint="@string/RGedtEmail"
+                    android:inputType="textEmailAddress"
+                    android:textSize="15dp"></android.support.design.widget.TextInputEditText>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:helperText="@string/RGtxtAccount"
+                app:helperTextTextColor="@color/purple_500">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edtReAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:hint="@string/RGedtAccount"
+                    android:inputType="textEmailAddress"
+                    android:textSize="15dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                app:counterMaxLength="15"
+                app:helperText="@string/RGtxtPassword"
+                app:helperTextTextColor="@color/purple_500">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edtRePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:hint="@string/RGedtPassword"
+                    android:inputType="textPassword"
+                    android:maxLength="15"
+                    android:textSize="15dp"></android.support.design.widget.TextInputEditText>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnReRegistrar"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/efredbuttons"
+        android:text="@string/RGbtn"
+        android:textColor="@color/white"></Button>
+
+    <TextView
+        android:id="@+id/txtReCancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="10dp"
+        android:text="@string/RGtxtcancel"
+        android:textColor="@color/black"
+        android:textStyle="bold"></TextView>
+
+</LinearLayout>
