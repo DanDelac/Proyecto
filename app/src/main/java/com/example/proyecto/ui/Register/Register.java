@@ -30,7 +30,7 @@ public class Register extends AppCompatActivity {
         edtContra = findViewById(R.id.edtRePassword);
 
         txtCancelar = findViewById(R.id.txtReCancelar);
-
+        btnRegistrar = findViewById(R.id.btnReRegistrar);
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
