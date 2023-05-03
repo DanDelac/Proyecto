@@ -26,4 +26,22 @@
     <string name="RGbtn">Registrar</string>
     <string name="RGtxtcancel"><u>Cancelar</u></string>
 
+    <string name="question_Register"><u>¿Desea registrar esta cuenta?</u></string>
+    <string name="question_Yes"><u>Si</u></string>
+    <string name="question_No"><u>No</u></string>
+
+    <string name="msj"><u>Usuario creado correctamente</u></string>
+
+    <string name="load_Register"><u>Registrando cuenta</u></string>
+    <string name="load_Login"><u>Buscando ...</u></string>
+
+    <string name="error_General"><u>ERROR:  Se ingreso a onError</u></string>
+    <string name="error_Login"><u>La cuenta no existe</u></string>
+    <string name="error_Null"><u>Rellene todos los campos</u></string>
+    <string name="error_Pass"><u>Las contraseñas son distintas</u></string>
+    <string name="error_msj1"><u>El correo ingresado esta registrado</u></string>
+    <string name="error_msj2"><u>No se pudo registrar</u></string>
+
+
+
 </resources>
