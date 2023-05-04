@@ -2,6 +2,7 @@ package com.example.proyecto.ui.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,11 +32,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Login extends AppCompatActivity {
+public class  Login extends AppCompatActivity {
     TextInputEditText edtUsuario, edtContra;
     Button btnIniSesion;
     TextView txtOlviContra, txtRegistrar;
 
+    public static final String LOG_PREF="log";
 
     ProgressDialog progreso;
     RequestQueue requestQueue;
@@ -57,7 +59,6 @@ public class Login extends AppCompatActivity {
 
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
         lstAcc=new ArrayList<>();
-
 
         btnIniSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +128,15 @@ public class Login extends AppCompatActivity {
                         account.setUseLastN(jsonObject.getString("useLastN"));
                         account.setUseCorre(jsonObject.getString("useCorre"));
                         lstAcc.add(account);
+
+
+                        SharedPreferences log = getSharedPreferences(LOG_PREF,0);
+                        SharedPreferences.Editor editor = log.edit();
+                        editor.putString("idUser",account.getIdUser());
+                        editor.putString("useName",account.getUseName());
+                        editor.putString("useLastN",account.getUseLastN());
+                        editor.putString("useCorre",account.getUseCorre());
+                        editor.commit();
                     }
 
                     if(aux!=-1) goHome();
@@ -146,6 +156,11 @@ public class Login extends AppCompatActivity {
     }
 
     private void goHome() {
+
+        SharedPreferences log = getSharedPreferences(LOG_PREF,0);
+        SharedPreferences.Editor editor = log.edit();
+        editor.putString("log","log");
+        editor.commit();
         Intent i = new Intent(Login.this, MainActivity.class);
         startActivity(i);
     }
