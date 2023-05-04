@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Proyecto</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">Te Escucho</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_glosary">Glosario</string>
+    <string name="title_settings">Ajustes</string>
     <string name="msgwelcome">Hello there, Welcome</string>
     <string name="logUser">Ingrese su usuario</string>
     <string name="logedtUser">Usuario</string>
@@ -41,7 +41,18 @@
     <string name="error_Pass"><u>Las contraseñas son distintas</u></string>
     <string name="error_msj1"><u>El correo ingresado esta registrado</u></string>
     <string name="error_msj2"><u>No se pudo registrar</u></string>
-
+    <string name="txteditacc">Editar tu perfil 👨</string>
+    <string name="txteditaccnames">Ingresa tus nombres</string>
+    <string name="txteditacclastname">Ingresa tus apellidos</string>
+    <string name="btneditacc_save">Guardar</string>
+    <string name="btneditacc_cancel">Cancelar</string>
+    <string name="txteditpass">Cambiar contraseña 🔑</string>
+    <string name="txtchangepass1">Ingresa tu nueva contraseña</string>
+    <string name="hintchangepass1">Ingresa tu nueva contraseña</string>
+    <string name="txtchangepass2">Confirma tu contraseña</string>
+    <string name="hintchangepass2">Confirma tu contraseña</string>
+    <string name="btnchangepass_cancel">Cancelar</string>
+    <string name="btnchangepass_save">Confirmar</string>
 
 
 </resources>
