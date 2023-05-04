@@ -2,9 +2,9 @@ package com.example.proyecto.ui.Splash;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.example.proyecto.MainActivity;
@@ -33,6 +33,7 @@ public class Splash extends AppCompatActivity {
                 startActivity(new Intent(Splash.this, Login.class));
                 else
                 startActivity(new Intent(Splash.this, MainActivity.class));
+//                startActivity(new Intent(Splash.this, changePassword.class));
                 finish();
             }
         }, 3000);

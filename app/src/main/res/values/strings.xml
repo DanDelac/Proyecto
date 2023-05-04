@@ -27,20 +27,28 @@
     <string name="RGtxtcancel"><u>Cancelar</u></string>
 
     <string name="question_Register"><u>¿Desea registrar esta cuenta?</u></string>
+    <string name="question_ActUser"><u>¿Desea actualizar los datos?</u></string>
+    <string name="question_ActPass"><u>¿Desea actualizar la contraseña?</u></string>
+    <string name="question_Exit"><u>¿Desea salir?</u></string>
     <string name="question_Yes"><u>Si</u></string>
     <string name="question_No"><u>No</u></string>
 
     <string name="msj"><u>Usuario creado correctamente</u></string>
+    <string name="msj1"><u>Datos actualizados correctamente</u></string>
 
     <string name="load_Register"><u>Registrando cuenta</u></string>
     <string name="load_Login"><u>Buscando ...</u></string>
 
     <string name="error_General"><u>ERROR:  Se ingreso a onError</u></string>
     <string name="error_Login"><u>La cuenta no existe</u></string>
+    <string name="error_Login1"><u>Contraseña errada</u></string>
     <string name="error_Null"><u>Rellene todos los campos</u></string>
     <string name="error_Pass"><u>Las contraseñas son distintas</u></string>
     <string name="error_msj1"><u>El correo ingresado esta registrado</u></string>
     <string name="error_msj2"><u>No se pudo registrar</u></string>
+    <string name="error_msj3"><u>No se pudo actualizar</u></string>
+
+
     <string name="txteditacc">Editar tu perfil 👨</string>
     <string name="txteditaccnames">Ingresa tus nombres</string>
     <string name="txteditacclastname">Ingresa tus apellidos</string>
@@ -53,6 +61,10 @@
     <string name="hintchangepass2">Confirma tu contraseña</string>
     <string name="btnchangepass_cancel">Cancelar</string>
     <string name="btnchangepass_save">Confirmar</string>
+    <string name="txtsetting">Configuración</string>
+    <string name="set_edtacc">Editar perfil</string>
+    <string name="set_edtpas">Cambiar contraseña</string>
+    <string name="set_exit">Salir</string>
 
 
 </resources>

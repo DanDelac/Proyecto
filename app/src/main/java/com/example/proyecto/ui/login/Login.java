@@ -3,9 +3,9 @@ package com.example.proyecto.ui.login;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -127,20 +127,24 @@ public class  Login extends AppCompatActivity {
                         account.setUseName(jsonObject.getString("useName"));
                         account.setUseLastN(jsonObject.getString("useLastN"));
                         account.setUseCorre(jsonObject.getString("useCorre"));
+                        account.setUseAccount(edtUsuario.getText().toString());
                         lstAcc.add(account);
 
 
                         SharedPreferences log = getSharedPreferences(LOG_PREF,0);
                         SharedPreferences.Editor editor = log.edit();
                         editor.putString("idUser",account.getIdUser());
+                        editor.putString("useAccount",account.getUseAccount());
                         editor.putString("useName",account.getUseName());
                         editor.putString("useLastN",account.getUseLastN());
                         editor.putString("useCorre",account.getUseCorre());
                         editor.commit();
                     }
 
-                    if(aux!=-1) goHome();
-                    else{progreso.hide(); Toast.makeText(Login.this, getString(R.string.error_Login), Toast.LENGTH_SHORT).show();
+                    if(aux!=-1 && aux!=0) goHome();
+                    if(aux==0){progreso.hide(); Toast.makeText(Login.this, getString(R.string.error_Login1), Toast.LENGTH_SHORT).show();
+                    };
+                    if(aux==-1){progreso.hide(); Toast.makeText(Login.this, getString(R.string.error_Login), Toast.LENGTH_SHORT).show();
                     };
                 }catch (Exception e){
                     Log.e("ERROR LOGIN: ",e.toString());
@@ -162,6 +166,7 @@ public class  Login extends AppCompatActivity {
         editor.putString("log","log");
         editor.commit();
         Intent i = new Intent(Login.this, MainActivity.class);
+//        Intent i = new Intent(Login.this, changePassword.class);
         startActivity(i);
     }
 }

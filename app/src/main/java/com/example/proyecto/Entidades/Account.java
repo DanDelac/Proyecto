@@ -2,11 +2,28 @@ package com.example.proyecto.Entidades;
 
 public class Account {
     private String idUser;
+    private String useAccount;
     private String useName;
     private String useLastN;
     private String useCorre;
 
     public Account() {
+    }
+
+    public Account(String idUser, String useAccount, String useName, String useLastN, String useCorre) {
+        this.idUser = idUser;
+        this.useAccount = useAccount;
+        this.useName = useName;
+        this.useLastN = useLastN;
+        this.useCorre = useCorre;
+    }
+
+    public String getUseAccount() {
+        return useAccount;
+    }
+
+    public void setUseAccount(String useAccount) {
+        this.useAccount = useAccount;
     }
 
     public String getIdUser() {
@@ -45,6 +62,7 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "idUser='" + idUser + '\'' +
+                ", useAccount='" + useAccount + '\'' +
                 ", useName='" + useName + '\'' +
                 ", useLastN='" + useLastN + '\'' +
                 ", useCorre='" + useCorre + '\'' +
