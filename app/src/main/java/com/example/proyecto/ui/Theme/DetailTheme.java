@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,19 +21,24 @@ import com.example.proyecto.Entidades.Theme;
 import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
+import com.squareup.picasso.Picasso;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DetailTheme extends AppCompatActivity {
 
 
     ListView listView;
     ArrayList<Theme> lstTheme;
+    CarouselView carouselView;
 
-
+    List<ImageView> images=new ArrayList<>();
     ProgressDialog progreso;
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest;
@@ -42,16 +49,15 @@ public class DetailTheme extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme);
-
+        listView=findViewById(R.id.lst_theme);
 
         SharedPreferences preferences = getSharedPreferences(SESS_PREF,0);
-        idSes = preferences.getString("idSes","1");
-
+//        idSes = preferences.getString("idSes","1");
+        idSes="1";
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
         lstTheme= new ArrayList<>();
-//        cargarTheme();
-
+        cargarTheme();
     }
 
     private void cargarTheme() {
@@ -79,11 +85,13 @@ public class DetailTheme extends AppCompatActivity {
                         theme.setSesDesc(jsonObject.getString("sesDesc"));
                         theme.setIdTheme(jsonObject.getString("idTheme"));
                         theme.setTheDesc(jsonObject.getString("theDesc"));
-//                        theme.setDataImagen(jsonObject.getString("theImg"));
+                        theme.setImgDesc(jsonObject.getString("imgDesc"));
                         lstTheme.add(theme);
                     }
                     AdapterTheme adapterTheme = new AdapterTheme(DetailTheme.this, lstTheme, 14);
                     listView.setAdapter(adapterTheme);
+
+
                 } catch (Exception e) {
 //            Toast.makeText(getContext(), "no conecta a la DB", Toast.LENGTH_SHORT).show();
                 }
@@ -99,4 +107,5 @@ public class DetailTheme extends AppCompatActivity {
 
         requestQueue.add(jsonObjectRequest);
     }
+
 }

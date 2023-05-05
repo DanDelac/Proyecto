@@ -1,14 +1,17 @@
 package com.example.proyecto.Adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.proyecto.R;
 import com.example.proyecto.Entidades.Theme;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -45,18 +48,14 @@ public class AdapterTheme extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
         if(view==null){
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            view=layoutInflater.inflate(R.layout.activity_theme,null);
+            view=layoutInflater.inflate(R.layout.item_theme,null);
         }
-        TextView theSess = (TextView) view.findViewById(R.id.txv_theme_sess);
-        TextView theDesc = (TextView) view.findViewById(R.id.txv_theme_desc);
-
-
-        theSess.setText(arrayList.get(position).getSesDesc());
-        theDesc.setText(arrayList.get(position).getTheDesc());
-
-        theSess.setTextSize(size);
-        theDesc.setTextSize(size);
-
+        ImageView imageView = (ImageView) view.findViewById(R.id.imv_item_theme);
+        TextView txvSess = (TextView) view.findViewById(R.id.txv_item_theme_session);
+        TextView txvDesc = (TextView) view.findViewById(R.id.txv_item_theme_desc);
+        Picasso.get().load(arrayList.get(position).getImgDesc()).into(imageView);
+        txvSess.setText(arrayList.get(position).getSesDesc());
+        txvDesc.setText(arrayList.get(position).getTheDesc());
         return view;
     }
 }
