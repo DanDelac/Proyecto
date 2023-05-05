@@ -21,6 +21,7 @@ import com.example.proyecto.R;
 import com.example.proyecto.Util.RandomTextGenerator;
 import com.example.proyecto.Util.SendMail;
 import com.example.proyecto.Util.Util;
+import com.example.proyecto.ui.Register.Register;
 import com.example.proyecto.ui.login.Login;
 
 import org.json.JSONArray;
@@ -33,6 +34,7 @@ public class RecoverPass extends AppCompatActivity implements Response.ErrorList
     JsonObjectRequest jsonObjectRequest, jsonObjectRequest_2 ;
 
     String mensaje = null;
+    String correo_ingresado=null;
     String nuevaClave;
 
     EditText edt_correo;
@@ -73,7 +75,7 @@ public class RecoverPass extends AppCompatActivity implements Response.ErrorList
     }
 
     private void Restablecer() {
-        String correo_ingresado = edt_correo.getText().toString();
+        correo_ingresado = edt_correo.getText().toString();
         progreso = new ProgressDialog(this);
         progreso.setMessage(getString(R.string.seraching));
         progreso.show();
@@ -156,6 +158,7 @@ public class RecoverPass extends AppCompatActivity implements Response.ErrorList
     private void Confirmacion_Actualizacion(Integer msj) {
         if (msj == 1){
             Enviar_Correo();
+            goLogin();
         }
         else {
             mensaje="No se pudo actualizar su contraseña";
@@ -163,9 +166,14 @@ public class RecoverPass extends AppCompatActivity implements Response.ErrorList
         }
     }
 
+    private void goLogin() {
+        Intent i = new Intent(RecoverPass.this,Login.class);
+        startActivity(i);
+    }
+
     private void Enviar_Correo() {
         SendMail sm = new SendMail(this,
-                "71424261@continental.edu.pe",
+                correo_ingresado,
                 "Su cuenta fue reestablecida correctamente",
                 "Su contraseña para acceder ahora es: "+nuevaClave);
         sm.execute();

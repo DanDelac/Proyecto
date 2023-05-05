@@ -67,7 +67,7 @@
     <string name="set_exit">Salir</string>
 
 <!--    para ui RecoverPass-->
-    <string name="txt_restablecer_pwd">Restablece tu contraseña</string>
+    <string name="txt_restablecer_pwd">Restablece tu contraseña 🔒</string>
     <string name="txt_comentario_pwd">Ingresa tu correo electrónico para restablecer su contraseña.</string>
     <string name="txt_correo_electronico">Correo electrónico</string>
     <string name="txt_restablecer">Restablecer</string>
