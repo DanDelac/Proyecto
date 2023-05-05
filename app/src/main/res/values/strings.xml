@@ -73,6 +73,7 @@
     <string name="txt_restablecer">Restablecer</string>
     <string name="txt_cancelar">Cancelar</string>
     <string name="seraching">Porfavor espere...</string>
+    <string name="unidad">Unidad</string>
 
 
 </resources>
