@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,11 +14,13 @@ import android.arch.lifecycle.ViewModelProvider;
 
 import com.example.proyecto.R;
 import com.example.proyecto.databinding.FragmentDashboardBinding;
+import com.squareup.picasso.Picasso;
 
 public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
     private FragmentDashboardBinding binding;
+    ImageView imv_dashboard;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -26,14 +29,9 @@ public class DashboardFragment extends Fragment {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        imv_dashboard=root.findViewById(R.id.imv_dashboard);
+        String url="http://172.107.178.234/WebServices/project/imagenes/Alfabeto.jpg";
+        Picasso.get().load(url).into(imv_dashboard);
         return root;
     }
 
