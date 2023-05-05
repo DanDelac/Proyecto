@@ -21,11 +21,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.proyecto.Entidades.Account;
 import com.example.proyecto.Entidades.VolleySingleton;
+import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
 import com.example.proyecto.ui.RecoverPass.RecoverPass;
 import com.example.proyecto.ui.Register.Register;
-import com.example.proyecto.ui.Theme.DetailTheme;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -171,8 +171,8 @@ public class  Login extends AppCompatActivity {
         SharedPreferences.Editor editor = log.edit();
         editor.putString("log","log");
         editor.commit();
-//        Intent i = new Intent(Login.this, MainActivity.class);
-        Intent i = new Intent(Login.this, DetailTheme.class);
+        Intent i = new Intent(Login.this, MainActivity.class);
+//        Intent i = new Intent(Login.this, DetailTheme.class);
         startActivity(i);
     }
 }

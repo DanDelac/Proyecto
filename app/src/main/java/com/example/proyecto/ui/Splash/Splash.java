@@ -7,8 +7,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
-import com.example.proyecto.ui.Theme.DetailTheme;
 import com.example.proyecto.ui.login.Login;
 
 public class Splash extends AppCompatActivity {
@@ -32,8 +32,8 @@ public class Splash extends AppCompatActivity {
                 if(log.equals("nnn"))
                 startActivity(new Intent(Splash.this, Login.class));
                 else
-//                startActivity(new Intent(Splash.this, MainActivity.class));
-                startActivity(new Intent(Splash.this, DetailTheme.class));
+                startActivity(new Intent(Splash.this, MainActivity.class));
+//                startActivity(new Intent(Splash.this, DetailTheme.class));
                 finish();
             }
         }, 3000);

@@ -79,7 +79,7 @@ public class DetailTheme extends AppCompatActivity {
                         theme.setSesDesc(jsonObject.getString("sesDesc"));
                         theme.setIdTheme(jsonObject.getString("idTheme"));
                         theme.setTheDesc(jsonObject.getString("theDesc"));
-                        theme.setDataImagen(jsonObject.getString("theImg"));
+//                        theme.setDataImagen(jsonObject.getString("theImg"));
                         lstTheme.add(theme);
                     }
                     AdapterTheme adapterTheme = new AdapterTheme(DetailTheme.this, lstTheme, 14);
