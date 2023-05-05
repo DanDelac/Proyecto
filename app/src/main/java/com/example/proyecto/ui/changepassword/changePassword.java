@@ -133,9 +133,10 @@ public class changePassword extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 progreso.hide();
-                String msj = response.optString("msj");
-                if (msj.equals("[0]")) msj=getString(R.string.error_msj3);
-                if (msj.equals("[1]")){
+                Integer aux = response.optInt("msj");
+                String msj=null;
+                if (aux==0) msj=getString(R.string.error_msj3);
+                if (aux==1){
                     goLogin();
                     msj=getString(R.string.msj1);
                 }
