@@ -57,7 +57,7 @@ public class AdapterUnit extends RecyclerView.Adapter<AdapterUnit.SessionHolder>
 
         holder.txt_Unit.setText(lista_Unit.get(position).getUniDesc());
         holder.lst_Session.setAdapter(new ArrayAdapter<_Session>(holder.itemView.getContext(), android.R.layout.simple_list_item_1,_sessions));
-        AdapterSession adapterSession = new AdapterSession(_sessions,context);
+        AdapterSession adapterSession = new AdapterSession(_sessions,context,lista_Unit.get(position).getIdUnit());
         holder.lst_Session.setAdapter(adapterSession);
         holder.lst_Session.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

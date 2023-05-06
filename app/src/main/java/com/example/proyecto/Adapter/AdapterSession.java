@@ -21,12 +21,14 @@ import java.util.ArrayList;
 public class AdapterSession extends BaseAdapter {
     private ArrayList<_Session> arrayList;
     private Context context;
+    private Integer size;
     public AdapterSession() {
     }
 
-    public AdapterSession(ArrayList<_Session> arrayList, Context context) {
+    public AdapterSession(ArrayList<_Session> arrayList, Context context, Integer size) {
         this.arrayList = arrayList;
         this.context = context;
+        this.size=size;
     }
 
     @Override
@@ -50,8 +52,11 @@ public class AdapterSession extends BaseAdapter {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             view=layoutInflater.inflate(R.layout.item_session,null);
         }
+
         TextView txvSess = (TextView) view.findViewById(R.id.txv_item_session);
+        if(arrayList.get(position).getIdUnit()==size)
         txvSess.setText(arrayList.get(position).getSesDesc());
+
         return view;
     }
 

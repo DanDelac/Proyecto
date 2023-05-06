@@ -89,6 +89,7 @@ public class HomeFragment extends Fragment {
                             jsonObject = jsonArray.getJSONObject(i);
 
                             unit.setUniDesc(jsonObject.getString("uniDesc"));
+                            unit.setIdUnit(jsonObject.getInt("idUnit"));
                             units.add(unit);
                         }
 
@@ -98,6 +99,7 @@ public class HomeFragment extends Fragment {
                             jsonObject = jsonArray.getJSONObject(i);
 
                             _session.setIdSes(jsonObject.getInt("idSes"));
+                            _session.setIdUnit(jsonObject.getInt("idUnit"));
                             _session.setSesDesc(jsonObject.getString("sesDesc"));
                             _sessions.add(_session);
                         }
