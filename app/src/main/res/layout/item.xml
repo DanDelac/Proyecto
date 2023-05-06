@@ -3,21 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp"
-    android:layout_margin="10dp"
+    android:padding="10dp"
     >
 
     <TextView
         android:id="@+id/txt_Unit"
+        android:background="@drawable/conf_fondo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/unidad"
         android:textSize="24sp"
+        android:textColor="@color/white"
         android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:padding="5dp"
         />
 
     <ListView
         android:id="@+id/lst_Session"
+        android:background="@drawable/conf_fondo_2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:padding="5dp"/>
 </LinearLayout>
