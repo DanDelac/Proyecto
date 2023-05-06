@@ -19,16 +19,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class AdapterSession extends BaseAdapter {
-    private ArrayList<_Session> arrayList;
+    private ArrayList<String> arrayList;
     private Context context;
-    private Integer size;
     public AdapterSession() {
     }
 
-    public AdapterSession(ArrayList<_Session> arrayList, Context context, Integer size) {
+    public AdapterSession(ArrayList<String> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
-        this.size=size;
     }
 
     @Override
@@ -54,8 +52,7 @@ public class AdapterSession extends BaseAdapter {
         }
 
         TextView txvSess = (TextView) view.findViewById(R.id.txv_item_session);
-        if(arrayList.get(position).getIdUnit()==size)
-        txvSess.setText(arrayList.get(position).getSesDesc());
+        txvSess.setText(arrayList.get(position));
 
         return view;
     }

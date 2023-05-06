@@ -120,8 +120,6 @@ public class HomeFragment extends Fragment {
         requestQueue.add(jsonObjectRequest);
     }
 
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

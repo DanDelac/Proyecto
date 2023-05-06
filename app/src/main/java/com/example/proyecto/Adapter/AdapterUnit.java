@@ -31,6 +31,7 @@ public class AdapterUnit extends RecyclerView.Adapter<AdapterUnit.SessionHolder>
 
     List<Unit> lista_Unit;
     ArrayList<_Session> _sessions;
+
     Context context;
     private View.OnClickListener listener;
     private static final String ID_CALULAR_GUARDADO = "ID";
@@ -56,8 +57,11 @@ public class AdapterUnit extends RecyclerView.Adapter<AdapterUnit.SessionHolder>
     public void onBindViewHolder(@NonNull @NotNull AdapterUnit.SessionHolder holder, int position) {
 
         holder.txt_Unit.setText(lista_Unit.get(position).getUniDesc());
-        holder.lst_Session.setAdapter(new ArrayAdapter<_Session>(holder.itemView.getContext(), android.R.layout.simple_list_item_1,_sessions));
-        AdapterSession adapterSession = new AdapterSession(_sessions,context,lista_Unit.get(position).getIdUnit());
+//        holder.lst_Session.setAdapter(new ArrayAdapter<_Session>(holder.itemView.getContext(), android.R.layout.simple_list_item_1,_sessions));
+
+        ArrayList<String> list = nueva_lista(_sessions,lista_Unit.get(position).getIdUnit());
+
+        AdapterSession adapterSession = new AdapterSession(list,context);
         holder.lst_Session.setAdapter(adapterSession);
         holder.lst_Session.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -72,7 +76,6 @@ public class AdapterUnit extends RecyclerView.Adapter<AdapterUnit.SessionHolder>
             }
         });
     }
-
 
     @Override
     public int getItemCount() {
@@ -90,5 +93,19 @@ public class AdapterUnit extends RecyclerView.Adapter<AdapterUnit.SessionHolder>
             lst_Session = itemView.findViewById(R.id.lst_Session);
 
         }
+    }
+
+    private ArrayList<String> nueva_lista(ArrayList<_Session> lista_Ses, Integer id) {
+
+        ArrayList<_Session> sessions_Unit;
+        sessions_Unit = lista_Ses;
+        ArrayList<String> stringList = new ArrayList<String>();
+
+        for (int i=0;i<sessions_Unit.size(); i++){
+            if(sessions_Unit.get(i).getIdUnit()==id){
+                stringList.add(sessions_Unit.get(i).getSesDesc());
+            }
+        }
+        return stringList;
     }
 }
