@@ -33,8 +33,8 @@ public class Splash extends AppCompatActivity {
                 if(log.equals("nnn"))
                 startActivity(new Intent(Splash.this, Login.class));
                 else
-//                startActivity(new Intent(Splash.this, MainActivity.class));
-                startActivity(new Intent(Splash.this, DetailTheme.class));
+                startActivity(new Intent(Splash.this, MainActivity.class));
+//                startActivity(new Intent(Splash.this, DetailTheme.class));
                 finish();
             }
         }, 3000);

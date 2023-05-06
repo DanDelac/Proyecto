@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Correo Electrónico"
-                android:drawableLeft="@drawable/ic_mail"
+                android:drawableLeft="@drawable/ic_email"
                 android:textColor="@color/white"
                 android:layout_marginTop="10dp"/>
         </LinearLayout>
@@ -94,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/set_exit"
-                android:drawableLeft="@drawable/ic_mail"
+                android:drawableLeft="@drawable/ic_logout2"
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"/>
         </LinearLayout>

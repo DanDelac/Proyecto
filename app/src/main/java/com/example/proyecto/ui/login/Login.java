@@ -173,8 +173,8 @@ public class  Login extends AppCompatActivity {
         SharedPreferences.Editor editor = log.edit();
         editor.putString("log","log");
         editor.commit();
-//        Intent i = new Intent(Login.this, MainActivity.class);
-        Intent i = new Intent(Login.this, DetailTheme.class);
+        Intent i = new Intent(Login.this, MainActivity.class);
+//        Intent i = new Intent(Login.this, DetailTheme.class);
         startActivity(i);
     }
 }

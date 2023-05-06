@@ -74,6 +74,7 @@
     <string name="txt_cancelar">Cancelar</string>
     <string name="seraching">Porfavor espere...</string>
     <string name="unidad">Unidad</string>
+    <string name="txtBack">Volver</string>
 
 
 </resources>

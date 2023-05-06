@@ -1,12 +1,15 @@
 package com.example.proyecto.ui.Theme;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,6 +22,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.proyecto.Adapter.AdapterTheme;
 import com.example.proyecto.Entidades.Theme;
 import com.example.proyecto.Entidades.VolleySingleton;
+import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
 import com.squareup.picasso.Picasso;
@@ -43,6 +47,8 @@ public class DetailTheme extends AppCompatActivity {
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest;
 
+    Button btnBack;
+
     public static final String SESS_PREF="session";
     String idSes;
     @Override
@@ -51,9 +57,19 @@ public class DetailTheme extends AppCompatActivity {
         setContentView(R.layout.activity_theme);
         listView=findViewById(R.id.lst_theme);
 
+        btnBack = findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DetailTheme.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
         SharedPreferences preferences = getSharedPreferences(SESS_PREF,0);
-//        idSes = preferences.getString("idSes","1");
-        idSes="1";
+        idSes = preferences.getString("idSes","nnn");
+//        idSes="1";
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
         lstTheme= new ArrayList<>();
