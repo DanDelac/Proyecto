@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.proyecto.Adapter.AdapterUnit;
+import com.example.proyecto.Adapter.Adapter_Unit;
 import com.example.proyecto.Entidades._Session;
 import com.example.proyecto.Entidades.Unit;
 import com.example.proyecto.R;
@@ -103,8 +104,8 @@ public class HomeFragment extends Fragment {
                             _session.setSesDesc(jsonObject.getString("sesDesc"));
                             _sessions.add(_session);
                         }
-                        AdapterUnit adapterSession = new AdapterUnit(getContext(),units,_sessions);
-                        recycler_unit.setAdapter(adapterSession);
+                        Adapter_Unit adapterUnit = new Adapter_Unit(getContext(),units,_sessions);
+                        recycler_unit.setAdapter(adapterUnit);
                     }
                     catch (Exception e){
 

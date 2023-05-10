@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     tools:context=".ui.home.HomeFragment"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:background="@color/color_bg_Home"
+    >
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_unit"

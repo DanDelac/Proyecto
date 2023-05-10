@@ -66,6 +66,7 @@ public class AdapterUnit extends RecyclerView.Adapter<AdapterUnit.SessionHolder>
         holder.lst_Session.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 Integer idSes=_sessions.get(position).getIdSes();
                 SharedPreferences log = context.getSharedPreferences(SESS_PREF,0);
                 SharedPreferences.Editor editor = log.edit();
