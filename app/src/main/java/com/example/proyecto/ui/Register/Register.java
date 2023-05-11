@@ -32,7 +32,7 @@ import java.nio.charset.StandardCharsets;
 
 
 public class Register extends AppCompatActivity  {
-    TextInputEditText edtNombre, edtApellidos, edtCorreo, edtCuenta, edtContra;
+    TextInputEditText edtNombre, edtApellidos, edtCorreo, edtCuenta, edtContra,edtContra2;
     Button btnRegistrar;
     TextView txtCancelar;
 
@@ -52,6 +52,7 @@ public class Register extends AppCompatActivity  {
         edtCorreo = findViewById(R.id.edtReEmail);
         edtCuenta = findViewById(R.id.edtReAccount);
         edtContra = findViewById(R.id.edtRePassword);
+        edtContra2 = findViewById(R.id.edtRePassword2);
 
         txtCancelar = findViewById(R.id.txtReCancelar);
         btnRegistrar = findViewById(R.id.btnReRegistrar);
@@ -62,14 +63,15 @@ public class Register extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 if(edtApellidos.getText().toString().replace(" ","").isEmpty()
-                ||edtContra.getText().toString().replace(" ","").isEmpty()
-                ||edtCorreo.getText().toString().replace(" ","").isEmpty()
-                ||edtCuenta.getText().toString().replace(" ","").isEmpty()
-                ||edtNombre.getText().toString().replace(" ","").isEmpty())
+                    ||edtContra.getText().toString().replace(" ","").isEmpty()
+                    ||edtContra2.getText().toString().replace(" ","").isEmpty()
+                    ||edtCorreo.getText().toString().replace(" ","").isEmpty()
+                    ||edtCuenta.getText().toString().replace(" ","").isEmpty()
+                    ||edtNombre.getText().toString().replace(" ","").isEmpty())
                 Toast.makeText(Register.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
                 else {
                     aux = edtContra.getText().toString();
-                    aux1 = edtContra.getText().toString();
+                    aux1 = edtContra2.getText().toString();
                     if (aux.equals(aux1)) {
                         dialogAcept();
                     } else

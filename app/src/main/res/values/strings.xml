@@ -4,7 +4,7 @@
     <string name="title_glosary">Glosario</string>
     <string name="title_settings">Ajustes</string>
     <string name="msgwelcome">Hello there, Welcome</string>
-    <string name="logUser">Ingrese su usuario</string>
+    <string name="logUser">Ingrese su cuenta o correo</string>
     <string name="logedtUser">Usuario</string>
     <string name="logPass">Ingrese su contraseña</string>
     <string name="logedtPass">Contraseña</string>
@@ -21,6 +21,8 @@
     <string name="RGedtEmail">Correo</string>
     <string name="RGtxtPassword">Ingrese una contraseña</string>
     <string name="RGedtPassword">Contraseña</string>
+    <string name="RGtxtPassword2">Repita la contraseña</string>
+    <string name="RGedtPassword2">Repetir contraseña</string>
     <string name="RGtxtAccount">Ingrese una cuenta</string>
     <string name="RGedtAccount">Cuenta</string>
     <string name="RGbtn">Registrar</string>
@@ -38,13 +40,14 @@
 
     <string name="load_Register"><u>Registrando cuenta</u></string>
     <string name="load_Login"><u>Buscando ...</u></string>
+    <string name="load_Theme"><u>Cargando los temas de la sesión ...</u></string>
 
-    <string name="error_General"><u>ERROR:  Se ingreso a onError</u></string>
+    <string name="error_General"><u>ERROR:  No se pudo cargar la base de datos</u></string>
     <string name="error_Login"><u>La cuenta no existe</u></string>
     <string name="error_Login1"><u>Contraseña errada</u></string>
     <string name="error_Null"><u>Rellene todos los campos</u></string>
     <string name="error_Pass"><u>Las contraseñas son distintas</u></string>
-    <string name="error_msj1"><u>El correo ingresado esta registrado</u></string>
+    <string name="error_msj1"><u>El correo o cuenta ingresado esta registrado</u></string>
     <string name="error_msj2"><u>No se pudo registrar</u></string>
     <string name="error_msj3"><u>No se pudo actualizar</u></string>
 

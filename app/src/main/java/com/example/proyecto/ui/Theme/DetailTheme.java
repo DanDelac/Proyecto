@@ -80,7 +80,7 @@ public class DetailTheme extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         progreso = new ProgressDialog(DetailTheme.this);
-        progreso.setMessage(getString(R.string.load_Register));
+        progreso.setMessage(getString(R.string.load_Theme));
         progreso.show();
         String url = Util.RUTA+"listarTheme.php?Cod="+idSes ;
         url=url.replace(" ","%20");
