@@ -9,25 +9,33 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PRUEBA"
+        android:text="SESION"
         android:id="@+id/txv_item_theme_session"
         android:gravity="center"
         android:layout_marginTop="20px"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PRUEBA"
-        android:id="@+id/txv_item_theme_desc"
+        android:text="TITULO"
+        android:id="@+id/txv_item_theme_tit"
         android:gravity="center"
         android:textSize="100px"/>
 
     <ImageView
         android:id="@+id/imv_item_theme"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         tools:src="@tools:sample/avatars"
         android:layout_marginBottom="50dp"
         android:layout_gravity="center"
-        android:scaleType="centerInside"
-        android:padding="10dp"/>
+        android:scaleType="fitCenter"
+        android:padding="10dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DESCRIPCION"
+        android:id="@+id/txv_item_theme_desc"
+        android:gravity="center"
+        android:textSize="50px"/>
 </LinearLayout>

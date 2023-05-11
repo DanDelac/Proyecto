@@ -52,10 +52,13 @@ public class AdapterTheme extends BaseAdapter {
         }
         ImageView imageView = (ImageView) view.findViewById(R.id.imv_item_theme);
         TextView txvSess = (TextView) view.findViewById(R.id.txv_item_theme_session);
+        TextView txvTit = (TextView) view.findViewById(R.id.txv_item_theme_tit);
         TextView txvDesc = (TextView) view.findViewById(R.id.txv_item_theme_desc);
-        Picasso.get().load(arrayList.get(position).getImgDesc()).into(imageView);
+        Picasso.get().load(arrayList.get(position).getImg()).into(imageView);
         txvSess.setText(arrayList.get(position).getSesDesc());
-        txvDesc.setText(arrayList.get(position).getTheDesc());
+        txvDesc.setText(arrayList.get(position).getImgDesc());
+        txvTit.setText(arrayList.get(position).getImgTit());
+
         return view;
     }
 }

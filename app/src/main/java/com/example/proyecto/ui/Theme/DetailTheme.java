@@ -91,17 +91,18 @@ public class DetailTheme extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 progreso.hide();
                 Theme theme = null;
-                JSONArray json = response.optJSONArray("tblLibros");
+                JSONArray json = response.optJSONArray("tblTheme");
                 try {
                     for (int i = 0; i < json.length(); i++) {
                         theme = new Theme();
                         JSONObject jsonObject = null;
                         jsonObject = json.getJSONObject(i);
-                        theme.setIdSes(jsonObject.getString("idSes"));
-                        theme.setSesDesc(jsonObject.getString("sesDesc"));
                         theme.setIdTheme(jsonObject.getString("idTheme"));
-                        theme.setTheDesc(jsonObject.getString("theDesc"));
+                        theme.setIdSes(jsonObject.getString("idSes"));
+                        theme.setImgTit(jsonObject.getString("imgTit"));
                         theme.setImgDesc(jsonObject.getString("imgDesc"));
+                        theme.setSesDesc(jsonObject.getString("sesDesc"));
+                        theme.setImg(jsonObject.getString("img"));
                         lstTheme.add(theme);
                     }
                     AdapterTheme adapterTheme = new AdapterTheme(DetailTheme.this, lstTheme, 14);

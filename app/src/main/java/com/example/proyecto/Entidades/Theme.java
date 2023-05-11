@@ -7,17 +7,37 @@ public class Theme implements Serializable {
     private String sesDesc;
     private String idTheme;
     private String theDesc;
+    private String img;
     private String imgDesc;
+    private String imgTit;
 
     public Theme() {
     }
 
-    public Theme(String idSes, String sesDesc, String idTheme, String theDesc, String imgDesc) {
+    public Theme(String idSes, String sesDesc, String idTheme, String theDesc, String img, String imgDesc, String imgTit) {
         this.idSes = idSes;
         this.sesDesc = sesDesc;
         this.idTheme = idTheme;
         this.theDesc = theDesc;
+        this.img = img;
         this.imgDesc = imgDesc;
+        this.imgTit = imgTit;
+    }
+
+    public String getImgTit() {
+        return imgTit;
+    }
+
+    public void setImgTit(String imgTit) {
+        this.imgTit = imgTit;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getImgDesc() {
