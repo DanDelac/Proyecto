@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Theme.DetailTheme"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/color_bg_Home"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="20dp">
+        android:layout_margin="10dp">
 
         <Button
             android:id="@+id/btnBack"
@@ -18,16 +20,13 @@
             android:layout_height="match_parent"
             android:text="@string/txtBack"
             android:textColor="@color/white"
-            android:background="@drawable/efredbuttons"
-            ></Button>
+            android:background="@drawable/efredbuttons" />
     </LinearLayout>
 
-
-    <ListView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_theme"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lst_theme"
-        android:layout_marginHorizontal="20dp"
-        android:background="@drawable/efredformulario2"
-        android:padding="20dp"></ListView>
+        android:layout_marginHorizontal="5dp"
+        />
 </android.support.v7.widget.LinearLayoutCompat>

@@ -2,6 +2,8 @@ package com.example.proyecto.Adapter;
 
 import android.content.Context;
 import android.media.Image;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +15,12 @@ import com.example.proyecto.R;
 import com.example.proyecto.Entidades.Theme;
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
-public class AdapterTheme extends BaseAdapter {
+public class AdapterTheme extends RecyclerView.Adapter<AdapterTheme.SessionHolder> {
+
     private Context context;
     private ArrayList<Theme> arrayList;
     private Integer size;
@@ -29,36 +34,40 @@ public class AdapterTheme extends BaseAdapter {
         this.size = size;
     }
 
+    @NonNull
+    @NotNull
     @Override
-    public int getCount() {
+    public AdapterTheme.SessionHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        View vista =
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.item_theme, parent, false);
+
+        return new SessionHolder(vista);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull @NotNull SessionHolder holder, int position) {
+        Picasso.get().load(arrayList.get(position).getImg()).into(holder.imageView);
+        holder.txvSess.setText(arrayList.get(position).getSesDesc());
+        holder.txvDesc.setText(arrayList.get(position).getImgDesc());
+        holder.txvTit.setText(arrayList.get(position).getImgTit());
+    }
+
+    @Override
+    public int getItemCount() {
         return arrayList.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return arrayList.get(position);
-    }
+    public class SessionHolder extends RecyclerView.ViewHolder {
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+        ImageView imageView;
+        TextView txvSess,txvTit,txvDesc;
 
-    @Override
-    public View getView(int position, View view, ViewGroup parent) {
-        if(view==null){
-            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            view=layoutInflater.inflate(R.layout.item_theme,null);
+        public SessionHolder(@NonNull @NotNull View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.imv_item_theme);
+            txvSess = itemView.findViewById(R.id.txv_item_theme_session);
+            txvTit = itemView.findViewById(R.id.txv_item_theme_tit);
+            txvDesc = itemView.findViewById(R.id.txv_item_theme_desc);
         }
-        ImageView imageView = (ImageView) view.findViewById(R.id.imv_item_theme);
-        TextView txvSess = (TextView) view.findViewById(R.id.txv_item_theme_session);
-        TextView txvTit = (TextView) view.findViewById(R.id.txv_item_theme_tit);
-        TextView txvDesc = (TextView) view.findViewById(R.id.txv_item_theme_desc);
-        Picasso.get().load(arrayList.get(position).getImg()).into(imageView);
-        txvSess.setText(arrayList.get(position).getSesDesc());
-        txvDesc.setText(arrayList.get(position).getImgDesc());
-        txvTit.setText(arrayList.get(position).getImgTit());
-
-        return view;
     }
 }

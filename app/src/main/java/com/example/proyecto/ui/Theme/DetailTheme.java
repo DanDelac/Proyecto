@@ -5,13 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,9 +24,7 @@ import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
-import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,7 +35,7 @@ import java.util.List;
 public class DetailTheme extends AppCompatActivity {
 
 
-    ListView listView;
+    RecyclerView recyclerView;
     ArrayList<Theme> lstTheme;
     CarouselView carouselView;
 
@@ -55,10 +52,9 @@ public class DetailTheme extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme);
-        listView=findViewById(R.id.lst_theme);
+        recyclerView = findViewById(R.id.rv_theme);
 
         btnBack = findViewById(R.id.btnBack);
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +74,11 @@ public class DetailTheme extends AppCompatActivity {
 
     private void cargarTheme() {
         lstTheme.clear();
-        listView.setAdapter(new ArrayAdapter<Theme>(DetailTheme.this, android.R.layout.simple_list_item_1,lstTheme));
+//        listView.setAdapter(new ArrayAdapter<Theme>(DetailTheme.this, android.R.layout.simple_list_item_1,lstTheme));
+
+        recyclerView.setLayoutManager(new GridLayoutManager(DetailTheme.this, 2));
+        recyclerView.setHasFixedSize(true);
+
         progreso = new ProgressDialog(DetailTheme.this);
         progreso.setMessage(getString(R.string.load_Register));
         progreso.show();
@@ -106,7 +106,7 @@ public class DetailTheme extends AppCompatActivity {
                         lstTheme.add(theme);
                     }
                     AdapterTheme adapterTheme = new AdapterTheme(DetailTheme.this, lstTheme, 14);
-                    listView.setAdapter(adapterTheme);
+                    recyclerView.setAdapter(adapterTheme);
 
 
                 } catch (Exception e) {
