@@ -41,6 +41,7 @@
     <string name="load_Register"><u>Registrando cuenta</u></string>
     <string name="load_Login"><u>Buscando ...</u></string>
     <string name="load_Theme"><u>Cargando los temas de la sesión ...</u></string>
+    <string name="load_Eval"><u>Cargando la evaluación de la sesión ...</u></string>
 
     <string name="error_General"><u>ERROR:  No se pudo cargar la base de datos</u></string>
     <string name="error_Login"><u>La cuenta no existe</u></string>
@@ -69,7 +70,7 @@
     <string name="set_edtpas">Cambiar contraseña</string>
     <string name="set_exit">Salir</string>
 
-<!--    para ui RecoverPass-->
+    <!--    para ui RecoverPass-->
     <string name="txt_restablecer_pwd">Restablece tu contraseña 🔒</string>
     <string name="txt_comentario_pwd">Ingresa tu correo electrónico para restablecer su contraseña.</string>
     <string name="txt_correo_electronico">Correo electrónico</string>
@@ -79,6 +80,10 @@
     <string name="unidad">Unidad</string>
     <string name="txtBack">Volver</string>
     <string name="tema">Tema</string>
+    <string name="btnEval">Evaluación</string>
+    <string name="evalTit">Evaluación</string>
+    <string name="eval_quest">¿Cuál es la imagen correcta para </string>
+    <string name="themeTit">Session tit</string>
 
 
 </resources>

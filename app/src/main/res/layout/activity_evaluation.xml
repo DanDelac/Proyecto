@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Theme.DetailTheme"
+    tools:context=".ui.evaluation.Evaluation"
     android:orientation="vertical"
-    android:background="@color/color_bg_Home"
-    >
+    android:padding="10dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
-
+        android:orientation="horizontal">
         <Button
-            android:id="@+id/btnBack"
+            android:id="@+id/btn_back_eval"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/txtBack"
             android:textColor="@color/white"
             android:background="@drawable/efredbuttons" />
         <TextView
-            android:id="@+id/txt_Theme"
+            android:id="@+id/txt_Eval"
             android:background="@drawable/conf_fondo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/themeTit"
+            android:text="@string/evalTit"
             android:textSize="24sp"
             android:textColor="@color/white"
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:layout_marginHorizontal="10dp"
             />
+
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_theme"
+        android:id="@+id/recycler_eval"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="5dp"
-        />
-</android.support.v7.widget.LinearLayoutCompat>
+        android:layout_height="match_parent" />
+
+</LinearLayout>

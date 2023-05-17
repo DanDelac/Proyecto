@@ -46,8 +46,10 @@ public class AdapterTheme extends RecyclerView.Adapter<AdapterTheme.SessionHolde
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull SessionHolder holder, int position) {
-        Picasso.get().load(arrayList.get(position).getImg()).into(holder.imageView);
-        holder.txvSess.setText(arrayList.get(position).getSesDesc());
+        Picasso.get().load(arrayList.get(position).getImg())
+                .resize(250,250)
+                .into(holder.imageView);
+//        holder.txvSess.setText(arrayList.get(position).getSesDesc());
         holder.txvDesc.setText(arrayList.get(position).getImgDesc());
         holder.txvTit.setText(arrayList.get(position).getImgTit());
     }
@@ -65,7 +67,7 @@ public class AdapterTheme extends RecyclerView.Adapter<AdapterTheme.SessionHolde
         public SessionHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imv_item_theme);
-            txvSess = itemView.findViewById(R.id.txv_item_theme_session);
+//            txvSess = itemView.findViewById(R.id.txv_item_theme_session);
             txvTit = itemView.findViewById(R.id.txv_item_theme_tit);
             txvDesc = itemView.findViewById(R.id.txv_item_theme_desc);
         }

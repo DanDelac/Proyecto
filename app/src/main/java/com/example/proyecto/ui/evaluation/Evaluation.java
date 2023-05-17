@@ -1,16 +1,15 @@
-package com.example.proyecto.ui.Theme;
+package com.example.proyecto.ui.evaluation;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,16 +24,13 @@ import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
-import com.synnapps.carouselview.CarouselView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class DetailTheme extends AppCompatActivity {
-
+public class Evaluation extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ArrayList<Theme> lstTheme;
@@ -46,19 +42,21 @@ public class DetailTheme extends AppCompatActivity {
     Button btnBack;
     TextView txtTit;
 
-    public static final String SESS_PREF="session";
-    String idSes;
+    public static final String UNIT_PREF="unit";
+    String idUnit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_theme);
-        recyclerView = findViewById(R.id.rv_theme);
+        setContentView(R.layout.activity_evaluation);
 
-        txtTit = findViewById(R.id.txt_Theme);
-        btnBack = findViewById(R.id.btnBack);
+        recyclerView = findViewById(R.id.recycler_eval);
+        btnBack = findViewById(R.id.btn_back_eval);
+        txtTit = findViewById(R.id.txt_Eval);
+        lstTheme= new ArrayList<>();
+//        cargarEval();
 
-        SharedPreferences preferences = getSharedPreferences(SESS_PREF,0);
-        idSes = preferences.getString("idSes","nnn");
+        SharedPreferences preferences = getSharedPreferences(UNIT_PREF,0);
+        idUnit = preferences.getString("idUnit","nnn");
         String sesTit = preferences.getString("sesTit","nnn");
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
@@ -66,27 +64,23 @@ public class DetailTheme extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(DetailTheme.this, MainActivity.class);
+                Intent i = new Intent(Evaluation.this, MainActivity.class);
                 startActivity(i);
             }
         });
-
-
-        lstTheme= new ArrayList<>();
-        cargarTheme();
     }
 
-    private void cargarTheme() {
+    private void cargarEval() {
         lstTheme.clear();
 //        listView.setAdapter(new ArrayAdapter<Theme>(DetailTheme.this, android.R.layout.simple_list_item_1,lstTheme));
 
-        recyclerView.setLayoutManager(new GridLayoutManager(DetailTheme.this, 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(Evaluation.this, 2));
         recyclerView.setHasFixedSize(true);
 
-        progreso = new ProgressDialog(DetailTheme.this);
-        progreso.setMessage(getString(R.string.load_Theme));
+        progreso = new ProgressDialog(Evaluation.this);
+        progreso.setMessage(getString(R.string.load_Eval));
         progreso.show();
-        String url = Util.RUTA+"listarTheme.php?Cod="+idSes ;
+        String url = Util.RUTA+"listarEvaluacion.php?Cod="+ idUnit;
         url=url.replace(" ","%20");
         Log.d("Url : ",url.toString());
 
@@ -109,7 +103,7 @@ public class DetailTheme extends AppCompatActivity {
                         theme.setImg(jsonObject.getString("img"));
                         lstTheme.add(theme);
                     }
-                    AdapterTheme adapterTheme = new AdapterTheme(DetailTheme.this, lstTheme, 14);
+                    AdapterTheme adapterTheme = new AdapterTheme(Evaluation.this, lstTheme, lstTheme.size());
                     recyclerView.setAdapter(adapterTheme);
 
 
@@ -121,12 +115,11 @@ public class DetailTheme extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(DetailTheme.this, getString(R.string.error_General), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Evaluation.this, getString(R.string.error_General), Toast.LENGTH_SHORT).show();
                 Log.e(" ERROR: ", error.toString());
             }
         });
 
         requestQueue.add(jsonObjectRequest);
     }
-
 }

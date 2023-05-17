@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.Theme.DetailTheme"></activity>
+        <activity android:name=".ui.evaluation.Evaluation"></activity>
+        <activity android:name=".ui.Theme.DetailTheme" />
         <activity android:name=".ui.changepassword.changePassword" />
         <activity android:name=".ui.editaccount.editAccount" />
         <activity android:name=".ui.RecoverPass.RecoverPass" />

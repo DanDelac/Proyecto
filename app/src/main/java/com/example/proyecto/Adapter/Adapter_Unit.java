@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.example.proyecto.Entidades.Unit;
 import com.example.proyecto.Entidades._Session;
 import com.example.proyecto.R;
 import com.example.proyecto.ui.Theme.DetailTheme;
+import com.example.proyecto.ui.evaluation.Evaluation;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -33,6 +35,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
     private View.OnClickListener listener;
     private static final String ID_CALULAR_GUARDADO = "ID";
     public static final String SESS_PREF="session";
+    public static final String UNIT_PREF="unit";
 
     public Adapter_Unit(Context context, List<Unit> lista_Unit, ArrayList<_Session> lista_Ses) {
         this.context=context;
@@ -67,25 +70,34 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         holder.txt_T1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(1,lista_Unit.get(position).getIdUnit(),holder);
+                goThem(1,list.get(0),lista_Unit.get(position).getIdUnit(),holder);
             }
         });
         holder.txt_T2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(2,lista_Unit.get(position).getIdUnit(),holder);
+                goThem(2,list.get(1),lista_Unit.get(position).getIdUnit(),holder);
             }
         });
         holder.txt_T3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(3,lista_Unit.get(position).getIdUnit(),holder);
+                goThem(3,list.get(2),lista_Unit.get(position).getIdUnit(),holder);
             }
         });
         holder.txt_T4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(4,lista_Unit.get(position).getIdUnit(),holder);
+                goThem(4,list.get(3),lista_Unit.get(position).getIdUnit(),holder);
+            }
+        });
+
+        holder.btn_eval.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String cod=lista_Unit.get(position).getIdUnit().toString();
+                String unit=lista_Unit.get(position).getUniDesc();
+                goEval(v,cod,unit);
             }
         });
 
@@ -94,11 +106,23 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
 
     }
 
-    private void goThem(Integer i, Integer idUnit,@NonNull @NotNull Adapter_Unit.SessionHolder view) {
+    private void goEval(View view,String cod,String unit) {
+        SharedPreferences log = context.getSharedPreferences(UNIT_PREF,0);
+        SharedPreferences.Editor editor = log.edit();
+        editor.putString("idUnit",cod);
+        editor.putString("sesTit",unit);
+        editor.commit();
+        Intent intent = new Intent(context, Evaluation.class);
+        view.getContext().startActivity(intent);
+        Toast.makeText(context, "Te dije que le des al boton ctmr... XD", Toast.LENGTH_SHORT).show();
+    }
+
+    private void goThem(Integer i, String sesTit,Integer idUnit,@NonNull @NotNull Adapter_Unit.SessionHolder view) {
         Integer idSes = i+4*(idUnit-1);
         SharedPreferences log = context.getSharedPreferences(SESS_PREF,0);
         SharedPreferences.Editor editor = log.edit();
         editor.putString("idSes",idSes.toString());
+        editor.putString("sesTit",sesTit);
         editor.commit();
         Intent intent = new Intent(context, DetailTheme.class);
         view.itemView.getContext().startActivity(intent);
@@ -113,6 +137,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
 
         TextView txt_Unit_2,txt_T1,txt_T2,txt_T3,txt_T4;
         ProgressBar progressBar1;
+        Button btn_eval;
 
         LinearLayout linearLayout;
 
@@ -123,6 +148,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
             txt_T2 = itemView.findViewById(R.id.txt_T2);
             txt_T3 = itemView.findViewById(R.id.txt_T3);
             txt_T4 = itemView.findViewById(R.id.txt_T4);
+            btn_eval = itemView.findViewById(R.id.btn_item2_eval);
 //            progressBar1 = itemView.findViewById(R.id.progress_Bar1);
         }
     }
