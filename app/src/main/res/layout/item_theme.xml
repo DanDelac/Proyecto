@@ -15,7 +15,8 @@
         android:text="TITULO"
         android:id="@+id/txv_item_theme_tit"
         android:gravity="center"
-        android:textSize="100px"/>
+        android:textSize="100px"
+        android:fontFamily="@font/bungee"/>
 
     <ImageView
         android:id="@+id/imv_item_theme"
@@ -30,5 +31,6 @@
         android:text="DESCRIPCION"
         android:id="@+id/txv_item_theme_desc"
         android:gravity="center"
-        android:textSize="50px"/>
+        android:textSize="50px"
+        android:fontFamily="@font/alatsi"/>
 </LinearLayout>

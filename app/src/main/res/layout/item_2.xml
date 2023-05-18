@@ -19,6 +19,7 @@
         android:gravity="center"
         android:padding="6dp"
         android:layout_marginHorizontal="10dp"
+        android:fontFamily="@font/bungee"
         />
 
     <LinearLayout
@@ -61,7 +62,8 @@
             android:layout_height="wrap_content"
             android:text="@string/tema"
             android:layout_marginStart="10dp"
-            android:textSize="18sp"/>
+            android:textSize="20dp"
+            android:fontFamily="@font/alatsi"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -104,7 +106,8 @@
             android:layout_height="wrap_content"
             android:text="@string/tema"
             android:layout_marginStart="10dp"
-            android:textSize="18sp"/>
+            android:textSize="20dp"
+            android:fontFamily="@font/alatsi"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -145,7 +148,8 @@
             android:layout_height="wrap_content"
             android:text="@string/tema"
             android:layout_marginStart="10dp"
-            android:textSize="18sp"/>
+            android:textSize="20dp"
+            android:fontFamily="@font/alatsi"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -185,7 +189,8 @@
             android:layout_height="wrap_content"
             android:text="@string/tema"
             android:layout_marginStart="10dp"
-            android:textSize="18sp"/>
+            android:textSize="20dp"
+            android:fontFamily="@font/alatsi"/>
     </LinearLayout>
     <Button
         android:id="@+id/btn_item2_eval"
@@ -193,5 +198,6 @@
         android:layout_height="wrap_content"
         android:text="@string/btnEval"
         android:background="@color/color_conf_fondo2"
-        android:textColor="@color/color_conf_fondo"/>
+        android:textColor="@color/color_conf_fondo"
+        android:fontFamily="@font/alatsi"/>
 </LinearLayout>

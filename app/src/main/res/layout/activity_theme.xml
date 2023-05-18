@@ -16,14 +16,12 @@
 
         <Button
             android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
+            android:layout_width="69dp"
             android:layout_height="match_parent"
-            android:text="@string/txtBack"
-            android:textColor="@color/white"
-            android:background="@drawable/efredbuttons" />
+            android:background="@drawable/ic_back" />
         <TextView
             android:id="@+id/txt_Theme"
-            android:background="@drawable/conf_fondo"
+            android:background="@drawable/bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/themeTit"
@@ -32,6 +30,7 @@
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:layout_marginHorizontal="10dp"
+            android:fontFamily="@font/bungee"
             />
     </LinearLayout>
 
