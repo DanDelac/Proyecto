@@ -48,8 +48,8 @@ public class Evaluation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluation);
-
-        recyclerView = findViewById(R.id.recycler_eval);
+//
+//        recyclerView = findViewById(R.id.recycler_eval);
         btnBack = findViewById(R.id.btn_back_eval);
         txtTit = findViewById(R.id.txt_Eval);
         lstTheme= new ArrayList<>();

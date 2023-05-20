@@ -84,6 +84,8 @@
     <string name="evalTit">Evaluación</string>
     <string name="eval_quest">¿Cuál es la imagen correcta para </string>
     <string name="themeTit">Session tit</string>
+    <string name="btn_eval">Siguiente</string>
+    <string name="btn_calcelevl">Salir</string>
 
 
 </resources>

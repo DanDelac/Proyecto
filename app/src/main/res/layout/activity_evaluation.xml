@@ -6,21 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ui.evaluation.Evaluation"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
         <Button
             android:id="@+id/btn_back_eval"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtBack"
-            android:textColor="@color/white"
-            android:background="@drawable/efredbuttons" />
+            android:layout_width="69dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_back" />
         <TextView
             android:id="@+id/txt_Eval"
-            android:background="@drawable/conf_fondo"
+            android:background="@drawable/bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/evalTit"
@@ -29,13 +29,78 @@
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:layout_marginHorizontal="10dp"
+            android:fontFamily="@font/bungee"
             />
 
     </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_eval"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/txtid_ques"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pregunta #"
+            />
+        <TextView
+            android:id="@+id/txtquestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¿Pregunta?"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rB_opc1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Opc1" />
+
+            <RadioButton
+                android:id="@+id/rB_opc2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Opc2" />
+
+            <RadioButton
+                android:id="@+id/rB_opc3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Opc3" />
+        </RadioGroup>
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_eval"
+            android:drawableStart="@drawable/ic_next"
+            android:drawablePadding="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="#FFFFFF"
+            android:textSize="13dp"
+            android:background="@drawable/efredbuttons"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            />
+        <Button
+            android:id="@+id/btn_cancel_eval"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_calcelevl"
+            android:drawableStart="@drawable/ic_exit"
+            android:drawablePadding="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="#FFFFFF"
+            android:textSize="13dp"
+            android:background="@drawable/efredbuttons"
+            android:layout_gravity="center"
+            android:layout_marginVertical="20dp"
+            />
+    </LinearLayout>
 
 </LinearLayout>
