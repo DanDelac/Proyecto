@@ -13,4 +13,7 @@
     <color name="color_conf_fondo2">#DCDDE3</color>
     <color name="color_FFC800">#B61569</color>
     <color name="color_bg_Home">#EFEFEF</color>
+    <color name="custom_seekbar_progress_color">#FF0000</color>
+    <color name="custom_seekbar_progress_indeterminate_color">#00FF00</color>
+    <color name="custom_seekbar_thumb_color">#FFFFFF</color>
 </resources>

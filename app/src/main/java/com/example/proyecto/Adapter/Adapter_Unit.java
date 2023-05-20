@@ -70,25 +70,25 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         holder.txt_T1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(1,list.get(0),lista_Unit.get(position).getIdUnit(),holder);
+                goThem(1,list.get(0),lista_Unit.get(position).getIdUnit(),lista_Unit.get(position).getIdUseUni(),2,holder);
             }
         });
         holder.txt_T2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(2,list.get(1),lista_Unit.get(position).getIdUnit(),holder);
+                goThem(2,list.get(1),lista_Unit.get(position).getIdUnit(),lista_Unit.get(position).getIdUseUni(),2,holder);
             }
         });
         holder.txt_T3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(3,list.get(2),lista_Unit.get(position).getIdUnit(),holder);
+                goThem(3,list.get(2),lista_Unit.get(position).getIdUnit(),lista_Unit.get(position).getIdUseUni(),2,holder);
             }
         });
         holder.txt_T4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(4,list.get(3),lista_Unit.get(position).getIdUnit(),holder);
+                goThem(4,list.get(3),lista_Unit.get(position).getIdUnit(),lista_Unit.get(position).getIdUseUni(),2,holder);
             }
         });
 
@@ -117,12 +117,16 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         Toast.makeText(context, "Te dije que le des al boton ctmr... XD", Toast.LENGTH_SHORT).show();
     }
 
-    private void goThem(Integer i, String sesTit,Integer idUnit,@NonNull @NotNull Adapter_Unit.SessionHolder view) {
+    private void goThem(Integer i, String sesTit,Integer idUnit,Integer idUseUni,Integer sesD,@NonNull @NotNull Adapter_Unit.SessionHolder view) {
         Integer idSes = i+4*(idUnit-1);
+        if(i>sesD)
+            sesD=i;
         SharedPreferences log = context.getSharedPreferences(SESS_PREF,0);
         SharedPreferences.Editor editor = log.edit();
         editor.putString("idSes",idSes.toString());
         editor.putString("sesTit",sesTit);
+        editor.putString("idUseUni",idUseUni.toString());
+        editor.putString("sesD",sesD.toString());
         editor.commit();
         Intent intent = new Intent(context, DetailTheme.class);
         view.itemView.getContext().startActivity(intent);

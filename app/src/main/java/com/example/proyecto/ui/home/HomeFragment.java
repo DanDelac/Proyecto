@@ -98,6 +98,7 @@ public class HomeFragment extends Fragment {
 
                             unit.setUniDesc(jsonObject.getString("uniDesc"));
                             unit.setIdUnit(jsonObject.getInt("idUnit"));
+                            unit.setIdUseUni(jsonObject.getInt("idUseUni"));
                             units.add(unit);
                         }
 

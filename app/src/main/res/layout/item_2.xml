@@ -15,12 +15,22 @@
         android:text="@string/unidad"
         android:textSize="24sp"
         android:textColor="@color/white"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="0dp"
         android:gravity="center"
         android:padding="6dp"
         android:layout_marginHorizontal="10dp"
         android:fontFamily="@font/bungee"
         />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminateDrawable="@android:drawable/progress_indeterminate_horizontal"
+        android:max="100"
+        android:progress="60"
+        android:progressDrawable="@android:drawable/progress_horizontal" />
+
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -47,7 +47,7 @@ public class DetailTheme extends AppCompatActivity {
     TextView txtTit;
 
     public static final String SESS_PREF="session";
-    String idSes;
+    String idSes,idUseUni,sesD;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +59,13 @@ public class DetailTheme extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences(SESS_PREF,0);
         idSes = preferences.getString("idSes","nnn");
+        idUseUni = preferences.getString("idUseUni","nnn");
+        sesD = preferences.getString("sesD","nnn");
         String sesTit = preferences.getString("sesTit","nnn");
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
         txtTit.setText(sesTit);
+        Toast.makeText(this, "idUseUni: "+idUseUni+"\nsesD: "+sesD, Toast.LENGTH_SHORT).show();
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
