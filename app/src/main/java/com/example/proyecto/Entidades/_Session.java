@@ -4,14 +4,24 @@ public class _Session {
     private Integer idSes;
     private Integer idUnit;
     private String sesDesc;
+    private Integer sesPorc;
 
     public _Session() {
     }
 
-    public _Session(Integer idSes, Integer idUnit, String sesDesc) {
+    public _Session(Integer idSes, Integer idUnit, String sesDesc, Integer sesPorc) {
         this.idSes = idSes;
         this.idUnit = idUnit;
         this.sesDesc = sesDesc;
+        this.sesPorc = sesPorc;
+    }
+
+    public Integer getSesPorc() {
+        return sesPorc;
+    }
+
+    public void setSesPorc(Integer sesPorc) {
+        this.sesPorc = sesPorc;
     }
 
     public Integer getIdSes() {
