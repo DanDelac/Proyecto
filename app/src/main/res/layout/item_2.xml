@@ -22,15 +22,16 @@
         android:fontFamily="@font/bungee"
         />
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminateDrawable="@android:drawable/progress_indeterminate_horizontal"
-        android:max="100"
-        android:progress="60"
-        android:progressDrawable="@android:drawable/progress_horizontal" />
 
+    <ProgressBar
+        android:id="@+id/progress_Bar_Uni"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:indeterminateOnly="false"
+        android:progressDrawable="@drawable/pd_drawable_1"
+        android:progress="0"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,6 +48,7 @@
             android:layout_gravity="center"
             >
             <TextView
+                android:id="@+id/txt_Ses1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@xml/circulo"
@@ -57,13 +59,13 @@
                 android:layout_gravity="center"/>
 
             <ProgressBar
-                android:id="@+id/progress_Bar1"
+                android:id="@+id/progress_Bar_Ses1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:indeterminateOnly="false"
                 android:progressDrawable="@xml/progresbar_bg"
-                android:progress="75"
+                android:progress="0"
                 />
         </FrameLayout>
         <TextView
@@ -91,6 +93,7 @@
             >
 
             <TextView
+                android:id="@+id/txt_Ses2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@xml/circulo"
@@ -101,13 +104,13 @@
                 android:layout_gravity="center"
                 />
             <ProgressBar
-                android:id="@+id/progressBar2"
+                android:id="@+id/progress_Bar_Ses2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:indeterminateOnly="false"
                 android:progressDrawable="@xml/progresbar_bg"
-                android:progress="25"
+                android:progress="0"
                 />
         </FrameLayout>
         <TextView
@@ -134,6 +137,7 @@
             android:layout_gravity="center"
             >
             <TextView
+                android:id="@+id/txt_Ses3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@xml/circulo"
@@ -144,13 +148,13 @@
                 android:layout_gravity="center"
                 />
             <ProgressBar
-                android:id="@+id/progressBar3"
+                android:id="@+id/progress_Bar_Ses3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:indeterminateOnly="false"
                 android:progressDrawable="@xml/progresbar_bg"
-                android:progress="25"/>
+                android:progress="0"/>
         </FrameLayout>
         <TextView
             android:id="@+id/txt_T3"
@@ -176,6 +180,7 @@
             android:layout_gravity="center"
             >
             <TextView
+                android:id="@+id/txt_Ses4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@xml/circulo"
@@ -185,13 +190,13 @@
                 android:textStyle="bold"
                 android:layout_gravity="center"/>
             <ProgressBar
-                android:id="@+id/progressBar4"
+                android:id="@+id/progress_Bar_Ses4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:indeterminateOnly="false"
                 android:progressDrawable="@xml/progresbar_bg"
-                android:progress="25"/>
+                android:progress="0"/>
         </FrameLayout>
         <TextView
             android:id="@+id/txt_T4"

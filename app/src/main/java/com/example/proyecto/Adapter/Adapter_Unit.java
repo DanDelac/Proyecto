@@ -57,38 +57,48 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
     @Override
     public void onBindViewHolder(@NonNull @NotNull Adapter_Unit.SessionHolder holder, int position) {
 
+        ArrayList<String> list = nueva_lista(_sessions,lista_Unit.get(position).getIdUnit());
         holder.txt_Unit_2.setText(lista_Unit.get(position).getUniDesc());
+        Integer aux = (Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4;
+        holder.pb_U.setProgress(aux);
 //        holder.lst_Session.setAdapter(new ArrayAdapter<_Session>(holder.itemView.getContext(), android.R.layout.simple_list_item_1,_sessions));
 
-        ArrayList<String> list = nueva_lista(_sessions,lista_Unit.get(position).getIdUnit());
 
         holder.txt_T1.setText(list.get(0));
-        holder.txt_T2.setText(list.get(1));
-        holder.txt_T3.setText(list.get(2));
-        holder.txt_T4.setText(list.get(3));
+        holder.txt_S1.setText(list.get(1));
+        holder.pb_S1.setProgress(Integer.parseInt(list.get(2)));
+        holder.txt_T2.setText(list.get(3));
+        holder.txt_S2.setText(list.get(4));
+        holder.pb_S2.setProgress(Integer.parseInt(list.get(5)));
+        holder.txt_T3.setText(list.get(6));
+        holder.txt_S3.setText(list.get(7));
+        holder.pb_S3.setProgress(Integer.parseInt(list.get(8)));
+        holder.txt_T4.setText(list.get(9));
+        holder.txt_S4.setText(list.get(10));
+        holder.pb_S4.setProgress(Integer.parseInt(list.get(11)));
 
         holder.txt_T1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(1,list.get(0),lista_Unit.get(position).getIdUnit(),lista_Unit.get(position).getIdUseUni(),2,holder);
+                goThem(list.get(1),list.get(0),list.get(2),lista_Unit.get(position).getIdUseUni(),2,holder);
             }
         });
         holder.txt_T2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(2,list.get(1),lista_Unit.get(position).getIdUnit(),lista_Unit.get(position).getIdUseUni(),2,holder);
+                goThem(list.get(4),list.get(3),list.get(5),lista_Unit.get(position).getIdUseUni(),2,holder);
             }
         });
         holder.txt_T3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(3,list.get(2),lista_Unit.get(position).getIdUnit(),lista_Unit.get(position).getIdUseUni(),2,holder);
+                goThem(list.get(7),list.get(6),list.get(8),lista_Unit.get(position).getIdUseUni(),2,holder);
             }
         });
         holder.txt_T4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(4,list.get(3),lista_Unit.get(position).getIdUnit(),lista_Unit.get(position).getIdUseUni(),2,holder);
+                goThem(list.get(10),list.get(9),list.get(11),lista_Unit.get(position).getIdUseUni(),2,holder);
             }
         });
 
@@ -117,16 +127,14 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         Toast.makeText(context, "Te dije que le des al boton ctmr... XD", Toast.LENGTH_SHORT).show();
     }
 
-    private void goThem(Integer i, String sesTit,Integer idUnit,Integer idUseUni,Integer sesD,@NonNull @NotNull Adapter_Unit.SessionHolder view) {
-        Integer idSes = i+4*(idUnit-1);
-        if(i>sesD)
-            sesD=i;
+    private void goThem(String idSes, String sesTit, String sesP,Integer idUseUni,Integer sesD,@NonNull @NotNull Adapter_Unit.SessionHolder view) {
+
         SharedPreferences log = context.getSharedPreferences(SESS_PREF,0);
         SharedPreferences.Editor editor = log.edit();
-        editor.putString("idSes",idSes.toString());
+        editor.putString("idSes",idSes);
         editor.putString("sesTit",sesTit);
+        editor.putString("sesP",sesP);
         editor.putString("idUseUni",idUseUni.toString());
-        editor.putString("sesD",sesD.toString());
         editor.commit();
         Intent intent = new Intent(context, DetailTheme.class);
         view.itemView.getContext().startActivity(intent);
@@ -139,8 +147,8 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
 
     public static class SessionHolder extends RecyclerView.ViewHolder {
 
-        TextView txt_Unit_2,txt_T1,txt_T2,txt_T3,txt_T4;
-        ProgressBar progressBar1;
+        TextView txt_Unit_2,txt_T1,txt_T2,txt_T3,txt_T4, txt_S1, txt_S2, txt_S3, txt_S4;
+        ProgressBar pb_S1, pb_S2, pb_S3, pb_S4,pb_U;
         Button btn_eval;
 
         LinearLayout linearLayout;
@@ -152,6 +160,15 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
             txt_T2 = itemView.findViewById(R.id.txt_T2);
             txt_T3 = itemView.findViewById(R.id.txt_T3);
             txt_T4 = itemView.findViewById(R.id.txt_T4);
+            txt_S1 = itemView.findViewById(R.id.txt_Ses1);
+            txt_S2 = itemView.findViewById(R.id.txt_Ses2);
+            txt_S3 = itemView.findViewById(R.id.txt_Ses3);
+            txt_S4 = itemView.findViewById(R.id.txt_Ses4);
+            pb_U = itemView.findViewById(R.id.progress_Bar_Uni);
+            pb_S1 = itemView.findViewById(R.id.progress_Bar_Ses1);
+            pb_S2 = itemView.findViewById(R.id.progress_Bar_Ses2);
+            pb_S3 = itemView.findViewById(R.id.progress_Bar_Ses3);
+            pb_S4 = itemView.findViewById(R.id.progress_Bar_Ses4);
             btn_eval = itemView.findViewById(R.id.btn_item2_eval);
 //            progressBar1 = itemView.findViewById(R.id.progress_Bar1);
         }
@@ -162,10 +179,13 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         ArrayList<_Session> sessions_Unit;
         sessions_Unit = lista_Ses;
         ArrayList<String> stringList = new ArrayList<String>();
+        Integer aux=0;
 
         for (int i=0;i<sessions_Unit.size(); i++){
             if(sessions_Unit.get(i).getIdUnit()==id){
                 stringList.add(sessions_Unit.get(i).getSesDesc());
+                stringList.add(sessions_Unit.get(i).getIdSes().toString());
+                stringList.add(sessions_Unit.get(i).getSesPorc().toString());
             }
         }
         return stringList;
