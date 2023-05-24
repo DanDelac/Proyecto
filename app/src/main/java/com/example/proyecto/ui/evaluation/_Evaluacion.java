@@ -22,6 +22,7 @@ import com.example.proyecto.Adapter.Adapter_Unit;
 import com.example.proyecto.Entidades.QuestionsList;
 import com.example.proyecto.Entidades.Unit;
 import com.example.proyecto.Entidades._Session;
+import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
 import com.example.proyecto.ui.home.HomeFragment;
@@ -40,7 +41,7 @@ public class _Evaluacion extends AppCompatActivity {
     String idSes;
 
     private TextView question, questions,timer;
-    private Button btn_opcion1,btn_opcion2,btn_opcion3,btn_opcion4,btn_next;
+    private Button btn_back_e ,btn_opcion1,btn_opcion2,btn_opcion3,btn_opcion4,btn_next;
     private ImageView imv_;
     private Timer quizTime;
     private int totalTimeInMins = 1, seconds = 0, currentQuestionPosition = 0;
@@ -68,6 +69,7 @@ public class _Evaluacion extends AppCompatActivity {
     private void config() {
         timer = findViewById(R.id.timer);
 
+        btn_back_e = findViewById(R.id.btn_back_e);
         questions = findViewById(R.id.questions);
         question = findViewById(R.id.question);
 
@@ -84,10 +86,15 @@ public class _Evaluacion extends AppCompatActivity {
         CargarPreguntas();
         startTimer(timer);
 
-//        quizTime.purge();
-//        quizTime.cancel();
-//        startActivity(new Intent(_Evaluacion.this, HomeFragment.class));
-//        finish();
+        btn_back_e.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quizTime.purge();
+                quizTime.cancel();
+                startActivity(new Intent(_Evaluacion.this, MainActivity.class));
+                finish();
+            }
+        });
 
         btn_opcion1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -280,7 +287,7 @@ public class _Evaluacion extends AppCompatActivity {
         quizTime.purge();
         quizTime.cancel();
 
-//        startActivity(new Intent(_Evaluacion.this, HomeFragment.class));
+        startActivity(new Intent(_Evaluacion.this, MainActivity.class));
         finish();
     }
 
