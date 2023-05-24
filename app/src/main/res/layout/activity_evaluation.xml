@@ -60,11 +60,12 @@
             android:layout_height="wrap_content"
             android:text="Pregunta #"
             />
+
         <TextView
             android:id="@+id/txtquestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="¿Pregunta?"/>
+            android:text="¿Pregunta?" />
 
         <ImageView
             android:id="@+id/imv_eval"

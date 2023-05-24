@@ -32,7 +32,7 @@
             android:background="@drawable/circle_background"
             android:layout_gravity="center"
             android:layout_marginVertical="30dp"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,7 +80,8 @@
                 android:text="@string/set_edtacc"
                 android:drawableLeft="@drawable/ic_editprofile"
                 android:textColor="@color/black"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                />
             <TextView
                 android:id="@+id/txt_setting_edit_pas"
                 android:layout_width="match_parent"

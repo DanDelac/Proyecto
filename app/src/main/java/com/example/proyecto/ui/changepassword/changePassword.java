@@ -1,6 +1,7 @@
 package com.example.proyecto.ui.changepassword;
 
 import android.app.AlertDialog;
+import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -86,7 +87,7 @@ public class changePassword extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(changePassword.this, MainActivity.class);
+                Intent i = new Intent(changePassword.this, Notification.class);
                 startActivity(i);
             }
         });
