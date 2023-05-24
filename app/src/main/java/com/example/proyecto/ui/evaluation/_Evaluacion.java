@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -59,7 +60,8 @@ public class _Evaluacion extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences(EVAL_SES,0);
         idSes = preferences.getString("idSes","nnn");
-
+//        Toast.makeText(this, "URL: "+idSes, Toast.LENGTH_SHORT).show();
+        Log.e("URL",idSes);
         config();
     }
 
@@ -305,7 +307,7 @@ public class _Evaluacion extends AppCompatActivity {
         String idUser = null;
         questionsLists = new ArrayList<>();
 
-        String url = Util.RUTA+"listarExercice.php?Cod="+idSes;
+        String url = Util.RUTA+idSes;
         url=url.replace(" ","%20");
         jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null,
             new Response.Listener<JSONObject>() {

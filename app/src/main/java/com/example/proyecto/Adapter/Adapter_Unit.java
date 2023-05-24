@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.proyecto.Entidades.Unit;
 import com.example.proyecto.Entidades._Session;
 import com.example.proyecto.R;
+import com.example.proyecto.Util.Util;
 import com.example.proyecto.ui.Theme.DetailTheme;
 import com.example.proyecto.ui.evaluation.Evaluation;
 import com.example.proyecto.ui.evaluation._Evaluacion;
@@ -147,7 +148,9 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         SharedPreferences.Editor editor = log.edit();
         editor.putString("idUnit",cod);
         editor.putString("sesTit",unit);
+        editor.putString("idSes","listarExercice.php?Cod="+unit);
         editor.commit();
+//        Intent intent = new Intent(context, _Evaluacion.class);
         Intent intent = new Intent(context, Evaluation.class);
         view.getContext().startActivity(intent);
 //        Toast.makeText(context, "Te dije que le des al boton ctmr... XD", Toast.LENGTH_SHORT).show();
@@ -170,7 +173,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
                 editor.putString("sesTit",sesTit);
                 editor.putInt("sesP",sesP);
                 editor.putString("idUseSes",idUseSes);
-                editor.putString("idSes",idSes);
+                editor.putString("idSes", idSes);
                 editor.commit();
                 Intent intent = new Intent(context, DetailTheme.class);
                 view.itemView.getContext().startActivity(intent);
@@ -182,7 +185,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
             public void onClick(View v) {
                 SharedPreferences log = context.getSharedPreferences(EVAL_SES,0);
                 SharedPreferences.Editor editor = log.edit();
-                editor.putString("idSes",idSes);
+                editor.putString("idSes","listarExercice.php?Cod="+idSes);
                 editor.commit();
                 Intent intent = new Intent(context, _Evaluacion.class);
                 view.itemView.getContext().startActivity(intent);

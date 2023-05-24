@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,7 +43,7 @@ public class Evaluation extends AppCompatActivity {
 
     Button btnBack;
     TextView txtTit;
-
+    ImageView imv;
     public static final String UNIT_PREF="unit";
     String idUnit;
     @Override
@@ -52,9 +54,12 @@ public class Evaluation extends AppCompatActivity {
 //        recyclerView = findViewById(R.id.recycler_eval);
         btnBack = findViewById(R.id.btn_back_eval);
         txtTit = findViewById(R.id.txt_Eval);
+        imv = findViewById(R.id.imv_eval);
         lstTheme= new ArrayList<>();
 //        cargarEval();
 
+        String url="http://172.107.178.234/WebServices/project/imagenes/Alfabeto.jpg";
+        Picasso.get().load(url).into(imv);
         SharedPreferences preferences = getSharedPreferences(UNIT_PREF,0);
         idUnit = preferences.getString("idUnit","nnn");
         String sesTit = preferences.getString("sesTit","nnn");
