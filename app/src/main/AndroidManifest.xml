@@ -15,13 +15,7 @@
         android:theme="@style/Theme.Proyecto"
         android:usesCleartextTraffic="true" >
         <activity android:name=".ui.evaluation.Evaluation" />
-        <activity android:name=".ui.evaluation._Evaluacion"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.evaluation._Evaluacion"/>
         <activity android:name=".ui.evaluation.Resultado" />
         <activity android:name=".ui.Theme.DetailTheme" />
         <activity android:name=".ui.changepassword.changePassword" />
@@ -32,6 +26,10 @@
         <activity
             android:name=".ui.Splash.Splash"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"

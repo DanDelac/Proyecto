@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,13 +24,11 @@ import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
-import com.synnapps.carouselview.CarouselView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DetailTheme extends AppCompatActivity {
 
@@ -47,7 +44,7 @@ public class DetailTheme extends AppCompatActivity {
     TextView txtTit;
 
     public static final String SESS_PREF="session";
-    String idSes,idUseUni,sesP;
+    String idSes, idUseSes; Integer sesP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,13 +56,13 @@ public class DetailTheme extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences(SESS_PREF,0);
         idSes = preferences.getString("idSes","nnn");
-        idUseUni = preferences.getString("idUseUni","nnn");
-        sesP = preferences.getString("sesP","nnn");
+        idUseSes = preferences.getString("idUseSes","nnn");
+        sesP = preferences.getInt("sesP",-1);
         String sesTit = preferences.getString("sesTit","nnn");
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
         txtTit.setText(sesTit);
-//        Toast.makeText(this, "idUseUni: "+idUseUni+"\nidSes: "+idSes+" Porc: "+sesP, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "idUseSes: "+ idUseSes +"\nPorc: "+sesP, Toast.LENGTH_SHORT).show();
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +74,33 @@ public class DetailTheme extends AppCompatActivity {
 
         lstTheme= new ArrayList<>();
         cargarTheme();
+        actPorc();
+    }
+
+    private void actPorc() {
+        if(sesP<50)
+            sesP=50;
+        String url = Util.RUTA+"actualizarUserSes.php?" +
+                "Cod=" + idUseSes +
+                "&Porc="+ sesP;
+        url=url.replace(" ","%20");
+        Log.d("Url : ",url.toString());
+        jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(DetailTheme.this, "Porcentaje actualizado", Toast.LENGTH_SHORT).show();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DetailTheme.this, getString(R.string.error_msj3), Toast.LENGTH_SHORT).show();
+                Log.e(" ERROR: ", error.toString());
+
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
     }
 
     private void cargarTheme() {

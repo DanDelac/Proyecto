@@ -4,8 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +46,9 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         this._sessions = lista_Ses;
     }
 
+    public Adapter_Unit() {
+    }
+
     @NonNull
     @NotNull
     @Override
@@ -53,52 +59,62 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         return new SessionHolder(vista);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull @NotNull Adapter_Unit.SessionHolder holder, int position) {
 
         ArrayList<String> list = nueva_lista(_sessions,lista_Unit.get(position).getIdUnit());
         holder.txt_Unit_2.setText(lista_Unit.get(position).getUniDesc());
-        Integer aux = (Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4;
-        holder.pb_U.setProgress(aux);
+        final Integer[] aux = {(Integer.parseInt(list.get(2)) + Integer.parseInt(list.get(5)) + Integer.parseInt(list.get(8)) + Integer.parseInt(list.get(11))) / 4};
+
 //        holder.lst_Session.setAdapter(new ArrayAdapter<_Session>(holder.itemView.getContext(), android.R.layout.simple_list_item_1,_sessions));
 
-
         holder.txt_T1.setText(list.get(0));
-        holder.txt_S1.setText(list.get(1));
-        holder.pb_S1.setProgress(Integer.parseInt(list.get(2)));
         holder.txt_T2.setText(list.get(3));
-        holder.txt_S2.setText(list.get(4));
-        holder.pb_S2.setProgress(Integer.parseInt(list.get(5)));
         holder.txt_T3.setText(list.get(6));
-        holder.txt_S3.setText(list.get(7));
-        holder.pb_S3.setProgress(Integer.parseInt(list.get(8)));
         holder.txt_T4.setText(list.get(9));
+
+        holder.txt_S1.setText(list.get(1));
+        holder.txt_S2.setText(list.get(4));
+        holder.txt_S3.setText(list.get(7));
         holder.txt_S4.setText(list.get(10));
+
+        holder.pb_S1.setProgress(Integer.parseInt(list.get(2)));
+        holder.pb_S2.setProgress(Integer.parseInt(list.get(5)));
+        holder.pb_S3.setProgress(Integer.parseInt(list.get(8)));
         holder.pb_S4.setProgress(Integer.parseInt(list.get(11)));
+        holder.pb_U.setProgress((Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4);
+
+
+        final Integer[] pos = {0};
 
         holder.txt_T1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(list.get(1),list.get(0),list.get(2),lista_Unit.get(position).getIdUseUni(),2,holder);
+                pos[0] =0+4*(lista_Unit.get(position).getIdUnit()-1);
+                goThem(list.get(0),list.get(1),Integer.parseInt(list.get(2)),_sessions.get(pos[0]).getIdUseSes().toString(),holder);
             }
         });
         holder.txt_T2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(list.get(4),list.get(3),list.get(5),lista_Unit.get(position).getIdUseUni(),2,holder);
+                pos[0] =1+4*(lista_Unit.get(position).getIdUnit()-1);
+                goThem(list.get(3),list.get(4),Integer.parseInt(list.get(5)),_sessions.get(pos[0]).getIdUseSes().toString(),holder);
             }
         });
         holder.txt_T3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(list.get(7),list.get(6),list.get(8),lista_Unit.get(position).getIdUseUni(),2,holder);
+                pos[0] =2+4*(lista_Unit.get(position).getIdUnit()-1);
+                goThem(list.get(6),list.get(7),Integer.parseInt(list.get(8)),_sessions.get(pos[0]).getIdUseSes().toString(),holder);
             }
         });
         holder.txt_T4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goThem(list.get(10),list.get(9),list.get(11),lista_Unit.get(position).getIdUseUni(),2,holder);
+                pos[0] =3+4*(lista_Unit.get(position).getIdUnit()-1);
+                goThem(list.get(9),list.get(10),Integer.parseInt(list.get(11)),_sessions.get(pos[0]).getIdUseSes().toString(),holder);
             }
         });
 
@@ -124,17 +140,17 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         editor.commit();
         Intent intent = new Intent(context, Evaluation.class);
         view.getContext().startActivity(intent);
-        Toast.makeText(context, "Te dije que le des al boton ctmr... XD", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "Te dije que le des al boton ctmr... XD", Toast.LENGTH_SHORT).show();
     }
 
-    private void goThem(String idSes, String sesTit, String sesP,Integer idUseUni,Integer sesD,@NonNull @NotNull Adapter_Unit.SessionHolder view) {
+    private void goThem(String sesTit,String idSes,Integer sesP,String idUseSes,@NonNull @NotNull Adapter_Unit.SessionHolder view) {
 
         SharedPreferences log = context.getSharedPreferences(SESS_PREF,0);
         SharedPreferences.Editor editor = log.edit();
-        editor.putString("idSes",idSes);
         editor.putString("sesTit",sesTit);
-        editor.putString("sesP",sesP);
-        editor.putString("idUseUni",idUseUni.toString());
+        editor.putInt("sesP",sesP);
+        editor.putString("idUseSes",idUseSes);
+        editor.putString("idSes",idSes);
         editor.commit();
         Intent intent = new Intent(context, DetailTheme.class);
         view.itemView.getContext().startActivity(intent);
@@ -179,13 +195,13 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         ArrayList<_Session> sessions_Unit;
         sessions_Unit = lista_Ses;
         ArrayList<String> stringList = new ArrayList<String>();
-        Integer aux=0;
-
+        stringList.clear();
         for (int i=0;i<sessions_Unit.size(); i++){
             if(sessions_Unit.get(i).getIdUnit()==id){
                 stringList.add(sessions_Unit.get(i).getSesDesc());
                 stringList.add(sessions_Unit.get(i).getIdSes().toString());
                 stringList.add(sessions_Unit.get(i).getSesPorc().toString());
+//                stringList.add(sessions_Unit.get(i).getIdUseSes().toString());
             }
         }
         return stringList;

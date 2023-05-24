@@ -77,7 +77,8 @@ public class HomeFragment extends Fragment {
         String idUser = null;
         units = new ArrayList<>();
         _sessions = new ArrayList<>();
-        final Integer[] aux = new Integer[1];
+        units.clear();
+        _sessions.clear();
 
         SharedPreferences preferences = getActivity().getSharedPreferences(LOG_PREF,0);
         idUser = preferences.getString("idUser","nnn");
@@ -99,8 +100,7 @@ public class HomeFragment extends Fragment {
 
                             unit.setUniDesc(jsonObject.getString("uniDesc"));
                             unit.setIdUnit(jsonObject.getInt("idUnit"));
-                            aux[0] = jsonObject.getInt("idUseSes");
-                            unit.setIdUseUni(aux[0]);
+                            unit.setIdUseUni(jsonObject.getInt("idUseSes"));
                             units.add(unit);
                         }
 
@@ -110,6 +110,7 @@ public class HomeFragment extends Fragment {
                             jsonObject = jsonArray.getJSONObject(i);
 
                             _session.setIdSes(jsonObject.getInt("idSes"));
+                            _session.setIdUseSes(jsonObject.getInt("idUseSes"));
                             _session.setIdUnit(jsonObject.getInt("idUnit"));
                             _session.setSesDesc(jsonObject.getString("sesDesc"));
                             _session.setSesPorc(jsonObject.getInt("sesPorc"));
