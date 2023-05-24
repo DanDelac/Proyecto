@@ -1,6 +1,7 @@
 package com.example.proyecto.ui.editaccount;
 
 import android.app.AlertDialog;
+import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -80,7 +81,7 @@ public class editAccount extends AppCompatActivity {
         SharedPreferences.Editor editor = log.edit();
         editor.putString("log","log");
         editor.commit();
-        Intent i = new Intent(editAccount.this, MainActivity.class);
+        Intent i = new Intent(editAccount.this, Notification.class);
         startActivity(i);
     }
 
