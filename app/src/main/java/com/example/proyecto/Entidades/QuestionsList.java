@@ -2,17 +2,26 @@ package com.example.proyecto.Entidades;
 
 public class QuestionsList {
 
-    private String question, option1,option2,option3,option4,asnwer;
+    private String question, option1,option2,option3,option4,asnwer,exeImg;
     private String userSelectedAnswer = "";
 
-    public QuestionsList(String question, String option1, String option2, String option3, String option4, String asnwer, String userSelectedAnswer) {
+    public QuestionsList(String question, String option1, String option2, String option3, String option4, String asnwer, String exeImg, String userSelectedAnswer) {
         this.question = question;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
         this.option4 = option4;
         this.asnwer = asnwer;
+        this.exeImg = exeImg;
         this.userSelectedAnswer = userSelectedAnswer;
+    }
+
+    public String getExeImg() {
+        return exeImg;
+    }
+
+    public void setExeImg(String exeImg) {
+        this.exeImg = exeImg;
     }
 
     public QuestionsList() {

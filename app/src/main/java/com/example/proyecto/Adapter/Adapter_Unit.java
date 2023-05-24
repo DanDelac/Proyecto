@@ -1,6 +1,7 @@
 package com.example.proyecto.Adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +24,7 @@ import com.example.proyecto.Entidades._Session;
 import com.example.proyecto.R;
 import com.example.proyecto.ui.Theme.DetailTheme;
 import com.example.proyecto.ui.evaluation.Evaluation;
+import com.example.proyecto.ui.evaluation._Evaluacion;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,7 +38,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
 
     Context context;
     private View.OnClickListener listener;
-    private static final String ID_CALULAR_GUARDADO = "ID";
+    private static final String EVAL_SES = "ID";
     public static final String SESS_PREF="session";
     public static final String UNIT_PREF="unit";
 
@@ -86,6 +88,10 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         holder.pb_S4.setProgress(Integer.parseInt(list.get(11)));
         holder.pb_U.setProgress((Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4);
 
+//        ObjectAnimator animation = ObjectAnimator.ofInt(holder.pb_U, "progress", holder.pb_U.getProgress(), (Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4);
+//        animation.setDuration(2000); // Duración de la animación en milisegundos
+//        animation.setInterpolator(new DecelerateInterpolator()); // Opcional: Configura un interpolador para la animación
+//        animation.start(); // Inicia la animación del progreso
 
         final Integer[] pos = {0};
 
@@ -123,7 +129,11 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
             public void onClick(View v) {
                 String cod=lista_Unit.get(position).getIdUnit().toString();
                 String unit=lista_Unit.get(position).getUniDesc();
-                goEval(v,cod,unit);
+                Integer porc = holder.pb_U.getProgress();
+                if(porc==100)
+                    goEval(v,cod,unit);
+                else
+                    Toast.makeText(context, context.getString(R.string.error_msj4)+porc+"%", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -144,16 +154,41 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
     }
 
     private void goThem(String sesTit,String idSes,Integer sesP,String idUseSes,@NonNull @NotNull Adapter_Unit.SessionHolder view) {
+        Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.item_4);
 
-        SharedPreferences log = context.getSharedPreferences(SESS_PREF,0);
-        SharedPreferences.Editor editor = log.edit();
-        editor.putString("sesTit",sesTit);
-        editor.putInt("sesP",sesP);
-        editor.putString("idUseSes",idUseSes);
-        editor.putString("idSes",idSes);
-        editor.commit();
-        Intent intent = new Intent(context, DetailTheme.class);
-        view.itemView.getContext().startActivity(intent);
+        TextView the = dialog.findViewById(R.id.txt_item4_theme);
+        TextView eval = dialog.findViewById(R.id.txt_item4_eval);
+        the.setText(sesTit);
+        eval.setText(R.string.evalTit);
+
+        the.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences log = context.getSharedPreferences(SESS_PREF,0);
+                SharedPreferences.Editor editor = log.edit();
+                editor.putString("sesTit",sesTit);
+                editor.putInt("sesP",sesP);
+                editor.putString("idUseSes",idUseSes);
+                editor.putString("idSes",idSes);
+                editor.commit();
+                Intent intent = new Intent(context, DetailTheme.class);
+                view.itemView.getContext().startActivity(intent);
+            }
+        });
+
+        eval.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences log = context.getSharedPreferences(EVAL_SES,0);
+                SharedPreferences.Editor editor = log.edit();
+                editor.putString("idSes",idSes);
+                editor.commit();
+                Intent intent = new Intent(context, _Evaluacion.class);
+                view.itemView.getContext().startActivity(intent);
+            }
+        });
+        dialog.show();
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import com.example.proyecto.Entidades._Session;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
 import com.example.proyecto.ui.home.HomeFragment;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,10 +36,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class _Evaluacion extends AppCompatActivity {
-
+    String idSes;
 
     private TextView question, questions,timer;
     private Button btn_opcion1,btn_opcion2,btn_opcion3,btn_opcion4,btn_next;
+    private ImageView imv_;
     private Timer quizTime;
     private int totalTimeInMins = 1, seconds = 0, currentQuestionPosition = 0;
 
@@ -47,10 +50,15 @@ public class _Evaluacion extends AppCompatActivity {
 
     private String selectedOptionByUser = "";
 
+    private static final String EVAL_SES = "ID";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluacion);
+
+        SharedPreferences preferences = getSharedPreferences(EVAL_SES,0);
+        idSes = preferences.getString("idSes","nnn");
 
         config();
     }
@@ -65,6 +73,8 @@ public class _Evaluacion extends AppCompatActivity {
         btn_opcion2 = findViewById(R.id.btn_opcion2);
         btn_opcion3 = findViewById(R.id.btn_opcion3);
         btn_opcion4 = findViewById(R.id.btn_opcion4);
+
+        imv_=findViewById(R.id.imv_eval);
 
         btn_next =findViewById(R.id.btn_next);
         requestQueue= Volley.newRequestQueue(_Evaluacion.this);
@@ -174,6 +184,9 @@ public class _Evaluacion extends AppCompatActivity {
             btn_opcion2.setText(questionsLists.get(currentQuestionPosition).getOption2());
             btn_opcion3.setText(questionsLists.get(currentQuestionPosition).getOption3());
             btn_opcion4.setText(questionsLists.get(currentQuestionPosition).getOption4());
+            Picasso.get().load(questionsLists.get(currentQuestionPosition).getExeImg())
+                    .resize(200,250)
+                    .into(imv_);
         }else {
             Intent intent = new Intent(_Evaluacion.this, Resultado.class);
             intent.putExtra("correct", getCorrectAnswer());
@@ -265,7 +278,7 @@ public class _Evaluacion extends AppCompatActivity {
         quizTime.purge();
         quizTime.cancel();
 
-        startActivity(new Intent(_Evaluacion.this, HomeFragment.class));
+//        startActivity(new Intent(_Evaluacion.this, HomeFragment.class));
         finish();
     }
 
@@ -292,7 +305,7 @@ public class _Evaluacion extends AppCompatActivity {
         String idUser = null;
         questionsLists = new ArrayList<>();
 
-        String url = Util.RUTA+"listarExercice.php?Cod=1";
+        String url = Util.RUTA+"listarExercice.php?Cod="+idSes;
         url=url.replace(" ","%20");
         jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null,
             new Response.Listener<JSONObject>() {
@@ -313,6 +326,7 @@ public class _Evaluacion extends AppCompatActivity {
                             Preguntas.setOption3(jsonObject.getString("exeOpc3"));
                             Preguntas.setOption4(jsonObject.getString("exeOpc4"));
                             Preguntas.setAsnwer(jsonObject.getString("respuesta"));
+                            Preguntas.setExeImg(jsonObject.getString("exeImg"));
                             questionsLists.add(Preguntas);
                         }
                         questions.setText((currentQuestionPosition+1)+"/"+questionsLists.size());
@@ -321,6 +335,9 @@ public class _Evaluacion extends AppCompatActivity {
                         btn_opcion2.setText(questionsLists.get(0).getOption2());
                         btn_opcion3.setText(questionsLists.get(0).getOption3());
                         btn_opcion4.setText(questionsLists.get(0).getOption4());
+                        Picasso.get().load(questionsLists.get(0).getExeImg())
+                                .resize(200,250)
+                                .into(imv_);
                     }
                     catch (Exception e){
 

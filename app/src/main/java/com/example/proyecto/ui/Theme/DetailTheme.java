@@ -62,7 +62,7 @@ public class DetailTheme extends AppCompatActivity {
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
         txtTit.setText(sesTit);
-        Toast.makeText(this, "idUseSes: "+ idUseSes +"\nPorc: "+sesP, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "idUseSes: "+ idUseSes +"\nPorc: "+sesP, Toast.LENGTH_SHORT).show();
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,13 +88,13 @@ public class DetailTheme extends AppCompatActivity {
         jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Toast.makeText(DetailTheme.this, "Porcentaje actualizado", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(DetailTheme.this, "Porcentaje actualizado", Toast.LENGTH_SHORT).show();
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(DetailTheme.this, getString(R.string.error_msj3), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(DetailTheme.this, getString(R.string.error_msj3), Toast.LENGTH_SHORT).show();
                 Log.e(" ERROR: ", error.toString());
 
             }

@@ -51,6 +51,7 @@
     <string name="error_msj1"><u>El correo o cuenta ingresado esta registrado</u></string>
     <string name="error_msj2"><u>No se pudo registrar</u></string>
     <string name="error_msj3"><u>No se pudo actualizar</u></string>
+    <string name="error_msj4"><u>Evaluación no disponible.\nProgreso de la unidad: </u></string>
 
 
     <string name="txteditacc">Editar tu perfil 👨</string>

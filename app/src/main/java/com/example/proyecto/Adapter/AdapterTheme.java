@@ -1,7 +1,10 @@
 package com.example.proyecto.Adapter;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.media.Image;
+import android.renderscript.Sampler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.proyecto.R;
 import com.example.proyecto.Entidades.Theme;
@@ -47,11 +52,45 @@ public class AdapterTheme extends RecyclerView.Adapter<AdapterTheme.SessionHolde
     @Override
     public void onBindViewHolder(@NonNull @NotNull SessionHolder holder, int position) {
         Picasso.get().load(arrayList.get(position).getImg())
-                .resize(250,250)
+                .resize(200,250)
                 .into(holder.imageView);
 //        holder.txvSess.setText(arrayList.get(position).getSesDesc());
-        holder.txvDesc.setText(arrayList.get(position).getImgDesc());
+        String desc=arrayList.get(position).getImgDesc();
+        if(desc.isEmpty())
+//            holder.txvDesc.setText("No hay descripción");
+            holder.txvDesc.setVisibility(View.GONE);
+        else{
+            holder.txvDesc.setText("[Ver descripción...]");
+            holder.txvDesc.setTextColor(Color.BLUE);
+            holder.txvDesc.setVisibility(View.VISIBLE);
+        }
+//        holder.txvDesc.setText(arrayList.get(position).getImgDesc());
         holder.txvTit.setText(arrayList.get(position).getImgTit());
+
+        holder.txvDesc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowDialogDesc( position);
+            }
+        });
+    }
+
+    private void ShowDialogDesc(int position) {
+        Theme theme = arrayList.get(position);
+        Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.item_theme);
+        LinearLayout ll = dialog.findViewById(R.id.ll_theme);
+        ImageView imv = dialog.findViewById(R.id.imv_item_theme);
+        TextView tit = dialog.findViewById(R.id.txv_item_theme_tit);
+        TextView desc = dialog.findViewById(R.id.txv_item_theme_desc);
+
+        Picasso.get().load(arrayList.get(position).getImg())
+                .into(imv);
+        tit.setText(theme.getImgTit());
+        desc.setVisibility(View.VISIBLE);
+        desc.setText(theme.getImgDesc());
+
+        dialog.show();
     }
 
     @Override

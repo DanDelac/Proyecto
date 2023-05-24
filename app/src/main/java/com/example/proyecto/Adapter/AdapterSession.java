@@ -51,7 +51,7 @@ public class AdapterSession extends BaseAdapter {
             view=layoutInflater.inflate(R.layout.item_session,null);
         }
 
-        TextView txvSess = (TextView) view.findViewById(R.id.txv_item_session);
+        TextView txvSess = (TextView) view.findViewById(R.id.txt_itemS_Desc);
         txvSess.setText(arrayList.get(position));
 
         return view;
