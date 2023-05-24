@@ -87,7 +87,7 @@ public class changePassword extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(changePassword.this, Notification.class);
+                Intent i = new Intent(changePassword.this, MainActivity.class);
                 startActivity(i);
             }
         });

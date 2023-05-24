@@ -81,7 +81,7 @@ public class editAccount extends AppCompatActivity {
         SharedPreferences.Editor editor = log.edit();
         editor.putString("log","log");
         editor.commit();
-        Intent i = new Intent(editAccount.this, Notification.class);
+        Intent i = new Intent(editAccount.this, MainActivity.class);
         startActivity(i);
     }
 
