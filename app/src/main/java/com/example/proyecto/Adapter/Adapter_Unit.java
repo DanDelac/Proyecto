@@ -87,6 +87,8 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         holder.pb_S2.setProgress(Integer.parseInt(list.get(5)));
         holder.pb_S3.setProgress(Integer.parseInt(list.get(8)));
         holder.pb_S4.setProgress(Integer.parseInt(list.get(11)));
+
+
         holder.pb_U.setProgress((Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4);
 
 //        ObjectAnimator animation = ObjectAnimator.ofInt(holder.pb_U, "progress", holder.pb_U.getProgress(), (Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4);
