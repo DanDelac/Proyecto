@@ -1,5 +1,6 @@
 package com.example.proyecto.Adapter;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -88,13 +90,11 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         holder.pb_S3.setProgress(Integer.parseInt(list.get(8)));
         holder.pb_S4.setProgress(Integer.parseInt(list.get(11)));
 
-
+        ObjectAnimator animation = ObjectAnimator.ofInt(holder.pb_U, "progress", holder.pb_U.getProgress(), (Integer.parseInt(list.get(2)) + Integer.parseInt(list.get(5)) + Integer.parseInt(list.get(8)) + Integer.parseInt(list.get(11))) / 4);
+        animation.setDuration(6000); // Duración de la animación en milisegundos
+        animation.setInterpolator(new DecelerateInterpolator()); // Opcional: Configura un interpolador para la animación
+        animation.start(); // Inicia la animación del progreso
         holder.pb_U.setProgress((Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4);
-
-//        ObjectAnimator animation = ObjectAnimator.ofInt(holder.pb_U, "progress", holder.pb_U.getProgress(), (Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4);
-//        animation.setDuration(2000); // Duración de la animación en milisegundos
-//        animation.setInterpolator(new DecelerateInterpolator()); // Opcional: Configura un interpolador para la animación
-//        animation.start(); // Inicia la animación del progreso
 
         final Integer[] pos = {0};
 
@@ -139,23 +139,20 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
                     Toast.makeText(context, context.getString(R.string.error_msj4)+porc+"%", Toast.LENGTH_SHORT).show();
             }
         });
-
-//        holder.progressBar1.setMax(55);
-//        holder.progressBar1.setProgress(50);
-
     }
 
     private void goEval(View view,String cod,String unit) {
-        SharedPreferences log = context.getSharedPreferences(UNIT_PREF,0);
+        SharedPreferences log = context.getSharedPreferences(EVAL_SES,0);
         SharedPreferences.Editor editor = log.edit();
-        editor.putString("idUnit",cod);
+        editor.putInt("idUnit",Integer.parseInt(cod));
+        editor.putInt("idUser",Integer.parseInt(cod));
         editor.putString("sesTit",unit);
-        editor.putString("idSes","listarExercice.php?Cod="+unit);
+        editor.putString("tipo","unidad");
+        editor.putString("idSes","listarExerciceUnidad.php?Cod="+cod);
         editor.commit();
-//        Intent intent = new Intent(context, _Evaluacion.class);
-        Intent intent = new Intent(context, Evaluation.class);
+        Intent intent = new Intent(context, _Evaluacion.class);
+//        Intent intent = new Intent(context, Evaluation.class);
         view.getContext().startActivity(intent);
-//        Toast.makeText(context, "Te dije que le des al boton ctmr... XD", Toast.LENGTH_SHORT).show();
     }
 
     private void goThem(String sesTit,String idSes,Integer sesP,String idUseSes,@NonNull @NotNull Adapter_Unit.SessionHolder view) {
@@ -187,7 +184,9 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
             public void onClick(View v) {
                 SharedPreferences log = context.getSharedPreferences(EVAL_SES,0);
                 SharedPreferences.Editor editor = log.edit();
+                editor.putString("idUseSes",idUseSes);
                 editor.putString("idSes","listarExercice.php?Cod="+idSes);
+                editor.putString("tipo","sesion");
                 editor.commit();
                 Intent intent = new Intent(context, _Evaluacion.class);
                 view.itemView.getContext().startActivity(intent);

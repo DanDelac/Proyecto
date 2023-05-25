@@ -3,6 +3,7 @@ package com.example.proyecto.ui.evaluation;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Interpolator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -200,9 +201,13 @@ public class _Evaluacion extends AppCompatActivity {
             quizTime.purge();
             quizTime.cancel();
 
+            SharedPreferences eval = getSharedPreferences(EVAL_SES,0);
+            SharedPreferences.Editor editor = eval.edit();
+            editor.putFloat("correct",getCorrectAnswer());
+            editor.putFloat("incorrect",getInCorrectAnswer());
+            editor.putFloat("total",questionsLists.size());
+            editor.commit();
             Intent intent = new Intent(_Evaluacion.this, Resultado.class);
-            intent.putExtra("correct", getCorrectAnswer());
-            intent.putExtra("incorrect", getInCorrectAnswer());
             startActivity(intent);
 
             finish();
@@ -224,11 +229,13 @@ public class _Evaluacion extends AppCompatActivity {
                     quizTime.purge();
                     quizTime.cancel();
 
-//                    Toast.makeText(_Evaluacion.this, "Se acabo el tiempo", Toast.LENGTH_SHORT).show();
-
+                    SharedPreferences eval = getSharedPreferences(EVAL_SES,0);
+                    SharedPreferences.Editor editor = eval.edit();
+                    editor.putFloat("correct",getCorrectAnswer());
+                    editor.putFloat("incorrect",getInCorrectAnswer());
+                    editor.putFloat("total",questionsLists.size());
+                    editor.commit();
                     Intent intent = new Intent(_Evaluacion.this, Resultado.class);
-                    intent.putExtra("correct",getCorrectAnswer());
-                    intent.putExtra("incorrect",getInCorrectAnswer());
                     startActivity(intent);
 
                     finish();
@@ -313,8 +320,8 @@ public class _Evaluacion extends AppCompatActivity {
 
     private void CargarPreguntas(){
 
-        String idUser = null;
         questionsLists = new ArrayList<>();
+        questionsLists.clear();
 
         String url = Util.RUTA+idSes;
         url=url.replace(" ","%20");
@@ -322,7 +329,7 @@ public class _Evaluacion extends AppCompatActivity {
             new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    JSONArray jsonArray = response.optJSONArray("tblTheme");
+                    JSONArray jsonArray = response.optJSONArray("tblExerc");
                     QuestionsList Preguntas = null;
                     _Session _session = null;
                     try{

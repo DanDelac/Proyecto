@@ -24,6 +24,7 @@ import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
+import com.example.proyecto.ui.evaluation.Resultado;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -156,4 +157,9 @@ public class DetailTheme extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(DetailTheme.this, MainActivity.class));
+        finish();
+    }
 }
