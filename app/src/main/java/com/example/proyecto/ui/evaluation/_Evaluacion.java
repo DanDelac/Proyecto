@@ -197,6 +197,9 @@ public class _Evaluacion extends AppCompatActivity {
                     .resize(200,250)
                     .into(imv_);
         }else {
+            quizTime.purge();
+            quizTime.cancel();
+
             Intent intent = new Intent(_Evaluacion.this, Resultado.class);
             intent.putExtra("correct", getCorrectAnswer());
             intent.putExtra("incorrect", getInCorrectAnswer());
@@ -213,7 +216,6 @@ public class _Evaluacion extends AppCompatActivity {
         quizTime.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-
                 if (seconds == 0 && totalTimeInMins == 1){
                     totalTimeInMins--;
                     seconds = 59;
@@ -269,17 +271,17 @@ public class _Evaluacion extends AppCompatActivity {
     }
     private int getInCorrectAnswer(){
 
-        int correctAnwer = 0;
+        int IncorrectAnwer = 0;
 
         for (int i=0;i<questionsLists.size();i++){
             final String getUserSelectedAnswer = questionsLists.get(i).getUserSelectedAnswer();
             final String getAnswer = questionsLists.get(i).getAsnwer();
 
             if (!getUserSelectedAnswer.equals(getAnswer)){
-                correctAnwer++;
+                IncorrectAnwer++;
             }
         }
-        return correctAnwer;
+        return IncorrectAnwer;
     }
 
     @Override
