@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/blue">
+        android:background="@color/color_conf_fondo">
 
         <Button
             android:id="@+id/btn_back_e"

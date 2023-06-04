@@ -175,6 +175,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
                 editor.putString("idSes", idSes);
                 editor.commit();
                 Intent intent = new Intent(context, DetailTheme.class);
+                dialog.dismiss();
                 view.itemView.getContext().startActivity(intent);
             }
         });
@@ -190,6 +191,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
                 editor.commit();
                 Intent intent = new Intent(context, _Evaluacion.class);
                 view.itemView.getContext().startActivity(intent);
+                dialog.dismiss();
             }
         });
         dialog.show();
