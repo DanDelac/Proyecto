@@ -28,10 +28,10 @@
         android:text="@string/txt_glosary"
         android:fontFamily="@font/alatsi"
         android:textSize="25dp"></TextView>
+
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/glos_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        ></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

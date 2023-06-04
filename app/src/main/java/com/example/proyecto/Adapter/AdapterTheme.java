@@ -78,11 +78,11 @@ public class AdapterTheme extends RecyclerView.Adapter<AdapterTheme.SessionHolde
     private void ShowDialogDesc(int position) {
         Theme theme = arrayList.get(position);
         Dialog dialog = new Dialog(context);
-        dialog.setContentView(R.layout.item_theme);
-        LinearLayout ll = dialog.findViewById(R.id.ll_theme);
-        ImageView imv = dialog.findViewById(R.id.imv_item_theme);
-        TextView tit = dialog.findViewById(R.id.txv_item_theme_tit);
-        TextView desc = dialog.findViewById(R.id.txv_item_theme_desc);
+        dialog.setContentView(R.layout.item_5);
+//        LinearLayout ll = dialog.findViewById(R.id.ll_theme);
+        ImageView imv = dialog.findViewById(R.id.dialog_img);
+        TextView tit = dialog.findViewById(R.id.dialog_tit);
+        TextView desc = dialog.findViewById(R.id.dialog_desc);
 
         Picasso.get().load(arrayList.get(position).getImg())
                 .into(imv);

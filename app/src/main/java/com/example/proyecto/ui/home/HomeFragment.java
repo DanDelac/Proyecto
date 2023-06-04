@@ -117,6 +117,7 @@ public class HomeFragment extends Fragment {
                             _sessions.add(_session);
                         }
                         Adapter_Unit adapterUnit = new Adapter_Unit(getContext(),units,_sessions);
+//                        AdapterUnit adapterUnit = new AdapterUnit(getContext(),units,_sessions);
                         recycler_unit.setAdapter(adapterUnit);
                     }
                     catch (Exception e){

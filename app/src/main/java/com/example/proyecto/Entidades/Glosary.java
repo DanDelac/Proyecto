@@ -2,22 +2,32 @@ package com.example.proyecto.Entidades;
 
 import android.widget.ImageView;
 
-public class Glosary_listElement {
-    public ImageView Icon;
+public class Glosary {
+    public Integer Icon;
     public String Title;
     public String Description;
+    public String Url;
 
-    public Glosary_listElement(ImageView icon, String title, String description) {
+    public String getUrl() {
+        return Url;
+    }
+
+    public void setUrl(String url) {
+        Url = url;
+    }
+
+    public Glosary(Integer icon, String title, String description, String url) {
         Icon = icon;
         Title = title;
         Description = description;
+        Url = url;
     }
 
-    public ImageView getIcon() {
+    public Integer getIcon() {
         return Icon;
     }
 
-    public void setIcon(ImageView icon) {
+    public void setIcon(Integer icon) {
         Icon = icon;
     }
 
