@@ -21,6 +21,7 @@ import com.example.proyecto.R;
 import com.example.proyecto.Util.RandomTextGenerator;
 import com.example.proyecto.Util.SendMail;
 import com.example.proyecto.Util.Util;
+import com.example.proyecto.databinding.ActivityRecoverPassBinding;
 import com.example.proyecto.ui.Register.Register;
 import com.example.proyecto.ui.login.Login;
 
@@ -28,7 +29,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class RecoverPass extends AppCompatActivity implements Response.ErrorListener,Response.Listener<JSONObject> {
-
+    private ActivityRecoverPassBinding binding;
     ProgressDialog progreso;
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest, jsonObjectRequest_2 ;
@@ -37,29 +38,23 @@ public class RecoverPass extends AppCompatActivity implements Response.ErrorList
     String correo_ingresado=null;
     String nuevaClave;
 
-    EditText edt_correo;
-    Button btn_restablecer;
-    Button btn_cancelar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recover_pass);
-
+        binding=ActivityRecoverPassBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         configuracion();
     }
 
     private void configuracion() {
-        edt_correo = findViewById(R.id.edt_correo);
-        btn_restablecer = findViewById(R.id.btn_restablecer);
-        btn_restablecer.setOnClickListener(new View.OnClickListener() {
+        binding.btnRestablecer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Restablecer();
             }
         });
-        btn_cancelar = findViewById(R.id.btn_cancelar);
-        btn_cancelar.setOnClickListener(new View.OnClickListener() {
+        binding.btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Cancelar();
@@ -75,7 +70,7 @@ public class RecoverPass extends AppCompatActivity implements Response.ErrorList
     }
 
     private void Restablecer() {
-        correo_ingresado = edt_correo.getText().toString();
+        correo_ingresado = binding.edtCorreo.getText().toString();
         progreso = new ProgressDialog(this);
         progreso.setMessage(getString(R.string.seraching));
         progreso.show();

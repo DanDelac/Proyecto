@@ -24,14 +24,13 @@ import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
+import com.example.proyecto.databinding.ActivityChangePasswordBinding;
 import com.example.proyecto.ui.login.Login;
 
 import org.json.JSONObject;
 
 public class changePassword extends AppCompatActivity {
-    TextView txvUser,txvAccount,txvMail;
-    EditText edtPass1, edtPass2;
-    Button btnCancel, btnAceptar;
+    private ActivityChangePasswordBinding binding;
 
     public static final String LOG_PREF="log";
     String idUser,useAccount,useName,useLastN,useCorre;
@@ -44,16 +43,8 @@ public class changePassword extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_password);
-
-        txvUser=findViewById(R.id.txt_changepass_user);
-        txvAccount=findViewById(R.id.txt_changepass_account);
-        txvMail=findViewById(R.id.txt_changepass_mail);
-        edtPass1=findViewById(R.id.edtchangepass1);
-        edtPass2=findViewById(R.id.edtchangepass2);
-        btnAceptar=findViewById(R.id.button_changepass_save);
-        btnCancel=findViewById(R.id.button_changepass_cancel);
-
+        binding = ActivityChangePasswordBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         SharedPreferences preferences = getSharedPreferences(LOG_PREF,0);
         idUser = preferences.getString("idUser","nnn");
         useAccount = preferences.getString("useAccount","nnn");
@@ -63,20 +54,21 @@ public class changePassword extends AppCompatActivity {
 
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
-        txvUser.setText(useLastN+", "+useName);
-        txvAccount.setText(useAccount);
-        txvMail.setText(useCorre);
+        binding.txtChangepassUser.setText(useLastN+", "+useName);
+        binding.txtChangepassAccount.setText(useAccount);
+        binding.txtChangepassMail.setText(useCorre);
 
 
-        btnAceptar.setOnClickListener(new View.OnClickListener() {
+        binding.buttonChangepassSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtPass1.getText().toString().replace(" ","").isEmpty()
-                        ||edtPass2.getText().toString().replace(" ","").isEmpty())
+                aux = binding.edtchangepass1.getText().toString().replace(" ","");
+                aux1 = binding.edtchangepass2.getText().toString().replace(" ","");
+
+                if(aux.isEmpty()
+                        ||aux1.isEmpty())
                     Toast.makeText(changePassword.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
                 else {
-                    aux = edtPass1.getText().toString();
-                    aux1 = edtPass2.getText().toString();
                     if (aux.equals(aux1)) {
                         dialogAcept();
                     } else
@@ -84,7 +76,7 @@ public class changePassword extends AppCompatActivity {
                 }
             }
         });
-        btnCancel.setOnClickListener(new View.OnClickListener() {
+        binding.buttonChangepassCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(changePassword.this, MainActivity.class);

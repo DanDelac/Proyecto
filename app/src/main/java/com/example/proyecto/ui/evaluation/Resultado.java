@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,10 +18,14 @@ import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
+import com.example.proyecto.databinding.ActivityResultadoBinding;
+import com.example.proyecto.ui.changepassword.changePassword;
+import com.example.proyecto.ui.login.Login;
 
 import org.json.JSONObject;
 
 public class Resultado extends AppCompatActivity {
+    private ActivityResultadoBinding binding;
     Float correct, incorrect,total;
     Integer idUnit;
     String idUseSes,tipo,idUser;
@@ -33,7 +38,8 @@ public class Resultado extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resultado);
+        binding=ActivityResultadoBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         SharedPreferences preferences = getSharedPreferences(EVAL_SES,0);
         correct = preferences.getFloat("correct",-1);
@@ -58,8 +64,17 @@ public class Resultado extends AppCompatActivity {
         }else{
             //reprobado
         }
+        binding.btnBackE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goLogin();
+            }
+        });
+    }
 
-        config();
+    private void goLogin() {
+        Intent i = new Intent(Resultado.this, MainActivity.class);
+        startActivity(i);
     }
 
     private void actUnid() {
@@ -89,10 +104,6 @@ public class Resultado extends AppCompatActivity {
 
         requestQueue.add(jsonObjectRequest);
     }
-
-    private void config() {
-    }
-
     private void actPorc() {
         String url = Util.RUTA+"actualizarUserSes.php?" +
                 "Cod=" + idUseSes +

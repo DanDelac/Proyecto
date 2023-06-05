@@ -26,6 +26,7 @@ import com.example.proyecto.Entidades._Session;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
+import com.example.proyecto.databinding.ActivityEvaluacionBinding;
 import com.example.proyecto.ui.home.HomeFragment;
 import com.squareup.picasso.Picasso;
 
@@ -39,11 +40,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class _Evaluacion extends AppCompatActivity {
+    private ActivityEvaluacionBinding binding;
     String idSes;
-
-    private TextView question, questions,timer;
-    private Button btn_back_e ,btn_opcion1,btn_opcion2,btn_opcion3,btn_opcion4,btn_next;
-    private ImageView imv_;
     private Timer quizTime;
     private int totalTimeInMins = 1, seconds = 0, currentQuestionPosition = 0;
 
@@ -58,7 +56,8 @@ public class _Evaluacion extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_evaluacion);
+        binding=ActivityEvaluacionBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         SharedPreferences preferences = getSharedPreferences(EVAL_SES,0);
         idSes = preferences.getString("idSes","nnn");
@@ -68,26 +67,11 @@ public class _Evaluacion extends AppCompatActivity {
     }
 
     private void config() {
-        timer = findViewById(R.id.timer);
-
-        btn_back_e = findViewById(R.id.btn_back_e);
-        questions = findViewById(R.id.questions);
-        question = findViewById(R.id.question);
-
-        btn_opcion1 = findViewById(R.id.btn_opcion1);
-        btn_opcion2 = findViewById(R.id.btn_opcion2);
-        btn_opcion3 = findViewById(R.id.btn_opcion3);
-        btn_opcion4 = findViewById(R.id.btn_opcion4);
-
-        imv_=findViewById(R.id.imv_eval);
-
-        btn_next =findViewById(R.id.btn_next);
         requestQueue= Volley.newRequestQueue(_Evaluacion.this);
-
         CargarPreguntas();
-        startTimer(timer);
+        startTimer(binding.timer);
 
-        btn_back_e.setOnClickListener(new View.OnClickListener() {
+        binding.btnBackE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 quizTime.purge();
@@ -97,13 +81,13 @@ public class _Evaluacion extends AppCompatActivity {
             }
         });
 
-        btn_opcion1.setOnClickListener(new View.OnClickListener() {
+        binding.btnOpcion1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selectedOptionByUser.isEmpty()){
-                    selectedOptionByUser = btn_opcion1.getText().toString();
-                    btn_opcion1.setBackgroundResource(R.drawable.round_bg_red);
-                    btn_opcion1.setTextColor(Color.parseColor("#FFFFFFFF"));
+                    selectedOptionByUser = binding.btnOpcion1.getText().toString();
+                    binding.btnOpcion1.setBackgroundResource(R.drawable.round_bg_red);
+                    binding.btnOpcion1.setTextColor(Color.parseColor("#FFFFFFFF"));
 
                     revealAnswer();
 
@@ -111,13 +95,13 @@ public class _Evaluacion extends AppCompatActivity {
                 }
             }
         });
-        btn_opcion2.setOnClickListener(new View.OnClickListener() {
+        binding.btnOpcion2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selectedOptionByUser.isEmpty()){
-                    selectedOptionByUser = btn_opcion2.getText().toString();
-                    btn_opcion2.setBackgroundResource(R.drawable.round_bg_red);
-                    btn_opcion2.setTextColor(Color.parseColor("#FFFFFFFF"));
+                    selectedOptionByUser = binding.btnOpcion2.getText().toString();
+                    binding.btnOpcion2.setBackgroundResource(R.drawable.round_bg_red);
+                    binding.btnOpcion2.setTextColor(Color.parseColor("#FFFFFFFF"));
 
                     revealAnswer();
 
@@ -125,13 +109,13 @@ public class _Evaluacion extends AppCompatActivity {
                 }
             }
         });
-        btn_opcion3.setOnClickListener(new View.OnClickListener() {
+        binding.btnOpcion3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selectedOptionByUser.isEmpty()){
-                    selectedOptionByUser = btn_opcion3.getText().toString();
-                    btn_opcion3.setBackgroundResource(R.drawable.round_bg_red);
-                    btn_opcion3.setTextColor(Color.parseColor("#FFFFFFFF"));
+                    selectedOptionByUser = binding.btnOpcion3.getText().toString();
+                    binding.btnOpcion3.setBackgroundResource(R.drawable.round_bg_red);
+                    binding.btnOpcion3.setTextColor(Color.parseColor("#FFFFFFFF"));
 
                     revealAnswer();
 
@@ -139,13 +123,13 @@ public class _Evaluacion extends AppCompatActivity {
                 }
             }
         });
-        btn_opcion4.setOnClickListener(new View.OnClickListener() {
+        binding.btnOpcion4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selectedOptionByUser.isEmpty()){
-                    selectedOptionByUser = btn_opcion4.getText().toString();
-                    btn_opcion4.setBackgroundResource(R.drawable.round_bg_red);
-                    btn_opcion4.setTextColor(Color.parseColor("#FFFFFFFF"));
+                    selectedOptionByUser = binding.btnOpcion4.getText().toString();
+                    binding.btnOpcion4.setBackgroundResource(R.drawable.round_bg_red);
+                    binding.btnOpcion4.setTextColor(Color.parseColor("#FFFFFFFF"));
 
                     revealAnswer();
 
@@ -154,7 +138,7 @@ public class _Evaluacion extends AppCompatActivity {
             }
         });
 
-        btn_next.setOnClickListener(new View.OnClickListener() {
+        binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selectedOptionByUser.isEmpty()){
@@ -170,33 +154,33 @@ public class _Evaluacion extends AppCompatActivity {
         currentQuestionPosition++;
 
         if ((currentQuestionPosition+1) == questionsLists.size()){
-            btn_next.setText("Submit Quiz");
+            binding.btnNext.setText("Submit Quiz");
         }
 
         if (currentQuestionPosition < questionsLists.size()){
             selectedOptionByUser = "";
 
-            btn_opcion1.setBackgroundResource(R.drawable.round_bg_write_stroke);
-            btn_opcion1.setTextColor(Color.parseColor("#1F6BB8"));
+            binding.btnOpcion1.setBackgroundResource(R.drawable.round_bg_write_stroke);
+            binding.btnOpcion1.setTextColor(Color.parseColor("#1F6BB8"));
 
-            btn_opcion2.setBackgroundResource(R.drawable.round_bg_write_stroke);
-            btn_opcion2.setTextColor(Color.parseColor("#1F6BB8"));
+            binding.btnOpcion2.setBackgroundResource(R.drawable.round_bg_write_stroke);
+            binding.btnOpcion2.setTextColor(Color.parseColor("#1F6BB8"));
 
-            btn_opcion3.setBackgroundResource(R.drawable.round_bg_write_stroke);
-            btn_opcion3.setTextColor(Color.parseColor("#1F6BB8"));
+            binding.btnOpcion3.setBackgroundResource(R.drawable.round_bg_write_stroke);
+            binding.btnOpcion3.setTextColor(Color.parseColor("#1F6BB8"));
 
-            btn_opcion4.setBackgroundResource(R.drawable.round_bg_write_stroke);
-            btn_opcion4.setTextColor(Color.parseColor("#1F6BB8"));
+            binding.btnOpcion4.setBackgroundResource(R.drawable.round_bg_write_stroke);
+            binding.btnOpcion4.setTextColor(Color.parseColor("#1F6BB8"));
 
-            questions.setText((currentQuestionPosition+1)+"/"+questionsLists.size());
-            question.setText((questionsLists.get(currentQuestionPosition).getQuestion()));
-            btn_opcion1.setText(questionsLists.get(currentQuestionPosition).getOption1());
-            btn_opcion2.setText(questionsLists.get(currentQuestionPosition).getOption2());
-            btn_opcion3.setText(questionsLists.get(currentQuestionPosition).getOption3());
-            btn_opcion4.setText(questionsLists.get(currentQuestionPosition).getOption4());
+            binding.questions.setText((currentQuestionPosition+1)+"/"+questionsLists.size());
+            binding.question.setText((questionsLists.get(currentQuestionPosition).getQuestion()));
+            binding.btnOpcion1.setText(questionsLists.get(currentQuestionPosition).getOption1());
+            binding.btnOpcion2.setText(questionsLists.get(currentQuestionPosition).getOption2());
+            binding.btnOpcion3.setText(questionsLists.get(currentQuestionPosition).getOption3());
+            binding.btnOpcion4.setText(questionsLists.get(currentQuestionPosition).getOption4());
             Picasso.get().load(questionsLists.get(currentQuestionPosition).getExeImg())
                     .resize(200,250)
-                    .into(imv_);
+                    .into(binding.imvEval);
         }else {
             quizTime.purge();
             quizTime.cancel();
@@ -303,18 +287,18 @@ public class _Evaluacion extends AppCompatActivity {
     private void revealAnswer(){
         final String getAnswer = questionsLists.get(currentQuestionPosition).getAsnwer();
 
-        if (btn_opcion1.getText().toString().equals(getAnswer)){
-            btn_opcion1.setBackgroundResource(R.drawable.round_bg_green_2);
-            btn_opcion1.setTextColor(Color.parseColor("#FFFFFFFF"));
-        } else if (btn_opcion2.getText().toString().equals(getAnswer)) {
-            btn_opcion2.setBackgroundResource(R.drawable.round_bg_green_2);
-            btn_opcion2.setTextColor(Color.parseColor("#FFFFFFFF"));
-        }else if (btn_opcion3.getText().toString().equals(getAnswer)) {
-            btn_opcion3.setBackgroundResource(R.drawable.round_bg_green_2);
-            btn_opcion3.setTextColor(Color.parseColor("#FFFFFFFF"));
-        }else if (btn_opcion4.getText().toString().equals(getAnswer)) {
-            btn_opcion4.setBackgroundResource(R.drawable.round_bg_green_2);
-            btn_opcion4.setTextColor(Color.parseColor("#FFFFFFFF"));
+        if (binding.btnOpcion1.getText().toString().equals(getAnswer)){
+            binding.btnOpcion1.setBackgroundResource(R.drawable.round_bg_green_2);
+            binding.btnOpcion1.setTextColor(Color.parseColor("#FFFFFFFF"));
+        } else if (binding.btnOpcion2.getText().toString().equals(getAnswer)) {
+            binding.btnOpcion2.setBackgroundResource(R.drawable.round_bg_green_2);
+            binding.btnOpcion2.setTextColor(Color.parseColor("#FFFFFFFF"));
+        }else if (binding.btnOpcion3.getText().toString().equals(getAnswer)) {
+            binding.btnOpcion3.setBackgroundResource(R.drawable.round_bg_green_2);
+            binding.btnOpcion3.setTextColor(Color.parseColor("#FFFFFFFF"));
+        }else if (binding.btnOpcion4.getText().toString().equals(getAnswer)) {
+            binding.btnOpcion4.setBackgroundResource(R.drawable.round_bg_green_2);
+            binding.btnOpcion4.setTextColor(Color.parseColor("#FFFFFFFF"));
         }
     }
 
@@ -347,15 +331,15 @@ public class _Evaluacion extends AppCompatActivity {
                             Preguntas.setExeImg(jsonObject.getString("exeImg"));
                             questionsLists.add(Preguntas);
                         }
-                        questions.setText((currentQuestionPosition+1)+"/"+questionsLists.size());
-                        question.setText((questionsLists.get(0).getQuestion()));
-                        btn_opcion1.setText(questionsLists.get(0).getOption1());
-                        btn_opcion2.setText(questionsLists.get(0).getOption2());
-                        btn_opcion3.setText(questionsLists.get(0).getOption3());
-                        btn_opcion4.setText(questionsLists.get(0).getOption4());
+                        binding.questions.setText((currentQuestionPosition+1)+"/"+questionsLists.size());
+                        binding.question.setText((questionsLists.get(0).getQuestion()));
+                        binding.btnOpcion1.setText(questionsLists.get(0).getOption1());
+                        binding.btnOpcion2.setText(questionsLists.get(0).getOption2());
+                        binding.btnOpcion3.setText(questionsLists.get(0).getOption3());
+                        binding.btnOpcion4.setText(questionsLists.get(0).getOption4());
                         Picasso.get().load(questionsLists.get(0).getExeImg())
                                 .resize(200,250)
-                                .into(imv_);
+                                .into(binding.imvEval);
                     }
                     catch (Exception e){
 
