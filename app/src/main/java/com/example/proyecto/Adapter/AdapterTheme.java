@@ -26,15 +26,10 @@ public class AdapterTheme extends RecyclerView.Adapter<AdapterTheme.ThemeHolder>
 
     private Context context;
     private ArrayList<Theme> List_Theme;
-    private Integer size;
 
-    public AdapterTheme() {
-    }
-
-    public AdapterTheme(Context context, ArrayList<Theme> List_Theme, Integer size) {
+    public AdapterTheme(Context context, ArrayList<Theme> List_Theme) {
         this.context = context;
         this.List_Theme = List_Theme;
-        this.size = size;
     }
 
     @NonNull
@@ -105,6 +100,7 @@ public class AdapterTheme extends RecyclerView.Adapter<AdapterTheme.ThemeHolder>
         ItemThemeBinding binding;
         public ThemeHolder(@NonNull @NotNull ItemThemeBinding binding) {
             super(binding.getRoot());
+            this.binding=binding;
         }
     }
 }

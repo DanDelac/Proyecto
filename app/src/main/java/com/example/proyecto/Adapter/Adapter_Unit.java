@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,12 +33,9 @@ import java.util.List;
 public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
     List<Unit> lista_Unit;
     ArrayList<_Session> _sessions;
-
     Context context;
-    private View.OnClickListener listener;
     private static final String EVAL_SES = "ID";
     public static final String SESS_PREF="session";
-    public static final String UNIT_PREF="unit";
 
     public Adapter_Unit(Context context, List<Unit> lista_Unit, ArrayList<_Session> lista_Ses) {
         this.context=context;
@@ -45,18 +43,10 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
         this._sessions = lista_Ses;
     }
 
-    public Adapter_Unit() {
-    }
-
     @NonNull
     @NotNull
     @Override
     public Adapter_Unit.UnitHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-//        View vista =
-//                LayoutInflater.from(parent.getContext()).inflate(R.layout.item_unit, parent, false);
-//
-//        return new UnitHolder(vista);
-
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         ItemUnitBinding binding = ItemUnitBinding.inflate(inflater, parent, false);
         return new UnitHolder(binding);
@@ -71,11 +61,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
 
         ArrayList<String> list = nueva_lista(_sessions,unit.getIdUnit());
         holder.binding.txtUnit2.setText(unit.getUniDesc());
-        final Integer[] aux = {(Integer.parseInt(list.get(2)) + Integer.parseInt(list.get(5)) + Integer.parseInt(list.get(8)) + Integer.parseInt(list.get(11))) / 4};
-
-//        holder.lst_Session.setAdapter(new ArrayAdapter<_Session>(holder.itemView.getContext(), android.R.layout.simple_list_item_1,_sessions));
         holder.binding.txtT1.setText(list.get(0));
-//        holder.binding.txtSes1.setText(list.get(0));
         holder.binding.txtT2.setText(list.get(3));
         holder.binding.txtT3.setText(list.get(6));
         holder.binding.txtT4.setText(list.get(9));
@@ -85,16 +71,11 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
         holder.binding.txtSes3.setText(list.get(7));
         holder.binding.txtSes4.setText(list.get(10));
 
-        holder.binding.progressBarSes1.setProgress(Integer.parseInt(list.get(2)));
-        holder.binding.progressBarSes2.setProgress(Integer.parseInt(list.get(5)));
-        holder.binding.progressBarSes3.setProgress(Integer.parseInt(list.get(8)));
-        holder.binding.progressBarSes4.setProgress(Integer.parseInt(list.get(11)));
-
-        holder.binding.progressBarUni.setProgress(1);
-
-        ObjectAnimator animation = ObjectAnimator.ofInt(holder.binding.progressBarUni, "progress", holder.binding.progressBarUni.getProgress(), (Integer.parseInt(list.get(2)) + Integer.parseInt(list.get(5)) + Integer.parseInt(list.get(8)) + Integer.parseInt(list.get(11))) / 4);
-
-        progreso(animation);
+        progres(holder.binding.progressBarUni,(Integer.parseInt(list.get(2)) + Integer.parseInt(list.get(5)) + Integer.parseInt(list.get(8)) + Integer.parseInt(list.get(11))) / 4);
+        progres(holder.binding.progressBarSes1,Integer.parseInt(list.get(2)));
+        progres(holder.binding.progressBarSes2,Integer.parseInt(list.get(5)));
+        progres(holder.binding.progressBarSes3,Integer.parseInt(list.get(8)));
+        progres(holder.binding.progressBarSes4,Integer.parseInt(list.get(11)));
 
         final Integer[] pos = {0};
 
@@ -141,10 +122,13 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
         });
     }
 
-    private void progreso(ObjectAnimator animation) {
+    private void progres(ProgressBar progress, Integer porc) {
+        progress.setProgress(1);
+        ObjectAnimator animation = ObjectAnimator.ofInt(progress, "progress", progress.getProgress(), porc);
         animation.setDuration(6000);
         animation.setInterpolator(new DecelerateInterpolator());
         animation.start();
+
     }
 
     private void goEval(View view,String cod,String tit_unit) {

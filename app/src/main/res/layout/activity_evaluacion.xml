@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/color_conf_fondo">
+        android:background="#343EE5">
 
         <Button
             android:id="@+id/btn_back_e"
@@ -26,7 +26,8 @@
             android:layout_centerInParent="true"
             android:text="00:59"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="25sp"
+            android:fontFamily="@font/bungee" />
     </RelativeLayout>
 
     <TextView

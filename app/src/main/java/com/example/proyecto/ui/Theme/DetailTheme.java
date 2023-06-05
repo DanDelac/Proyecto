@@ -63,7 +63,6 @@ public class DetailTheme extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
         lstTheme= new ArrayList<>();
         cargarTheme();
         actPorc();
@@ -92,10 +91,8 @@ public class DetailTheme extends AppCompatActivity {
     }
     private void cargarTheme() {
         lstTheme.clear();
-
         binding.rvTheme.setLayoutManager(new GridLayoutManager(DetailTheme.this, 2));
         binding.rvTheme.setHasFixedSize(true);
-
         progreso = new ProgressDialog(DetailTheme.this);
         progreso.setMessage(getString(R.string.load_Theme));
         progreso.show();
@@ -122,7 +119,7 @@ public class DetailTheme extends AppCompatActivity {
                         theme.setImg(jsonObject.getString("img"));
                         lstTheme.add(theme);
                     }
-                    AdapterTheme adapterTheme = new AdapterTheme(DetailTheme.this, lstTheme, 14);
+                    AdapterTheme adapterTheme = new AdapterTheme(DetailTheme.this, lstTheme);
                     binding.rvTheme.setAdapter(adapterTheme);
 
 
