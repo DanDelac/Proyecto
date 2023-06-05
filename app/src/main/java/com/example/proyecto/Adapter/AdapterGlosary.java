@@ -1,5 +1,6 @@
 package com.example.proyecto.Adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.VoiceInteractor;
 import android.content.Context;
@@ -17,7 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyecto.Entidades.Glosary;
+import com.example.proyecto.Entidades.Unit;
 import com.example.proyecto.R;
+import com.example.proyecto.databinding.GlosaryElementBinding;
+import com.example.proyecto.databinding.ItemUnitBinding;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,34 +42,39 @@ public class AdapterGlosary extends RecyclerView.Adapter<AdapterGlosary.gloHolde
     @NonNull
     @Override
     public gloHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View vista =
-                LayoutInflater.from(parent.getContext()).inflate(R.layout.glosary_element, parent, false);
+//        View vista =
+//                LayoutInflater.from(parent.getContext()).inflate(R.layout.glosary_element, parent, false);
+//        return new gloHolder(vista);
 
-        return new gloHolder(vista);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        GlosaryElementBinding binding = GlosaryElementBinding.inflate(inflater, parent, false);
+        return new gloHolder(binding);
     }
 
+    @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull gloHolder holder, int position) {
-        holder.image.setImageResource(glosaries.get(position).getIcon());
-        holder.txtTit.setText(glosaries.get(position).getTitle());
-        holder.txtDes.setText(glosaries.get(position).getDescription());
+        Glosary glosary = glosaries.get(position);
+        holder.binding.imgvIcon.setImageResource(glosary.getIcon());
+        holder.binding.txtItemName.setText(glosary.getTitle());
+        holder.binding.txtItemdescrip.setText(glosary.getDescription());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (position){
                     case 0:
-                        goDialog(glosaries.get(position).getTitle());
+                        goDialog(glosary.getTitle());
                         break;
                     case 1:
                     case 2:
-                        goGoogle(glosaries.get(position).getUrl());
+                        goGoogle(glosary.getUrl());
                         break;
                     case 3:
                     case 4:
                     case 5:
                     case 6:
                     case 7:
-                        goYoutube(glosaries.get(position).getUrl());
+                        goYoutube(glosary.getUrl());
                         break;
                 }
             }
@@ -111,13 +120,10 @@ public class AdapterGlosary extends RecyclerView.Adapter<AdapterGlosary.gloHolde
     }
 
     public class gloHolder extends RecyclerView.ViewHolder {
-        ImageView image;
-        TextView txtTit, txtDes;
-        public gloHolder(@NonNull View itemView) {
-            super(itemView);
-            image=itemView.findViewById(R.id.imgv_icon);
-            txtTit=itemView.findViewById(R.id.txt_ItemName);
-            txtDes=itemView.findViewById(R.id.txt_Itemdescrip);
+        GlosaryElementBinding binding;
+        public gloHolder(@NonNull GlosaryElementBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

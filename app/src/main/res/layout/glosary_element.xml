@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="6dp">
+
             <ImageView
                 android:id="@+id/imgv_icon"
                 android:layout_width="70dp"
@@ -28,7 +29,7 @@
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
                 android:layout_alignParentLeft="true"
-                android:src="@drawable/mas"></ImageView>
+                android:src="@drawable/mas" />
             <LinearLayout
                 android:id="@+id/LinearLayout"
                 android:layout_width="match_parent"
@@ -40,6 +41,7 @@
                 android:orientation="vertical"
                 android:layout_marginLeft="4dp"
                 android:layout_toRightOf="@id/imgv_icon">
+
                 <TextView
                     android:id="@+id/txt_ItemName"
                     android:layout_width="match_parent"
@@ -47,7 +49,8 @@
                     android:text="Tittle"
                     android:textColor="@color/black"
                     android:textSize="24sp"
-                    android:fontFamily="@font/bungee"></TextView>
+                    android:fontFamily="@font/bungee" />
+
                 <TextView
                     android:id="@+id/txt_Itemdescrip"
                     android:layout_width="match_parent"
@@ -55,7 +58,7 @@
                     android:text="Description"
                     android:textColor="@color/black"
                     android:textSize="13sp"
-                    android:fontFamily="@font/alatsi"></TextView>
+                    android:fontFamily="@font/alatsi" />
             </LinearLayout>
 
         </RelativeLayout>

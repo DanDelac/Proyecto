@@ -1,20 +1,13 @@
 package com.example.proyecto.ui.home;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.arch.lifecycle.ViewModelProvider;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,16 +15,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.proyecto.Adapter.AdapterUnit;
 import com.example.proyecto.Adapter.Adapter_Unit;
 import com.example.proyecto.Entidades._Session;
 import com.example.proyecto.Entidades.Unit;
-import com.example.proyecto.R;
 import com.example.proyecto.Util.Connection;
 import com.example.proyecto.Util.Util;
 import com.example.proyecto.databinding.FragmentHomeBinding;
-import com.example.proyecto.ui.Theme.DetailTheme;
-import com.example.proyecto.ui.editaccount.editAccount;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

@@ -68,7 +68,6 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
     public void onBindViewHolder(@NonNull @NotNull Adapter_Unit.UnitHolder holder, int position) {
 
         Unit unit = lista_Unit.get(position);
-//        holder.bind(unit);
 
         ArrayList<String> list = nueva_lista(_sessions,unit.getIdUnit());
         holder.binding.txtUnit2.setText(unit.getUniDesc());
@@ -91,18 +90,11 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
         holder.binding.progressBarSes3.setProgress(Integer.parseInt(list.get(8)));
         holder.binding.progressBarSes4.setProgress(Integer.parseInt(list.get(11)));
 
+        holder.binding.progressBarUni.setProgress(1);
 
         ObjectAnimator animation = ObjectAnimator.ofInt(holder.binding.progressBarUni, "progress", holder.binding.progressBarUni.getProgress(), (Integer.parseInt(list.get(2)) + Integer.parseInt(list.get(5)) + Integer.parseInt(list.get(8)) + Integer.parseInt(list.get(11))) / 4);
-//        ObjectAnimator animation1 = ObjectAnimator.ofInt(holder.pb_S1, "progress", holder.pb_S1.getProgress(), Integer.parseInt(list.get(2)));
-//        ObjectAnimator animation2 = ObjectAnimator.ofInt(holder.pb_S2, "progress", holder.pb_S2.getProgress(), Integer.parseInt(list.get(5)));
-//        ObjectAnimator animation3 = ObjectAnimator.ofInt(holder.pb_S3, "progress", holder.pb_S3.getProgress(), Integer.parseInt(list.get(8)));
-//        ObjectAnimator animation4 = ObjectAnimator.ofInt(holder.pb_S4, "progress", holder.pb_S4.getProgress(), Integer.parseInt(list.get(11)));
+
         progreso(animation);
-//        progreso(animation1);
-//        progreso(animation2);
-//        progreso(animation3);
-//        progreso(animation4);
-//        holder.pb_U.setProgress((Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4);
 
         final Integer[] pos = {0};
 
