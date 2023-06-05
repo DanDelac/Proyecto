@@ -24,9 +24,9 @@ import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
+import com.example.proyecto.databinding.ActivityLoginBinding;
 import com.example.proyecto.ui.RecoverPass.RecoverPass;
 import com.example.proyecto.ui.Register.Register;
-import com.example.proyecto.ui.Theme.DetailTheme;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,9 +34,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class  Login extends AppCompatActivity {
-    TextInputEditText edtUsuario, edtContra;
-    Button btnIniSesion;
-    TextView txtOlviContra, txtRegistrar;
+    private ActivityLoginBinding binding;
 
     public static final String LOG_PREF="log";
 
@@ -53,36 +51,31 @@ public class  Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        edtUsuario = findViewById(R.id.edtlogUsuario);
-        edtContra = findViewById(R.id.edtlogContrasena);
-
-        txtOlviContra = findViewById(R.id.txtlogrecovPass);
-        txtRegistrar = findViewById(R.id.txtlogRegister);
-
-        btnIniSesion = findViewById(R.id.btnlogin);
+        binding=ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
         lstAcc=new ArrayList<>();
 
-        btnIniSesion.setOnClickListener(new View.OnClickListener() {
+        binding.btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtUsuario.getText().toString().replace(" ","").isEmpty()||edtContra.getText().toString().replace(" ","").isEmpty())
+                if(binding.edtlogUsuario.getText().toString().replace(" ","").isEmpty()||
+                   binding.edtlogContrasena.getText().toString().replace(" ","").isEmpty())
                     Toast.makeText(Login.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
                 else
                     access();
             }
         });
 
-        edtContra.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        binding.edtlogContrasena.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 boolean action = false;
                 if (i == EditorInfo.IME_ACTION_SEARCH)
                 {
-                    if(edtUsuario.getText().toString().replace(" ","").isEmpty()||edtContra.getText().toString().replace(" ","").isEmpty())
+                    if(binding.edtlogUsuario.getText().toString().replace(" ","").isEmpty()||
+                       binding.edtlogContrasena.getText().toString().replace(" ","").isEmpty())
                         Toast.makeText(Login.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
                     else
                         access();
@@ -91,14 +84,14 @@ public class  Login extends AppCompatActivity {
             }
         });
 
-        txtRegistrar.setOnClickListener(new View.OnClickListener() {
+        binding.txtlogRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Login.this, Register.class);
                 startActivity(i);
             }
         });
-        txtOlviContra.setOnClickListener(new View.OnClickListener() {
+        binding.txtlogrecovPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Login.this, RecoverPass.class);
@@ -114,8 +107,8 @@ public class  Login extends AppCompatActivity {
         progreso.setMessage(getString(R.string.load_Login));
         progreso.show();
         String url = Util.RUTA+"/accesoUser.php" +
-                "?Cuenta=" +edtUsuario.getText().toString()+
-                "&Pass=" +edtContra.getText().toString();
+                "?Cuenta=" +binding.edtlogUsuario.getText().toString()+
+                "&Pass=" +binding.edtlogContrasena.getText().toString();
         url=url.replace(" ","%20");
         Log.e("URL LOGIN: ",url);
 
@@ -135,7 +128,7 @@ public class  Login extends AppCompatActivity {
                         account.setUseName(jsonObject.getString("useName"));
                         account.setUseLastN(jsonObject.getString("useLastN"));
                         account.setUseCorre(jsonObject.getString("useCorre"));
-                        account.setUseAccount(edtUsuario.getText().toString());
+                        account.setUseAccount(binding.edtlogUsuario.getText().toString());
                         lstAcc.add(account);
 
 

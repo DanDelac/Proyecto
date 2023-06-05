@@ -24,6 +24,8 @@ import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
+import com.example.proyecto.databinding.ActivityRegisterBinding;
+import com.example.proyecto.databinding.ActivityThemeBinding;
 import com.example.proyecto.ui.evaluation.Resultado;
 
 import org.json.JSONArray;
@@ -32,28 +34,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class DetailTheme extends AppCompatActivity {
-
-
-    RecyclerView recyclerView;
+    private ActivityThemeBinding binding;
     ArrayList<Theme> lstTheme;
-
     ProgressDialog progreso;
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest;
-
-    Button btnBack;
-    TextView txtTit;
-
     public static final String SESS_PREF="session";
     String idSes, idUseSes; Integer sesP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_theme);
-        recyclerView = findViewById(R.id.rv_theme);
-
-        txtTit = findViewById(R.id.txt_Theme);
-        btnBack = findViewById(R.id.btnBack);
+        binding = ActivityThemeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         SharedPreferences preferences = getSharedPreferences(SESS_PREF,0);
         idSes = preferences.getString("idSes","nnn");
@@ -62,9 +54,9 @@ public class DetailTheme extends AppCompatActivity {
         String sesTit = preferences.getString("sesTit","nnn");
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
-        txtTit.setText(sesTit);
+        binding.txtTheme.setText(sesTit);
 //        Toast.makeText(this, "idUseSes: "+ idUseSes +"\nPorc: "+sesP, Toast.LENGTH_SHORT).show();
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(DetailTheme.this, MainActivity.class);
@@ -72,12 +64,10 @@ public class DetailTheme extends AppCompatActivity {
             }
         });
 
-
         lstTheme= new ArrayList<>();
         cargarTheme();
         actPorc();
     }
-
     private void actPorc() {
         if(sesP<50)
             sesP=50;
@@ -90,26 +80,21 @@ public class DetailTheme extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
 //                Toast.makeText(DetailTheme.this, "Porcentaje actualizado", Toast.LENGTH_SHORT).show();
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 //                Toast.makeText(DetailTheme.this, getString(R.string.error_msj3), Toast.LENGTH_SHORT).show();
                 Log.e(" ERROR: ", error.toString());
-
             }
         });
-
         requestQueue.add(jsonObjectRequest);
     }
-
     private void cargarTheme() {
         lstTheme.clear();
-//        listView.setAdapter(new ArrayAdapter<Theme>(DetailTheme.this, android.R.layout.simple_list_item_1,lstTheme));
 
-        recyclerView.setLayoutManager(new GridLayoutManager(DetailTheme.this, 2));
-        recyclerView.setHasFixedSize(true);
+        binding.rvTheme.setLayoutManager(new GridLayoutManager(DetailTheme.this, 2));
+        binding.rvTheme.setHasFixedSize(true);
 
         progreso = new ProgressDialog(DetailTheme.this);
         progreso.setMessage(getString(R.string.load_Theme));
@@ -138,7 +123,7 @@ public class DetailTheme extends AppCompatActivity {
                         lstTheme.add(theme);
                     }
                     AdapterTheme adapterTheme = new AdapterTheme(DetailTheme.this, lstTheme, 14);
-                    recyclerView.setAdapter(adapterTheme);
+                    binding.rvTheme.setAdapter(adapterTheme);
 
 
                 } catch (Exception e) {
@@ -153,10 +138,8 @@ public class DetailTheme extends AppCompatActivity {
                 Log.e(" ERROR: ", error.toString());
             }
         });
-
         requestQueue.add(jsonObjectRequest);
     }
-
     @Override
     public void onBackPressed() {
         startActivity(new Intent(DetailTheme.this, MainActivity.class));

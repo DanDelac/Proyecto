@@ -10,13 +10,11 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,10 +22,7 @@ import android.widget.Toast;
 import com.example.proyecto.Entidades.Unit;
 import com.example.proyecto.Entidades._Session;
 import com.example.proyecto.R;
-import com.example.proyecto.Util.Util;
-import com.example.proyecto.databinding.Item2Binding;
 import com.example.proyecto.ui.Theme.DetailTheme;
-import com.example.proyecto.ui.evaluation.Evaluation;
 import com.example.proyecto.ui.evaluation._Evaluacion;
 
 import org.jetbrains.annotations.NotNull;
@@ -71,12 +66,8 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
 
         ArrayList<String> list = nueva_lista(_sessions,lista_Unit.get(position).getIdUnit());
         holder.txt_Unit_2.setText(lista_Unit.get(position).getUniDesc());
-        final Integer[] aux = {(Integer.parseInt(list.get(2)) + Integer.parseInt(list.get(5)) + Integer.parseInt(list.get(8)) + Integer.parseInt(list.get(11))) / 4};
-
-//        holder.lst_Session.setAdapter(new ArrayAdapter<_Session>(holder.itemView.getContext(), android.R.layout.simple_list_item_1,_sessions));
 
         holder.txt_T1.setText(list.get(0));
-//        holder.binding.txtSes1.setText(list.get(0));
         holder.txt_T2.setText(list.get(3));
         holder.txt_T3.setText(list.get(6));
         holder.txt_T4.setText(list.get(9));
@@ -86,22 +77,16 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         holder.txt_S3.setText(list.get(7));
         holder.txt_S4.setText(list.get(10));
 
-//        holder.pb_S1.setProgress(Integer.parseInt(list.get(2)));
-//        holder.pb_S2.setProgress(Integer.parseInt(list.get(5)));
-//        holder.pb_S3.setProgress(Integer.parseInt(list.get(8)));
-//        holder.pb_S4.setProgress(Integer.parseInt(list.get(11)));
+        holder.pb_S1.setProgress(Integer.parseInt(list.get(2)));
+        holder.pb_S2.setProgress(Integer.parseInt(list.get(5)));
+        holder.pb_S3.setProgress(Integer.parseInt(list.get(8)));
+        holder.pb_S4.setProgress(Integer.parseInt(list.get(11)));
 
-
+        holder.pb_U.setProgress(1);
         ObjectAnimator animation = ObjectAnimator.ofInt(holder.pb_U, "progress", holder.pb_U.getProgress(), (Integer.parseInt(list.get(2)) + Integer.parseInt(list.get(5)) + Integer.parseInt(list.get(8)) + Integer.parseInt(list.get(11))) / 4);
-        ObjectAnimator animation1 = ObjectAnimator.ofInt(holder.pb_S1, "progress", holder.pb_S1.getProgress(), Integer.parseInt(list.get(2)));
-        ObjectAnimator animation2 = ObjectAnimator.ofInt(holder.pb_S2, "progress", holder.pb_S2.getProgress(), Integer.parseInt(list.get(5)));
-        ObjectAnimator animation3 = ObjectAnimator.ofInt(holder.pb_S3, "progress", holder.pb_S3.getProgress(), Integer.parseInt(list.get(8)));
-        ObjectAnimator animation4 = ObjectAnimator.ofInt(holder.pb_S4, "progress", holder.pb_S4.getProgress(), Integer.parseInt(list.get(11)));
-        progreso(animation);
-        progreso(animation1);
-        progreso(animation2);
-        progreso(animation3);
-        progreso(animation4);
+        animation.setDuration(6000);
+        animation.setInterpolator(new DecelerateInterpolator());
+        animation.start();
 //        holder.pb_U.setProgress((Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4);
 
         final Integer[] pos = {0};
@@ -149,12 +134,6 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         });
     }
 
-    private void progreso(ObjectAnimator animation) {
-        animation.setDuration(6000);
-        animation.setInterpolator(new DecelerateInterpolator());
-        animation.start();
-    }
-
     private void goEval(View view,String cod,String unit) {
         SharedPreferences log = context.getSharedPreferences(EVAL_SES,0);
         SharedPreferences.Editor editor = log.edit();
@@ -165,7 +144,6 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         editor.putString("idSes","listarExerciceUnidad.php?Cod="+cod);
         editor.commit();
         Intent intent = new Intent(context, _Evaluacion.class);
-//        Intent intent = new Intent(context, Evaluation.class);
         view.getContext().startActivity(intent);
     }
 

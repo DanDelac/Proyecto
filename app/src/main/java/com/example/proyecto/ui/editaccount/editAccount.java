@@ -23,14 +23,13 @@ import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
+import com.example.proyecto.databinding.ActivityEditAccountBinding;
+import com.example.proyecto.ui.setting.NotificationsFragment;
 
 import org.json.JSONObject;
 
 public class editAccount extends AppCompatActivity {
-
-     TextInputEditText edtnwNombres, edtnwApellidos;
-     Button btnGuardar, btnCancelar;
-
+    private ActivityEditAccountBinding binding;
     public static final String LOG_PREF="log";
     String idUser,useName,useLastN;
 
@@ -41,11 +40,8 @@ public class editAccount extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_account);
-        edtnwNombres=findViewById(R.id.edteditaccname);
-        edtnwApellidos=findViewById(R.id.edteditacclastname);
-        btnCancelar=findViewById(R.id.button_editacc_cancel);
-        btnGuardar=findViewById(R.id.button_editacc_save);
+        binding=ActivityEditAccountBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         SharedPreferences preferences = getSharedPreferences(LOG_PREF,0);
         idUser = preferences.getString("idUser","nnn");
@@ -54,21 +50,21 @@ public class editAccount extends AppCompatActivity {
 
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
-        edtnwNombres.setHint(useName);
-        edtnwApellidos.setHint(useLastN);
+        binding.edteditaccname.setHint(useName);
+        binding.edteditacclastname.setHint(useLastN);
 
-        btnGuardar.setOnClickListener(new View.OnClickListener() {
+        binding.buttonEditaccSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtnwNombres.getText().toString().replace(" ","").isEmpty()
-                        ||edtnwApellidos.getText().toString().replace(" ","").isEmpty())
+                if(binding.edteditaccname.getText().toString().isEmpty()
+                        ||binding.edteditacclastname.getText().toString().isEmpty())
                     Toast.makeText(editAccount.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
                 else {
                         dialogAcept();
                 }
             }
         });
-        btnCancelar.setOnClickListener(new View.OnClickListener() {
+        binding.buttonEditaccCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goHome();
@@ -109,8 +105,8 @@ public class editAccount extends AppCompatActivity {
         progreso.show();
         String url = Util.RUTA+"actualizarUser.php" +
                 "?Cod="+idUser +
-                "&Nombres="+edtnwNombres.getText().toString()+
-                "&Apellidos="+edtnwApellidos.getText().toString();
+                "&Nombres="+binding.edteditaccname.getText().toString()+
+                "&Apellidos="+binding.edteditacclastname.getText().toString();
         url=url.replace(" ","%20");
         Log.d("Url : ",url.toString());
 
@@ -126,8 +122,8 @@ public class editAccount extends AppCompatActivity {
 
                     SharedPreferences log = getSharedPreferences(LOG_PREF,0);
                     SharedPreferences.Editor editor = log.edit();
-                    editor.putString("useName",edtnwNombres.getText().toString());
-                    editor.putString("useLastN",edtnwApellidos.getText().toString());
+                    editor.putString("useName",binding.edteditaccname.getText().toString());
+                    editor.putString("useLastN",binding.edteditacclastname.getText().toString());
                     editor.commit();
                 }
 
