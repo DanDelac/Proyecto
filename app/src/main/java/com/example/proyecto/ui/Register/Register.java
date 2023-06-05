@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
+import com.example.proyecto.databinding.ActivityRegisterBinding;
 import com.example.proyecto.ui.login.Login;
 
 import com.android.volley.Request;
@@ -32,9 +33,7 @@ import java.nio.charset.StandardCharsets;
 
 
 public class Register extends AppCompatActivity  {
-    TextInputEditText edtNombre, edtApellidos, edtCorreo, edtCuenta, edtContra,edtContra2;
-    Button btnRegistrar;
-    TextView txtCancelar;
+    private ActivityRegisterBinding binding;
 
     ProgressDialog progreso;
     RequestQueue requestQueue;
@@ -45,33 +44,24 @@ public class Register extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-
-        edtNombre = findViewById(R.id.edtReNames);
-        edtApellidos = findViewById(R.id.edtReLastName);
-        edtCorreo = findViewById(R.id.edtReEmail);
-        edtCuenta = findViewById(R.id.edtReAccount);
-        edtContra = findViewById(R.id.edtRePassword);
-        edtContra2 = findViewById(R.id.edtRePassword2);
-
-        txtCancelar = findViewById(R.id.txtReCancelar);
-        btnRegistrar = findViewById(R.id.btnReRegistrar);
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
-        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+        binding.btnReRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtApellidos.getText().toString().replace(" ","").isEmpty()
-                    ||edtContra.getText().toString().replace(" ","").isEmpty()
-                    ||edtContra2.getText().toString().replace(" ","").isEmpty()
-                    ||edtCorreo.getText().toString().replace(" ","").isEmpty()
-                    ||edtCuenta.getText().toString().replace(" ","").isEmpty()
-                    ||edtNombre.getText().toString().replace(" ","").isEmpty())
-                Toast.makeText(Register.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
+                if(binding.edtReLastName.getText().toString().replace(" ","").isEmpty()
+                        || binding.edtRePassword.getText().toString().replace(" ","").isEmpty()
+                        || binding.edtRePassword2.getText().toString().replace(" ","").isEmpty()
+                        || binding.edtReEmail.getText().toString().replace(" ","").isEmpty()
+                        || binding.edtReAccount.getText().toString().replace(" ","").isEmpty()
+                        || binding.edtReNames.getText().toString().replace(" ","").isEmpty())
+                    Toast.makeText(Register.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
                 else {
-                    aux = edtContra.getText().toString();
-                    aux1 = edtContra2.getText().toString();
+                    aux = binding.edtRePassword.getText().toString();
+                    aux1 = binding.edtRePassword2.getText().toString();
                     if (aux.equals(aux1)) {
                         dialogAcept();
                     } else
@@ -79,7 +69,7 @@ public class Register extends AppCompatActivity  {
                 }
             }
         });
-        txtCancelar.setOnClickListener(new View.OnClickListener() {
+        binding.txtReCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goLogin();
@@ -109,11 +99,11 @@ public class Register extends AppCompatActivity  {
         progreso.setMessage(getString(R.string.load_Register));
         progreso.show();
         String url = Util.RUTA+"insertarUser.php" +
-                "?Nombres="+edtNombre.getText().toString()+
-                "&Apellidos="+edtApellidos.getText().toString() +
-                "&Cuenta="+edtCuenta.getText().toString() +
-                "&Pass="+edtContra.getText().toString() +
-                "&Correo="+edtCorreo.getText().toString();
+                "?Nombres="+binding.edtReNames.getText().toString()+
+                "&Apellidos="+binding.edtReLastName.getText().toString() +
+                "&Cuenta="+ binding.edtReAccount.getText().toString() +
+                "&Pass="+ binding.edtRePassword.getText().toString() +
+                "&Correo="+ binding.edtReEmail.getText().toString();
         url=url.replace(" ","%20");
         Log.d("Url : ",url.toString());
 
@@ -142,7 +132,6 @@ public class Register extends AppCompatActivity  {
         requestQueue.add(jsonObjectRequest);
 
     }
-
 
     private void goLogin() {
         Intent i = new Intent(Register.this,Login.class);

@@ -33,6 +33,9 @@ android {
         exclude 'META-INF/NOTICE.md'
     }
     buildToolsVersion '30.0.2'
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {

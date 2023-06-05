@@ -48,7 +48,7 @@
     <string name="error_Login1"><u>Contraseña errada</u></string>
     <string name="error_Null"><u>Rellene todos los campos</u></string>
     <string name="error_Pass"><u>Las contraseñas son distintas</u></string>
-    <string name="error_msj1"><u>El correo o cuenta ingresado esta registrado</u></string>
+    <string name="error_msj1"><u>El correo o cuenta ingresado ya fue registrado anteriormente</u></string>
     <string name="error_msj2"><u>No se pudo registrar</u></string>
     <string name="error_msj3"><u>No se pudo actualizar</u></string>
     <string name="error_msj4"><u>Evaluación no disponible.\nProgreso de la unidad: </u></string>

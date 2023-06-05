@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
+import com.example.proyecto.databinding.ActivitySplashBinding;
 import com.example.proyecto.ui.Theme.DetailTheme;
 import com.example.proyecto.ui.login.Login;
 
@@ -16,13 +17,16 @@ public class Splash extends AppCompatActivity {
 
     public static final String LOG_PREF="log";
 
+    private ActivitySplashBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        binding = ActivitySplashBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
 
         SharedPreferences preferences = getSharedPreferences(LOG_PREF,0);
         String log = preferences.getString("log","nnn");
@@ -31,9 +35,9 @@ public class Splash extends AppCompatActivity {
             public void run() {
 
                 if(log.equals("nnn"))
-                startActivity(new Intent(Splash.this, Login.class));
+                    startActivity(new Intent(Splash.this, Login.class));
                 else
-                startActivity(new Intent(Splash.this, MainActivity.class));
+                    startActivity(new Intent(Splash.this, MainActivity.class));
 //                startActivity(new Intent(Splash.this, DetailTheme.class));
                 finish();
             }
