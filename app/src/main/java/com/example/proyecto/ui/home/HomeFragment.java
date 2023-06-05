@@ -27,6 +27,7 @@ import com.example.proyecto.Adapter.Adapter_Unit;
 import com.example.proyecto.Entidades._Session;
 import com.example.proyecto.Entidades.Unit;
 import com.example.proyecto.R;
+import com.example.proyecto.Util.Connection;
 import com.example.proyecto.Util.Util;
 import com.example.proyecto.databinding.FragmentHomeBinding;
 import com.example.proyecto.ui.Theme.DetailTheme;
@@ -41,7 +42,6 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
-    private RecyclerView recycler_unit;
     private RequestQueue requestQueue;
     private JsonObjectRequest jsonObjectRequest;
 
@@ -56,23 +56,14 @@ public class HomeFragment extends Fragment {
                 new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        ConnectivityManager connectivityManager = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        if(networkInfo !=null && networkInfo.isConnected())
-            configuracion(root);
+        requestQueue= Volley.newRequestQueue(getContext());
+        if(Connection.isConnectedToInternet(getContext()))
+            CargarUnidades();
         else
-            Toast.makeText(getContext(), "Sin conexion", Toast.LENGTH_SHORT).show();
+            binding.txtHomeSC.setVisibility(View.VISIBLE);
+//            Toast.makeText(getContext(), "Sin conexion", Toast.LENGTH_SHORT).show();
         return root;
     }
-
-    private void configuracion(View root) {
-        recycler_unit=root.findViewById(R.id.recycler_unit);
-        recycler_unit.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        requestQueue= Volley.newRequestQueue(getContext());
-        CargarUnidades();
-    }
-
     private void CargarUnidades() {
         String idUser = null;
         units = new ArrayList<>();
@@ -117,8 +108,7 @@ public class HomeFragment extends Fragment {
                             _sessions.add(_session);
                         }
                         Adapter_Unit adapterUnit = new Adapter_Unit(getContext(),units,_sessions);
-//                        AdapterUnit adapterUnit = new AdapterUnit(getContext(),units,_sessions);
-                        recycler_unit.setAdapter(adapterUnit);
+                        binding.recyclerUnit.setAdapter(adapterUnit);
                     }
                     catch (Exception e){
 

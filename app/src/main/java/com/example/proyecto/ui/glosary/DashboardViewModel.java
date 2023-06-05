@@ -1,4 +1,4 @@
-package com.example.proyecto.ui.dashboard;
+package com.example.proyecto.ui.glosary;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
@@ -16,4 +16,5 @@ public class DashboardViewModel extends ViewModel {
     public LiveData<String> getText() {
         return mText;
     }
+
 }

@@ -25,6 +25,7 @@ import com.example.proyecto.Entidades.Unit;
 import com.example.proyecto.Entidades._Session;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
+import com.example.proyecto.databinding.Item2Binding;
 import com.example.proyecto.ui.Theme.DetailTheme;
 import com.example.proyecto.ui.evaluation.Evaluation;
 import com.example.proyecto.ui.evaluation._Evaluacion;
@@ -35,7 +36,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolder>{
-
     List<Unit> lista_Unit;
     ArrayList<_Session> _sessions;
 
@@ -76,6 +76,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
 //        holder.lst_Session.setAdapter(new ArrayAdapter<_Session>(holder.itemView.getContext(), android.R.layout.simple_list_item_1,_sessions));
 
         holder.txt_T1.setText(list.get(0));
+//        holder.binding.txtSes1.setText(list.get(0));
         holder.txt_T2.setText(list.get(3));
         holder.txt_T3.setText(list.get(6));
         holder.txt_T4.setText(list.get(9));
@@ -85,16 +86,23 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         holder.txt_S3.setText(list.get(7));
         holder.txt_S4.setText(list.get(10));
 
-        holder.pb_S1.setProgress(Integer.parseInt(list.get(2)));
-        holder.pb_S2.setProgress(Integer.parseInt(list.get(5)));
-        holder.pb_S3.setProgress(Integer.parseInt(list.get(8)));
-        holder.pb_S4.setProgress(Integer.parseInt(list.get(11)));
+//        holder.pb_S1.setProgress(Integer.parseInt(list.get(2)));
+//        holder.pb_S2.setProgress(Integer.parseInt(list.get(5)));
+//        holder.pb_S3.setProgress(Integer.parseInt(list.get(8)));
+//        holder.pb_S4.setProgress(Integer.parseInt(list.get(11)));
+
 
         ObjectAnimator animation = ObjectAnimator.ofInt(holder.pb_U, "progress", holder.pb_U.getProgress(), (Integer.parseInt(list.get(2)) + Integer.parseInt(list.get(5)) + Integer.parseInt(list.get(8)) + Integer.parseInt(list.get(11))) / 4);
-        animation.setDuration(6000); // Duración de la animación en milisegundos
-        animation.setInterpolator(new DecelerateInterpolator()); // Opcional: Configura un interpolador para la animación
-        animation.start(); // Inicia la animación del progreso
-        holder.pb_U.setProgress((Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4);
+        ObjectAnimator animation1 = ObjectAnimator.ofInt(holder.pb_S1, "progress", holder.pb_S1.getProgress(), Integer.parseInt(list.get(2)));
+        ObjectAnimator animation2 = ObjectAnimator.ofInt(holder.pb_S2, "progress", holder.pb_S2.getProgress(), Integer.parseInt(list.get(5)));
+        ObjectAnimator animation3 = ObjectAnimator.ofInt(holder.pb_S3, "progress", holder.pb_S3.getProgress(), Integer.parseInt(list.get(8)));
+        ObjectAnimator animation4 = ObjectAnimator.ofInt(holder.pb_S4, "progress", holder.pb_S4.getProgress(), Integer.parseInt(list.get(11)));
+        progreso(animation);
+        progreso(animation1);
+        progreso(animation2);
+        progreso(animation3);
+        progreso(animation4);
+//        holder.pb_U.setProgress((Integer.parseInt(list.get(2))+Integer.parseInt(list.get(5))+Integer.parseInt(list.get(8))+Integer.parseInt(list.get(11)))/4);
 
         final Integer[] pos = {0};
 
@@ -139,6 +147,12 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
                     Toast.makeText(context, context.getString(R.string.error_msj4)+porc+"%", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void progreso(ObjectAnimator animation) {
+        animation.setDuration(6000);
+        animation.setInterpolator(new DecelerateInterpolator());
+        animation.start();
     }
 
     private void goEval(View view,String cod,String unit) {
@@ -207,9 +221,6 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
         TextView txt_Unit_2,txt_T1,txt_T2,txt_T3,txt_T4, txt_S1, txt_S2, txt_S3, txt_S4;
         ProgressBar pb_S1, pb_S2, pb_S3, pb_S4,pb_U;
         Button btn_eval;
-
-        LinearLayout linearLayout;
-
         public SessionHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             txt_Unit_2 = itemView.findViewById(R.id.txt_Unit_2);
@@ -227,7 +238,6 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
             pb_S3 = itemView.findViewById(R.id.progress_Bar_Ses3);
             pb_S4 = itemView.findViewById(R.id.progress_Bar_Ses4);
             btn_eval = itemView.findViewById(R.id.btn_item2_eval);
-//            progressBar1 = itemView.findViewById(R.id.progress_Bar1);
         }
     }
 
@@ -242,7 +252,6 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.SessionHolde
                 stringList.add(sessions_Unit.get(i).getSesDesc());
                 stringList.add(sessions_Unit.get(i).getIdSes().toString());
                 stringList.add(sessions_Unit.get(i).getSesPorc().toString());
-//                stringList.add(sessions_Unit.get(i).getIdUseSes().toString());
             }
         }
         return stringList;

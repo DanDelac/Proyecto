@@ -1,4 +1,4 @@
-package com.example.proyecto.ui.notifications;
+package com.example.proyecto.ui.setting;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;

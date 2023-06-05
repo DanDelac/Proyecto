@@ -9,8 +9,40 @@
     android:background="@color/color_bg_Home"
     >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#343EE5">
+
+        <TextView
+            android:id="@+id/txtHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/bungee"
+            android:text="@string/title_home"
+            android:textColor="@color/white"
+            android:textSize="25dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red2">
+
+        <TextView
+            android:id="@+id/txtHomeSC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/bungee"
+            android:text="@string/error_sinconexion"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:visibility="gone"/>
+    </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_unit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 </LinearLayout>

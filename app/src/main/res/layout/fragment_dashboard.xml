@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.glosary.DashboardFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/color_conf_fondo">
+        android:background="#343EE5">
 
         <TextView
             android:id="@+id/txtGlosary"
@@ -18,20 +18,31 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/bungee"
-            android:text="@string/app_name"
+            android:text="@string/title_glosary"
             android:textColor="@color/white"
             android:textSize="25dp" />
     </RelativeLayout>
-    <TextView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_glosary"
-        android:fontFamily="@font/alatsi"
-        android:textSize="25dp"></TextView>
+        android:background="@color/red2">
 
+        <TextView
+            android:id="@+id/txtGlosSC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/bungee"
+            android:text="@string/error_sinconexion"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:visibility="gone"/>
+    </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/glos_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
 </LinearLayout>

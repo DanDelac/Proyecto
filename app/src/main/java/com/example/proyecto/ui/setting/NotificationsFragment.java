@@ -1,4 +1,4 @@
-package com.example.proyecto.ui.notifications;
+package com.example.proyecto.ui.setting;
 
 import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProvider;
@@ -21,14 +21,11 @@ import com.example.proyecto.ui.login.Login;
 
 
 public class NotificationsFragment extends Fragment {
-
     private NotificationsViewModel notificationsViewModel;
     private FragmentSettingsBinding binding;
-    TextView txvUser, txvMail,txvSetAcc,txvSetPass,txvExit;
 
     public static final String LOG_PREF="log";
-    String idUser,useAccount,useName,useLastN,useCorre;
-    String aux,aux1;
+    String idUser,useName,useLastN,useCorre;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -38,37 +35,30 @@ public class NotificationsFragment extends Fragment {
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-//        final TextView textView = binding.textNotifications;
-        txvUser=root.findViewById(R.id.txt_setting_user);
-        txvMail=root.findViewById(R.id.txt_setting_mail);
-        txvSetAcc=root.findViewById(R.id.txt_setting_edit_acc);
-        txvSetPass=root.findViewById(R.id.txt_setting_edit_pas);
-        txvExit=root.findViewById(R.id.txt_setting_exit);
-
         SharedPreferences preferences = getActivity().getSharedPreferences(LOG_PREF,0);
         idUser = preferences.getString("idUser","nnn");
         useName = preferences.getString("useName","nnn");
         useLastN = preferences.getString("useLastN","nnn");
         useCorre = preferences.getString("useCorre","nnn");
 
-        txvUser.setText(useLastN+", "+useName);
-        txvMail.setText(useCorre);
+        binding.txtSettingUser.setText(useLastN+", "+useName);
+        binding.txtSettingMail.setText(useCorre);
 
-        txvSetAcc.setOnClickListener(new View.OnClickListener() {
+        binding.txtSettingEditAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), editAccount.class);
                 startActivity(i);
             }
         });
-        txvSetPass.setOnClickListener(new View.OnClickListener() {
+        binding.txtSettingEditPas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), changePassword.class);
                 startActivity(i);
             }
         });
-        txvExit.setOnClickListener(new View.OnClickListener() {
+        binding.txtSettingExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialogAcept();
@@ -76,13 +66,11 @@ public class NotificationsFragment extends Fragment {
         });
         return root;
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
-
     private void dialogAcept() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage(getString(R.string.question_Exit))
@@ -99,8 +87,6 @@ public class NotificationsFragment extends Fragment {
                 });
         builder.show();
     }
-
-
     private void goLogin() {
 
         SharedPreferences log = getActivity().getSharedPreferences(LOG_PREF,0);
