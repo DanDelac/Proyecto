@@ -4,13 +4,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.example.proyecto.MainActivity;
-import com.example.proyecto.R;
 import com.example.proyecto.databinding.ActivitySplashBinding;
-import com.example.proyecto.ui.Theme.DetailTheme;
 import com.example.proyecto.ui.login.Login;
 
 public class Splash extends AppCompatActivity {

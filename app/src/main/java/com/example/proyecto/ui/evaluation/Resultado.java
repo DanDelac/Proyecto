@@ -4,7 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -19,8 +19,6 @@ import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
 import com.example.proyecto.databinding.ActivityResultadoBinding;
-import com.example.proyecto.ui.changepassword.changePassword;
-import com.example.proyecto.ui.login.Login;
 
 import org.json.JSONObject;
 

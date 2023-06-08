@@ -4,11 +4,9 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,7 +20,6 @@ import com.example.proyecto.Util.RandomTextGenerator;
 import com.example.proyecto.Util.SendMail;
 import com.example.proyecto.Util.Util;
 import com.example.proyecto.databinding.ActivityRecoverPassBinding;
-import com.example.proyecto.ui.Register.Register;
 import com.example.proyecto.ui.login.Login;
 
 import org.json.JSONArray;

@@ -1,12 +1,16 @@
 package com.example.proyecto.Entidades;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Unit {
 
     private Integer idUnit;
     private String uniDesc;
+    @SerializedName("idUseSes")
     private Integer idUseUni;
+    @SerializedName("sesDesc")
     private Integer sesD;
 
     public Unit(){}

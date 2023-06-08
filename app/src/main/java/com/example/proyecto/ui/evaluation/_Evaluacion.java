@@ -3,13 +3,10 @@ package com.example.proyecto.ui.evaluation;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.Interpolator;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,23 +16,18 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.proyecto.Adapter.Adapter_Unit;
 import com.example.proyecto.Entidades.QuestionsList;
-import com.example.proyecto.Entidades.Unit;
 import com.example.proyecto.Entidades._Session;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
 import com.example.proyecto.databinding.ActivityEvaluacionBinding;
-import com.example.proyecto.ui.home.HomeFragment;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 

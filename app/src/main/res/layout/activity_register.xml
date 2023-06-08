@@ -55,60 +55,60 @@
             android:orientation="vertical">
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:helperText="@string/RGtxtNames">
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtReNames"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:cursorVisible="true"
                     android:hint="@string/RGedtNames"
-                    android:textSize="15dp"></android.support.design.widget.TextInputEditText>
-            </android.support.design.widget.TextInputLayout>
+                    android:textSize="15dp"></com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:helperText="@string/RGtxtLastName">
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtReLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:cursorVisible="true"
                     android:hint="@string/RGedtLastName"
-                    android:textSize="15dp"></android.support.design.widget.TextInputEditText>
-            </android.support.design.widget.TextInputLayout>
+                    android:textSize="15dp"></com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:helperText="@string/RGtxtEmail">
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtReEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:cursorVisible="true"
                     android:hint="@string/RGedtEmail"
                     android:inputType="textEmailAddress"
-                    android:textSize="15dp"></android.support.design.widget.TextInputEditText>
-            </android.support.design.widget.TextInputLayout>
+                    android:textSize="15dp"></com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:helperText="@string/RGtxtAccount">
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtReAccount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -116,9 +116,9 @@
                     android:hint="@string/RGedtAccount"
                     android:inputType="textEmailAddress"
                     android:textSize="15dp"/>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                 app:counterMaxLength="15"
                 app:helperText="@string/RGtxtPassword">
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtRePassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -134,10 +134,10 @@
                     android:hint="@string/RGedtPassword"
                     android:inputType="textPassword"
                     android:maxLength="15"
-                    android:textSize="15dp"></android.support.design.widget.TextInputEditText>
-            </android.support.design.widget.TextInputLayout>
+                    android:textSize="15dp"></com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
                 app:counterMaxLength="15"
                 app:helperText="@string/RGtxtPassword2">
 
-                <android.support.design.widget.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtRePassword2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -153,8 +153,8 @@
                     android:hint="@string/RGedtPassword2"
                     android:inputType="textPassword"
                     android:maxLength="15"
-                    android:textSize="15dp"></android.support.design.widget.TextInputEditText>
-            </android.support.design.widget.TextInputLayout>
+                    android:textSize="15dp"></com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
         </LinearLayout>

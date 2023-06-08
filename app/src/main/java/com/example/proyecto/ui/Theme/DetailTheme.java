@@ -4,13 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,9 +22,7 @@ import com.example.proyecto.Entidades.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
-import com.example.proyecto.databinding.ActivityRegisterBinding;
 import com.example.proyecto.databinding.ActivityThemeBinding;
-import com.example.proyecto.ui.evaluation.Resultado;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

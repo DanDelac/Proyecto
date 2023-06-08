@@ -4,15 +4,14 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.proyecto.Entidades.Unit;
 import com.example.proyecto.R;
 import com.example.proyecto.Entidades.Theme;
 import com.example.proyecto.databinding.ItemThemeBinding;
