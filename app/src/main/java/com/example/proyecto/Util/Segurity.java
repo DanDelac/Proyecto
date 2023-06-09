@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Segurity {
     public static boolean verifyPassword(String contraseña) {
-        String patron = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+        String patron = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*/!¡¿?-])(?=\\S+$).{8,}$";
         return contraseña.matches(patron);
     }
     public static boolean verifyAccount(String account) {

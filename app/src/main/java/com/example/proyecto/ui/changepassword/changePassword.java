@@ -1,5 +1,8 @@
 package com.example.proyecto.ui.changepassword;
 
+import static com.example.proyecto.Util.Segurity.verifyAccount;
+import static com.example.proyecto.Util.Segurity.verifyPassword;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -7,8 +10,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -21,6 +27,7 @@ import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
 import com.example.proyecto.Util.Util;
 import com.example.proyecto.databinding.ActivityChangePasswordBinding;
+import com.example.proyecto.ui.Register.Register;
 import com.example.proyecto.ui.login.Login;
 
 import org.json.JSONObject;
@@ -54,6 +61,18 @@ public class changePassword extends AppCompatActivity {
         binding.txtChangepassAccount.setText(useAccount);
         binding.txtChangepassMail.setText(useCorre);
 
+        binding.checkBoxShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    binding.edtchangepass1.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    binding.edtchangepass2.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }else {
+                    binding.edtchangepass1.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    binding.edtchangepass2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+            }
+        });
 
         binding.buttonChangepassSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,14 +80,18 @@ public class changePassword extends AppCompatActivity {
                 aux = binding.edtchangepass1.getText().toString().replace(" ","");
                 aux1 = binding.edtchangepass2.getText().toString().replace(" ","");
 
-                if(aux.isEmpty()
-                        ||aux1.isEmpty())
+                if(aux.isEmpty()||aux1.isEmpty())
                     Toast.makeText(changePassword.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
                 else {
-                    if (aux.equals(aux1)) {
-                        dialogAcept();
-                    } else
-                        Toast.makeText(changePassword.this, getString(R.string.error_Pass), Toast.LENGTH_SHORT).show();
+                    if (verifyPassword(aux)) {
+                        if (aux.equals(aux1)) {
+                            dialogAcept();
+                        } else
+                            Toast.makeText(changePassword.this, getString(R.string.error_Pass), Toast.LENGTH_SHORT).show();
+                    } else {
+                        binding.txtSegPass.setVisibility(View.VISIBLE);
+                        Toast.makeText(changePassword.this, getString(R.string.error_segPass), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

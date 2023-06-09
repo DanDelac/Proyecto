@@ -6,10 +6,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +59,16 @@ public class  Login extends AppCompatActivity {
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
         lstAcc=new ArrayList<>();
 
+        binding.checkBoxShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    binding.edtlogContrasena.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }else {
+                    binding.edtlogContrasena.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+            }
+        });
         binding.btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

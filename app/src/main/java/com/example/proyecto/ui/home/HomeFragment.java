@@ -50,9 +50,9 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-//        SharedPreferences preferences = getActivity().getSharedPreferences(LOG_PREF,0);
-//        String idUser = preferences.getString("idUser","nnn");
-        homeViewModel.onCreate("1");
+        SharedPreferences preferences = getActivity().getSharedPreferences(LOG_PREF,0);
+        String idUser = preferences.getString("idUser","nnn");
+        homeViewModel.onCreate(idUser);
 
         if(Connection.isConnectedToInternet(getContext()))
             CargarUnidades2();

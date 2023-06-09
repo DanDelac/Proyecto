@@ -83,10 +83,10 @@ public class Register extends AppCompatActivity  {
                             } else
                                 Toast.makeText(Register.this, getString(R.string.error_Pass), Toast.LENGTH_SHORT).show();
                         } else {
+                            binding.txtSegPass.setVisibility(View.VISIBLE);
                             Toast.makeText(Register.this, getString(R.string.error_segPass), Toast.LENGTH_SHORT).show();
                         }
                     }else{
-                        binding.txtSegPass.setVisibility(View.VISIBLE);
                         Toast.makeText(Register.this, getString(R.string.error_segAcco), Toast.LENGTH_SHORT).show();
 
                     }

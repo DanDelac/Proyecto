@@ -75,6 +75,12 @@
                     android:imeOptions="actionSearch"
                     ></com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/checkBoxShowPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mostrar contraseña" />
         </LinearLayout>
 
     </LinearLayout>
