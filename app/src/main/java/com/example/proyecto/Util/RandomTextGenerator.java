@@ -5,8 +5,8 @@ import java.util.Random;
 public class RandomTextGenerator {
     public static String generateRandomText() {
 
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        Integer length = 6;
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&+=";
+        Integer length = 8;
 
         Random random = new Random();
         StringBuilder sb = new StringBuilder();

@@ -57,8 +57,8 @@ public class AdapterTheme extends RecyclerView.Adapter<AdapterTheme.ThemeHolder>
 //            holder.txvDesc.setText("No hay descripción");
             holder.binding.txvItemThemeDesc.setVisibility(View.GONE);
         else{
-            holder.binding.txvItemThemeDesc.setText("[Ver descripción...]");
-            holder.binding.txvItemThemeDesc.setTextColor(Color.BLUE);
+            holder.binding.txvItemThemeDesc.setText("[Ver más...]");
+            holder.binding.txvItemThemeDesc.setTextColor(Color.BLACK);
             holder.binding.txvItemThemeDesc.setVisibility(View.VISIBLE);
         }
 //        holder.txvDesc.setText(arrayList.get(position).getImgDesc());
@@ -82,11 +82,11 @@ public class AdapterTheme extends RecyclerView.Adapter<AdapterTheme.ThemeHolder>
         TextView desc = dialog.findViewById(R.id.dialog_desc);
 
         Picasso.get().load(List_Theme.get(position).getImg())
+                .resize(700,700)
                 .into(imv);
         tit.setText(theme.getImgTit());
         desc.setVisibility(View.VISIBLE);
         desc.setText(theme.getImgDesc());
-
         dialog.show();
     }
 

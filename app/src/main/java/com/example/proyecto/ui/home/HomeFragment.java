@@ -39,13 +39,8 @@ public class HomeFragment extends Fragment {
 
     private QuoteViewModel homeViewModel;
     private FragmentHomeBinding binding;
-    private RequestQueue requestQueue;
-    private JsonObjectRequest jsonObjectRequest;
 
     public static final String LOG_PREF="log";
-
-    ArrayList<Unit> units;
-    ArrayList<_Session> _sessions;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -59,7 +54,6 @@ public class HomeFragment extends Fragment {
 //        String idUser = preferences.getString("idUser","nnn");
         homeViewModel.onCreate("1");
 
-        requestQueue= Volley.newRequestQueue(getContext());
         if(Connection.isConnectedToInternet(getContext()))
             CargarUnidades2();
         else
@@ -69,13 +63,14 @@ public class HomeFragment extends Fragment {
     }
     private void CargarUnidades2(){
 
-        ArrayList<ModelUnit> list_Unit = new ArrayList<>();
-        ArrayList<QuoteModelUnidadSesion> list_UserSes = new ArrayList<>();
-        final ModelUnit[] unit = {null};
-        final QuoteModelUnidadSesion[] oUnitSes = {null};
         homeViewModel.getQuoteModel().observe(this, new Observer<List<QuoteModelUnidadSesion>>() {
             @Override
             public void onChanged(List<QuoteModelUnidadSesion> list_unidades) {
+
+                ArrayList<ModelUnit> list_Unit = new ArrayList<>();
+                ArrayList<QuoteModelUnidadSesion> list_UserSes = new ArrayList<>();
+                final ModelUnit[] unit = {null};
+                final QuoteModelUnidadSesion[] oUnitSes = {null};
 
                 for (int i=0;i<list_unidades.size(); i=i+4){
                     unit[0] = new ModelUnit(list_unidades.get(i).getOSes().getOUnit().getIdUnit()
@@ -93,66 +88,6 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
-//    private void CargarUnidades() {
-//        String idUser = null;
-//        units = new ArrayList<>();
-//        _sessions = new ArrayList<>();
-//        units.clear();
-//        _sessions.clear();
-//
-//        SharedPreferences preferences = getActivity().getSharedPreferences(LOG_PREF,0);
-//        idUser = preferences.getString("idUser","nnn");
-//
-//        String url = Util.RUTA+"listarSesion.php?Cod="+idUser;
-//        url=url.replace(" ","%20");
-//        jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null,
-//            new Response.Listener<JSONObject>() {
-//                @Override
-//                public void onResponse(JSONObject response) {
-//                    JSONArray jsonArray = response.optJSONArray("tblLibros");
-//                    Unit unit = null;
-//                    _Session _session = null;
-//                    try{
-//                        for (int i=0;i<jsonArray.length(); i=i+4){
-//                            unit = new Unit();
-//                            JSONObject jsonObject=null;
-//                            jsonObject = jsonArray.getJSONObject(i);
-//
-//                            unit.setUniDesc(jsonObject.getString("uniDesc"));
-//                            unit.setIdUnit(jsonObject.getInt("idUnit"));
-//                            unit.setIdUseUni(jsonObject.getInt("idUseSes"));
-//                            units.add(unit);
-//                        }
-//
-//                        for (int i=0;i<jsonArray.length(); i++){
-//                            _session = new _Session();
-//                            JSONObject jsonObject=null;
-//                            jsonObject = jsonArray.getJSONObject(i);
-//
-//                            _session.setIdSes(jsonObject.getInt("idSes"));
-//                            _session.setIdUseSes(jsonObject.getInt("idUseSes"));
-//                            _session.setIdUnit(jsonObject.getInt("idUnit"));
-//                            _session.setSesDesc(jsonObject.getString("sesDesc"));
-//                            _session.setSesPorc(jsonObject.getInt("sesPorc"));
-//                            _sessions.add(_session);
-//                        }
-//                        Adapter_Unit adapterUnit = new Adapter_Unit(getContext(),units,_sessions);
-//                        binding.recyclerUnit.setAdapter(adapterUnit);
-//                    }
-//                    catch (Exception e){
-//
-//                    }
-//                }
-//            },
-//            new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//
-//                }
-//            });
-//        requestQueue.add(jsonObjectRequest);
-//    }
 
     @Override
     public void onDestroyView() {

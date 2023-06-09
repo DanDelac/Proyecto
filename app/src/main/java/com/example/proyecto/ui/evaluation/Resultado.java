@@ -50,6 +50,9 @@ public class Resultado extends AppCompatActivity {
         SharedPreferences preferences1 = getSharedPreferences(LOG_PREF,0);
         idUser = preferences1.getString("idUser","nnn");
 
+        binding.Preguntas.setText(total.toString());
+        binding.Correctas.setText(correct.toString());
+        binding.Incorrectas.setText(incorrect.toString());
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 //        Toast.makeText(this, tipo+" - UserSes:" +idUseSes+"\nTotal: "+total+"Correctos:"+correct+" - Incorrectos:"+incorrect, Toast.LENGTH_SHORT).show();
         if((correct/total)>0.75){

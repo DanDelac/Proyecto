@@ -1,14 +1,22 @@
 package com.example.proyecto.ui.Register;
 
+import static com.example.proyecto.Util.Segurity.verifyAccount;
+import static com.example.proyecto.Util.Segurity.verifyPassword;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import androidx.annotation.ColorRes;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.example.proyecto.Entidades.VolleySingleton;
@@ -33,7 +41,7 @@ public class Register extends AppCompatActivity  {
     RequestQueue requestQueue;
     JsonObjectRequest jsonObjectRequest;
 
-    String aux=null,aux1=null;
+    String aux=null,aux1=null,auc=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +50,18 @@ public class Register extends AppCompatActivity  {
         setContentView(binding.getRoot());
 
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
-
+        binding.checkBoxShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    binding.edtRePassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    binding.edtRePassword2.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }else {
+                    binding.edtRePassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    binding.edtRePassword2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+            }
+        });
         binding.btnReRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,12 +73,23 @@ public class Register extends AppCompatActivity  {
                         || binding.edtReNames.getText().toString().replace(" ","").isEmpty())
                     Toast.makeText(Register.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
                 else {
+                    auc = binding.edtReAccount.getText().toString();
                     aux = binding.edtRePassword.getText().toString();
                     aux1 = binding.edtRePassword2.getText().toString();
-                    if (aux.equals(aux1)) {
-                        dialogAcept();
-                    } else
-                        Toast.makeText(Register.this, getString(R.string.error_Pass), Toast.LENGTH_SHORT).show();
+                    if(!verifyAccount(auc)){
+                        if (verifyPassword(aux)) {
+                            if (aux.equals(aux1)) {
+                                dialogAcept();
+                            } else
+                                Toast.makeText(Register.this, getString(R.string.error_Pass), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Register.this, getString(R.string.error_segPass), Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        binding.txtSegPass.setVisibility(View.VISIBLE);
+                        Toast.makeText(Register.this, getString(R.string.error_segAcco), Toast.LENGTH_SHORT).show();
+
+                    }
                 }
             }
         });

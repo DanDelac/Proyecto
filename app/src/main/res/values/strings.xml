@@ -17,9 +17,9 @@
     <string name="RGedtNames">Nombres</string>
     <string name="RGtxtLastName">Ingrese sus apellidos</string>
     <string name="RGedtLastName">Apellidos</string>
-    <string name="RGtxtEmail">Ingrese un correo</string>
+    <string name="RGtxtEmail">Ingrese un correo electrónico</string>
     <string name="RGedtEmail">Correo</string>
-    <string name="RGtxtPassword">Ingrese una contraseña</string>
+    <string name="RGtxtPassword">Ingrese una contraseña segura</string>
     <string name="RGedtPassword">Contraseña</string>
     <string name="RGtxtPassword2">Repita la contraseña</string>
     <string name="RGedtPassword2">Repetir contraseña</string>
@@ -53,6 +53,9 @@
     <string name="error_msj3"><u>No se pudo actualizar</u></string>
     <string name="error_msj4"><u>Evaluación no disponible.\nProgreso de la unidad: </u></string>
     <string name="error_sinconexion"><u>SIN CONEXIÓN</u></string>
+    <string name="error_segPass">La contraseña debe ser más segura</string>
+    <string name="error_segPass1">La contraseña debe ser mayor a 8 caracteres y contener: Minuscula, mayuscula, número y caracter especial</string>
+    <string name="error_segAcco">La cuenta debe ser más segura</string>
 
 
     <string name="txteditacc">Editar tu perfil 👨</string>
@@ -99,6 +102,9 @@
     <string name="login_failed">"Login failed"</string>
     <string name="txt_result">Resultados\n</string>
     <string name="txt_glosary">Contenido:</string>
+    <string name="respuestas_correctas">Respuestas correctas:</string>
+    <string name="respuestas_incorrectas">Respuestas incorrectas:</string>
+    <string name="preguntas">Total de preguntas:</string>
 
 
 </resources>

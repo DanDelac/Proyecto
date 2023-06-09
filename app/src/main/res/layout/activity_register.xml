@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.Register.Register">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="10dp">
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="100dp"
@@ -23,11 +22,12 @@
         <TextView
             android:id="@+id/app_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtappname"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
             android:fontFamily="@font/bungee"
+            android:text="@string/txtappname"
             android:textSize="40sp"
-            android:layout_marginLeft="40dp"/>
+            android:gravity="top"/>
     </LinearLayout>
 
 
@@ -134,9 +134,18 @@
                     android:hint="@string/RGedtPassword"
                     android:inputType="textPassword"
                     android:maxLength="15"
-                    android:textSize="15dp"></com.google.android.material.textfield.TextInputEditText>
+                    android:textSize="15dp"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/txtSegPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/error_segPass1"
+                android:textSize="10dp"
+                android:textColorHint="@color/red2"
+                android:visibility="gone"/>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -153,7 +162,12 @@
                     android:hint="@string/RGedtPassword2"
                     android:inputType="textPassword"
                     android:maxLength="15"
-                    android:textSize="15dp"></com.google.android.material.textfield.TextInputEditText>
+                    android:textSize="15dp"/>
+                <CheckBox
+                    android:id="@+id/checkBoxShowPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mostrar contraseña" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -166,7 +180,7 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginVertical="20dp"
+        android:layout_marginVertical="10dp"
         android:background="@drawable/efredbuttons"
         android:text="@string/RGbtn"
         android:textColor="@color/white"></Button>
@@ -176,7 +190,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginVertical="10dp"
+        android:layout_marginVertical="5dp"
         android:text="@string/RGtxtcancel"
         android:textColor="@color/black"
         android:textStyle="bold"></TextView>
