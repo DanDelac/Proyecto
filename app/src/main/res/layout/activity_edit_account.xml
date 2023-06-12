@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="#343EE5"
-    tools:context=".ui.editaccount.editAccount">
+    tools:context=".ui.view.editaccount.editAccount">
 
     <TextView
         android:layout_width="match_parent"

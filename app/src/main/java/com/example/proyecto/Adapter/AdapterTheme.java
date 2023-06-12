@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.proyecto.R;
-import com.example.proyecto.Entidades.Theme;
+import com.example.proyecto.data.model.Theme;
 import com.example.proyecto.databinding.ItemThemeBinding;
 import com.squareup.picasso.Picasso;
 

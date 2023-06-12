@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.proyecto.Entidades.Glosary;
+import com.example.proyecto.data.model.Glosary;
 import com.example.proyecto.R;
 import com.example.proyecto.databinding.GlosaryElementBinding;
 import com.squareup.picasso.Picasso;

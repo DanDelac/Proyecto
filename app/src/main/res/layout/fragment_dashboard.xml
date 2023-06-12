@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.glosary.DashboardFragment">
+    tools:context=".ui.view.glosary.DashboardFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

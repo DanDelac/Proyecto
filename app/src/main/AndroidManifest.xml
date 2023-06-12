@@ -13,20 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto"
         android:usesCleartextTraffic="true" >
-        <activity android:name=".ui.evaluation._Evaluacion"/>
-        <activity android:name=".ui.evaluation.Resultado" />
-        <activity android:name=".ui.Theme.DetailTheme" />
-        <activity android:name=".ui.changepassword.changePassword" />
-        <activity android:name=".ui.editaccount.editAccount" />
-        <activity android:name=".ui.RecoverPass.RecoverPass" />
-        <activity android:name=".ui.Register.Register" />
-        <activity android:name=".ui.login.Login" />
+        <activity android:name=".ui.view.evaluation._Evaluacion"/>
+        <activity android:name=".ui.view.evaluation.Resultado" />
+        <activity android:name=".ui.view.Theme.DetailTheme" />
+        <activity android:name=".ui.view.changepassword.changePassword" />
+        <activity android:name=".ui.view.editaccount.editAccount" />
+        <activity android:name=".ui.view.RecoverPass.RecoverPass" />
+        <activity android:name=".ui.view.Register.Register" />
+        <activity android:name=".ui.view.login.Login" />
         <activity
-            android:name=".Util.New.Prueba1Activity"
+            android:name=".domain.Util.New.Pruebas.Prueba1Activity"
             android:exported="true" >
         </activity>
         <activity
-            android:name=".ui.Splash.Splash"
+            android:name=".ui.view.Splash.Splash"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

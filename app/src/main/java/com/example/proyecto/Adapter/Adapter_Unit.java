@@ -19,11 +19,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyecto.R;
-import com.example.proyecto.Util.New.Kotlinclass.ModelUnit;
-import com.example.proyecto.Util.New.Kotlinclass.QuoteModelUnidadSesion;
+import com.example.proyecto.data.model.ModelUnit;
+import com.example.proyecto.data.model.QuoteModelUnidadSesion;
 import com.example.proyecto.databinding.ItemUnitBinding;
-import com.example.proyecto.ui.Theme.DetailTheme;
-import com.example.proyecto.ui.evaluation._Evaluacion;
+import com.example.proyecto.ui.view.Theme.DetailTheme;
+import com.example.proyecto.ui.view.evaluation._Evaluacion;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -34,7 +34,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
     List<ModelUnit> lista_Unit;
     ArrayList<QuoteModelUnidadSesion> List_UserSes;
     Context context;
-    Integer posicion;
+    Integer posicion, aux;
     private static final String EVAL_SES = "ID";
     public static final String SESS_PREF="session";
 
@@ -74,7 +74,7 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
         cargarSes(holder.binding.txtSes3,sesPos+2);
         cargarSes(holder.binding.txtSes4,sesPos+3);
         //Progreso ses
-        Integer aux=0;
+        aux=0;
         for (int i =0; i<4;i++){
             aux+=List_UserSes.get(sesPos+i).getSesPorc();
         }
@@ -125,11 +125,10 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
             public void onClick(View v) {
                 String cod=String.valueOf(unit.getIdUnit());
                 String tit_unit=unit.getUniDesc();
-                Integer porc = holder.binding.progressBarUni.getProgress();
-                if(porc==100)
+                if(aux/4==100)
                     goEval(cod,tit_unit);
                 else
-                    Toast.makeText(context, context.getString(R.string.error_msj4)+porc+"%", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, context.getString(R.string.error_msj4)+aux/4+"%", Toast.LENGTH_SHORT).show();
             }
         });
     }
