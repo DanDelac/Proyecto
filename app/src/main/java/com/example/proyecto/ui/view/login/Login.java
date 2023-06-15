@@ -1,5 +1,7 @@
 package com.example.proyecto.ui.view.login;
 
+import static com.example.proyecto.domain.Util.Segurity.encodePassword;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -118,9 +120,11 @@ public class  Login extends AppCompatActivity {
         progreso = new ProgressDialog(this);
         progreso.setMessage(getString(R.string.load_Login));
         progreso.show();
+//        String pass = encodePassword(binding.edtlogContrasena.getText().toString());
+        String pass = (binding.edtlogContrasena.getText().toString());
         String url = Util.RUTA+"/accesoUser.php" +
                 "?Cuenta=" +binding.edtlogUsuario.getText().toString()+
-                "&Pass=" +binding.edtlogContrasena.getText().toString();
+                "&Pass=" +pass;
         url=url.replace(" ","%20");
         Log.e("URL LOGIN: ",url);
 

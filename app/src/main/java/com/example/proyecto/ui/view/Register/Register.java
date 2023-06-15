@@ -1,5 +1,6 @@
 package com.example.proyecto.ui.view.Register;
 
+import static com.example.proyecto.domain.Util.Segurity.encodePassword;
 import static com.example.proyecto.domain.Util.Segurity.verifyAccount;
 import static com.example.proyecto.domain.Util.Segurity.verifyPassword;
 
@@ -74,20 +75,20 @@ public class Register extends AppCompatActivity  {
                     auc = binding.edtReAccount.getText().toString();
                     aux = binding.edtRePassword.getText().toString();
                     aux1 = binding.edtRePassword2.getText().toString();
-                    if(!verifyAccount(auc)){
-                        if (verifyPassword(aux)) {
+//                    if(!verifyAccount(auc)){
+//                        if (verifyPassword(aux)) {
                             if (aux.equals(aux1)) {
                                 dialogAcept();
                             } else
                                 Toast.makeText(Register.this, getString(R.string.error_Pass), Toast.LENGTH_SHORT).show();
-                        } else {
-                            binding.txtSegPass.setVisibility(View.VISIBLE);
-                            Toast.makeText(Register.this, getString(R.string.error_segPass), Toast.LENGTH_SHORT).show();
-                        }
-                    }else{
-                        Toast.makeText(Register.this, getString(R.string.error_segAcco), Toast.LENGTH_SHORT).show();
-
-                    }
+//                        } else {
+//                            binding.txtSegPass.setVisibility(View.VISIBLE);
+//                            Toast.makeText(Register.this, getString(R.string.error_segPass), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }else{
+//                        Toast.makeText(Register.this, getString(R.string.error_segAcco), Toast.LENGTH_SHORT).show();
+//
+//                    }
                 }
             }
         });
@@ -120,11 +121,12 @@ public class Register extends AppCompatActivity  {
         progreso = new ProgressDialog(Register.this);
         progreso.setMessage(getString(R.string.load_Register));
         progreso.show();
+//        String pass = encodePassword(aux);
         String url = Util.RUTA+"insertarUser.php" +
                 "?Nombres="+binding.edtReNames.getText().toString()+
                 "&Apellidos="+binding.edtReLastName.getText().toString() +
                 "&Cuenta="+ binding.edtReAccount.getText().toString() +
-                "&Pass="+ binding.edtRePassword.getText().toString() +
+                "&Pass="+ aux +
                 "&Correo="+ binding.edtReEmail.getText().toString();
         url=url.replace(" ","%20");
         Log.d("Url : ",url.toString());

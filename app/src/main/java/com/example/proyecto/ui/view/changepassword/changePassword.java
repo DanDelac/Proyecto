@@ -1,5 +1,6 @@
 package com.example.proyecto.ui.view.changepassword;
 
+import static com.example.proyecto.domain.Util.Segurity.encodePassword;
 import static com.example.proyecto.domain.Util.Segurity.verifyPassword;
 
 import android.app.AlertDialog;
@@ -81,15 +82,15 @@ public class changePassword extends AppCompatActivity {
                 if(aux.isEmpty()||aux1.isEmpty())
                     Toast.makeText(changePassword.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
                 else {
-                    if (verifyPassword(aux)) {
+//                    if (verifyPassword(aux)) {
                         if (aux.equals(aux1)) {
                             dialogAcept();
                         } else
                             Toast.makeText(changePassword.this, getString(R.string.error_Pass), Toast.LENGTH_SHORT).show();
-                    } else {
-                        binding.txtSegPass.setVisibility(View.VISIBLE);
-                        Toast.makeText(changePassword.this, getString(R.string.error_segPass), Toast.LENGTH_SHORT).show();
-                    }
+//                    } else {
+//                        binding.txtSegPass.setVisibility(View.VISIBLE);
+//                        Toast.makeText(changePassword.this, getString(R.string.error_segPass), Toast.LENGTH_SHORT).show();
+//                    }
                 }
             }
         });
@@ -133,6 +134,7 @@ public class changePassword extends AppCompatActivity {
         progreso = new ProgressDialog(changePassword.this);
         progreso.setMessage(getString(R.string.load_Register));
         progreso.show();
+//        String pass = encodePassword(aux);
         String url = Util.RUTA+"actualizarPass.php" +
                 "?Cod="+idUser +
                 "&Pass=" +aux;
