@@ -72,5 +72,6 @@ dependencies {
     //dependencias viewModel en kotlin
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-
+    //dependecias carousel Slider
+    implementation 'com.github.denzcoskun:ImageSlideShow:0.1.2'
 }

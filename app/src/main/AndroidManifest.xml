@@ -9,11 +9,19 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto"
-        android:usesCleartextTraffic="true" >
-        <activity android:name=".ui.view.evaluation._Evaluacion"/>
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.view.Splash.Presentation"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.view.evaluation._Evaluacion" />
         <activity android:name=".ui.view.evaluation.Resultado" />
         <activity android:name=".ui.view.Theme.DetailTheme" />
         <activity android:name=".ui.view.changepassword.changePassword" />
@@ -23,16 +31,10 @@
         <activity android:name=".ui.view.login.Login" />
         <activity
             android:name=".domain.Util.New.Pruebas.Prueba1Activity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ui.view.Splash.Splash"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
+            android:exported="true">
         </activity>
         <activity
             android:name=".MainActivity"
