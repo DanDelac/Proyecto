@@ -27,6 +27,8 @@
     <string name="RGedtAccount">Cuenta</string>
     <string name="RGbtn">Registrar</string>
     <string name="RGtxtcancel"><u>Cancelar</u></string>
+    <string name="presSkip"><u>SKIP</u></string>
+    <string name="presNext"><u>CONTINUE</u></string>
 
     <string name="question_Register"><u>¿Desea registrar esta cuenta?</u></string>
     <string name="question_ActUser"><u>¿Desea actualizar los datos?</u></string>

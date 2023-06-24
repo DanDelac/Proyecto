@@ -9,6 +9,8 @@ import android.view.WindowManager;
 
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.databinding.ActivitySplashBinding;
+import com.example.proyecto.ui.view.RecoverPass.RecoverPass;
+import com.example.proyecto.ui.view.Register.Register;
 import com.example.proyecto.ui.view.login.Login;
 
 public class Splash extends AppCompatActivity {
@@ -32,10 +34,9 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run() {
 
-                if(log.equals("nnn"))
-                    startActivity(new Intent(Splash.this, Login.class));
-                else
-                    startActivity(new Intent(Splash.this, MainActivity.class));
+                if(log.equals("nnn")) startActivity(new Intent(Splash.this, Presentation.class));
+                if(log.equals("log")) startActivity(new Intent(Splash.this, MainActivity.class));
+                if(log.equals("dislog")) startActivity(new Intent(Splash.this, Login.class));
 //                startActivity(new Intent(Splash.this, DetailTheme.class));
                 finish();
             }

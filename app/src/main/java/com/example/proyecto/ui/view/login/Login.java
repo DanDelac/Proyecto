@@ -1,7 +1,4 @@
 package com.example.proyecto.ui.view.login;
-
-import static com.example.proyecto.domain.Util.Segurity.encodePassword;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,6 +28,8 @@ import com.example.proyecto.domain.Util.Util;
 import com.example.proyecto.databinding.ActivityLoginBinding;
 import com.example.proyecto.ui.view.RecoverPass.RecoverPass;
 import com.example.proyecto.ui.view.Register.Register;
+import com.example.proyecto.ui.view.Theme.DetailTheme;
+import com.example.proyecto.ui.view.evaluation._Evaluacion;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,6 +40,8 @@ public class  Login extends AppCompatActivity {
     private ActivityLoginBinding binding;
 
     public static final String LOG_PREF="log";
+    int failedAttempts = 0;
+    String captchaCode = "";
 
     ProgressDialog progreso;
     RequestQueue requestQueue;
@@ -60,7 +61,6 @@ public class  Login extends AppCompatActivity {
 
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
         lstAcc=new ArrayList<>();
-
         binding.checkBoxShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -75,11 +75,12 @@ public class  Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(binding.edtlogUsuario.getText().toString().replace(" ","").isEmpty()||
-                   binding.edtlogContrasena.getText().toString().replace(" ","").isEmpty())
+                        binding.edtlogContrasena.getText().toString().replace(" ","").isEmpty())
                     Toast.makeText(Login.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
                 else
                     access();
             }
+
         });
 
         binding.edtlogContrasena.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -89,7 +90,7 @@ public class  Login extends AppCompatActivity {
                 if (i == EditorInfo.IME_ACTION_SEARCH)
                 {
                     if(binding.edtlogUsuario.getText().toString().replace(" ","").isEmpty()||
-                       binding.edtlogContrasena.getText().toString().replace(" ","").isEmpty())
+                            binding.edtlogContrasena.getText().toString().replace(" ","").isEmpty())
                         Toast.makeText(Login.this, getString(R.string.error_Null), Toast.LENGTH_SHORT).show();
                     else
                         access();
@@ -115,6 +116,7 @@ public class  Login extends AppCompatActivity {
 
 
     }
+
 
     private void access() {
         progreso = new ProgressDialog(this);
@@ -160,8 +162,10 @@ public class  Login extends AppCompatActivity {
 
                     if(aux!=-1 && aux!=0) goHome();
                     if(aux==0){progreso.hide(); Toast.makeText(Login.this, getString(R.string.error_Login1), Toast.LENGTH_SHORT).show();
+                        failedAttempts++;
                     };
                     if(aux==-1){progreso.hide(); Toast.makeText(Login.this, getString(R.string.error_Login), Toast.LENGTH_SHORT).show();
+                        failedAttempts++;
                     };
                 }catch (Exception e){
                     Log.e("ERROR LOGIN: ",e.toString());

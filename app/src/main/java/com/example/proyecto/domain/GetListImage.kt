@@ -10,9 +10,9 @@ class GetListImage {
         val imageList = ArrayList<SlideModel>()
 
         imageList.add(SlideModel(R.drawable.presentation, ScaleTypes.FIT))
-        imageList.add(SlideModel(R.drawable.presentation, ScaleTypes.FIT))
-        imageList.add(SlideModel(R.drawable.presentation, ScaleTypes.FIT))
-        imageList.add(SlideModel(R.drawable.presentation, ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.presentation2, ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.presentation3, ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.presentation4, ScaleTypes.FIT))
 
         return imageList
     }

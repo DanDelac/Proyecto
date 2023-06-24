@@ -92,7 +92,7 @@ public class NotificationsFragment extends Fragment {
 
         SharedPreferences log = getActivity().getSharedPreferences(LOG_PREF,0);
         SharedPreferences.Editor editor = log.edit();
-        editor.putString("log","nnn");
+        editor.putString("log","dislog");
         editor.commit();
         Intent i = new Intent(getContext(), Login.class);
         startActivity(i);
