@@ -11,6 +11,7 @@ import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -41,6 +42,7 @@ public class Register extends AppCompatActivity  {
     JsonObjectRequest jsonObjectRequest;
 
     String aux=null,aux1=null,auc=null;
+    public static final String LOG_PREF="log";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,6 +160,11 @@ public class Register extends AppCompatActivity  {
     }
 
     private void goLogin() {
+
+        SharedPreferences log = getSharedPreferences(LOG_PREF,0);
+        SharedPreferences.Editor editor = log.edit();
+        editor.putString("log","dislog");
+        editor.commit();
         Intent i = new Intent(Register.this, Login.class);
         startActivity(i);
     }

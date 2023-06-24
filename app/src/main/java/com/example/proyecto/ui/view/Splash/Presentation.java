@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Toast;
 
@@ -25,7 +26,6 @@ public class Presentation extends AppCompatActivity {
 
     private PresentationViewModel presentationViewModel;
     private ActivityPresentationBinding binding;
-    public static final String LOG_PREF="log";
     private Integer aux;
 
     @Override
@@ -46,6 +46,18 @@ public class Presentation extends AppCompatActivity {
                 binding.sliderP.setImageList(slideModelList);
             }
         });
+        new CountDownTimer(6000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                long seconds = millisUntilFinished / 1000;
+                binding.presSky.setText(String.valueOf(seconds));
+                binding.presSky.setEnabled(false);
+            }
+
+            public void onFinish() {
+                binding.presSky.setText(R.string.presSkip);
+                binding.presSky.setEnabled(true); // Habilitar el botón
+            }
+        }.start();
         binding.sliderP.setItemChangeListener(new ItemChangeListener() {
             @Override
             public void onItemChanged(int i) {
@@ -76,11 +88,6 @@ public class Presentation extends AppCompatActivity {
     }
 
     private void goLogin() {
-
-        SharedPreferences log = getSharedPreferences(LOG_PREF,0);
-        SharedPreferences.Editor editor = log.edit();
-        editor.putString("log","dislog");
-        editor.commit();
         Intent i = new Intent(Presentation.this, Login.class);
         startActivity(i);
     }
