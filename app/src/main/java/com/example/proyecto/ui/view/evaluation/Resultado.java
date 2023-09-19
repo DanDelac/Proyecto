@@ -82,10 +82,7 @@ public class Resultado extends AppCompatActivity {
         Integer ses=idUnit*4;
         String url = Util.RUTA+"insertarUserSesion.php" +
                 "?Cod=" + idUser+
-                "&ses1=" +(ses+1)+
-                "&ses2=" +(ses+2)+
-                "&ses3=" +(ses+3)+
-                "&ses4=" +(ses+4);
+                "&ses1=" +(ses+1);
         url=url.replace(" ","%20");
         Log.d("Url : ",url.toString());
         jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -108,7 +105,7 @@ public class Resultado extends AppCompatActivity {
     private void actPorc() {
         String url = Util.RUTA+"actualizarUserSes.php?" +
                 "Cod=" + idUseSes +
-                "&Porc="+ 100;
+                "&Porc=100";
         url=url.replace(" ","%20");
         Log.d("Url : ",url.toString());
         jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

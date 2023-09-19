@@ -125,6 +125,10 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
             public void onClick(View v) {
                 String cod=String.valueOf(unit.getIdUnit());
                 String tit_unit=unit.getUniDesc();
+                aux=0;
+                for (int i =0; i<4;i++){
+                    aux+=List_UserSes.get(sesPos+i).getSesPorc();
+                }
                 if(aux/4==100)
                     goEval(cod,tit_unit);
                 else
