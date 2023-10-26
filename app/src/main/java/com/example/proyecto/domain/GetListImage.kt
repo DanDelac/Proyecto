@@ -6,7 +6,7 @@ import com.example.proyecto.R
 
 class GetListImage {
 
-    fun getList():List<SlideModel>{
+    fun getList1():List<SlideModel>{
         val imageList = ArrayList<SlideModel>()
 
         imageList.add(SlideModel(R.drawable.presentation, ScaleTypes.FIT))
@@ -15,5 +15,14 @@ class GetListImage {
         imageList.add(SlideModel(R.drawable.presentation4, ScaleTypes.FIT))
 
         return imageList
+    }
+    fun getList2(): IntArray {
+        val imageArray = intArrayOf(
+            R.drawable.presentation,
+            R.drawable.presentation2,
+            R.drawable.presentation3,
+            R.drawable.presentation4
+        ) // Replace these with your images
+        return imageArray
     }
 }

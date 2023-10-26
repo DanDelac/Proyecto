@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.view.Theme.Detail_Carousel">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/color_conf_fondo">
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="37dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/ic_back_2" />
+        <TextView
+            android:id="@+id/txt_Theme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:layout_toEndOf="@+id/btnBack"
+            android:fontFamily="@font/bungee"
+            android:gravity="center"
+            android:text="@string/themeTit"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2_Detalles"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

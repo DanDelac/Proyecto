@@ -24,12 +24,10 @@ import com.example.proyecto.data.model.Account;
 import com.example.proyecto.data.model.VolleySingleton;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.R;
-import com.example.proyecto.domain.Util.Util;
 import com.example.proyecto.databinding.ActivityLoginBinding;
+import com.example.proyecto.domain.Util.Util;
 import com.example.proyecto.ui.view.RecoverPass.RecoverPass;
 import com.example.proyecto.ui.view.Register.Register;
-import com.example.proyecto.ui.view.Theme.DetailTheme;
-import com.example.proyecto.ui.view.evaluation._Evaluacion;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

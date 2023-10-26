@@ -38,7 +38,7 @@ android {
             excludes += ['META-INF/LICENSE.md', 'META-INF/NOTICE.md']
         }
     }
-    buildToolsVersion '33.0.2'
+    buildToolsVersion '30.0.2'
 }
 
 dependencies {

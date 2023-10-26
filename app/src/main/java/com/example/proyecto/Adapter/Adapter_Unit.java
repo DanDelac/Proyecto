@@ -22,6 +22,7 @@ import com.example.proyecto.R;
 import com.example.proyecto.data.model.ModelUnit;
 import com.example.proyecto.data.model.QuoteModelUnidadSesion;
 import com.example.proyecto.databinding.ItemUnitBinding;
+import com.example.proyecto.domain.Util.Datos_Detalles;
 import com.example.proyecto.ui.view.Theme.DetailTheme;
 import com.example.proyecto.ui.view.evaluation._Evaluacion;
 
@@ -183,9 +184,14 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
                 editor.putString("idUseSes",idUseSes);
                 editor.putString("idSes", idSes);
                 editor.commit();
-                Intent intent = new Intent(context, DetailTheme.class);
-                dialog.dismiss();
-                context.startActivity(intent);
+//                Intent intent = new Intent(context, DetailTheme.class);
+//                dialog.dismiss();
+//                context.startActivity(intent);
+//                Intent para_datos = new Intent(context, Datos_Detalles.class);
+//                dialog.dismiss();
+//                context.startActivity(para_datos);
+                Datos_Detalles datos_detalles = new Datos_Detalles();
+                datos_detalles.Datos_(context);
             }
         });
 
