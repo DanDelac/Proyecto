@@ -139,7 +139,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/round_bg_green"
-        android:text="Next"
+        android:text="@string/btnsgtEval"
         android:textAllCaps="false"
         android:textColor="@color/white" />
 

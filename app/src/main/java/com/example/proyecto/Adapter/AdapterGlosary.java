@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +54,7 @@ public class AdapterGlosary extends RecyclerView.Adapter<AdapterGlosary.gloHolde
         holder.binding.imgvIcon.setImageResource(glosary.getIcon());
         holder.binding.txtItemName.setText(glosary.getTitle());
         holder.binding.txtItemdescrip.setText(glosary.getDescription());
+        holder.cv.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_transition));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,8 +118,10 @@ public class AdapterGlosary extends RecyclerView.Adapter<AdapterGlosary.gloHolde
 
     public class gloHolder extends RecyclerView.ViewHolder {
         GlosaryElementBinding binding;
+        CardView cv;
         public gloHolder(@NonNull GlosaryElementBinding binding) {
             super(binding.getRoot());
+            cv = binding.getRoot().findViewById(R.id.cv);
             this.binding = binding;
         }
     }

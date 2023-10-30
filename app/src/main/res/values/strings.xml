@@ -107,6 +107,7 @@
     <string name="respuestas_correctas">Respuestas correctas:</string>
     <string name="respuestas_incorrectas">Respuestas incorrectas:</string>
     <string name="preguntas">Total de preguntas:</string>
+    <string name="btnsgtEval">Siguiente</string>
 
 
 </resources>
