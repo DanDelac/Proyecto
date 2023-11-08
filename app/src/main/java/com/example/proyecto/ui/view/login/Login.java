@@ -125,7 +125,7 @@ public class  Login extends AppCompatActivity {
         String url = Util.RUTA+"/accesoUser.php" +
                 "?Cuenta=" +binding.edtlogUsuario.getText().toString()+
                 "&Pass=" +pass;
-        url=url.replace(" ","%20");
+        url=url.replace(" ","");
         Log.e("URL LOGIN: ",url);
 
         jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

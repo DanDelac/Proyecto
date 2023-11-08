@@ -188,14 +188,14 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
                 editor.putString("idUseSes",idUseSes);
                 editor.putString("idSes", idSes);
                 editor.commit();
-//                Intent intent = new Intent(context, DetailTheme.class);
-//                dialog.dismiss();
-//                context.startActivity(intent);
+                Intent intent = new Intent(context, DetailTheme.class);
+                dialog.dismiss();
+                context.startActivity(intent);
 //                Intent para_datos = new Intent(context, Datos_Detalles.class);
 //                dialog.dismiss();
 //                context.startActivity(para_datos);
-                Datos_Detalles datos_detalles = new Datos_Detalles();
-                datos_detalles.Datos_(context);
+//                Datos_Detalles datos_detalles = new Datos_Detalles();
+//                datos_detalles.Datos_(context);
             }
         });
 
