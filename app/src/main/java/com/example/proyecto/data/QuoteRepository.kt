@@ -13,9 +13,9 @@ class QuoteRepository {
         QuoteProvider.quotes = response
         return response
     }
-//    suspend fun getPrediccion(model_Base64: Model_Base64):String {
-//        val response:String = api.getPrediccion(model_Base64)
-////        QuoteProvider.quotes = response
-//        return response
-//    }
+    suspend fun getPrediccion(model_Base64: Model_Base64):String {
+        val response:String = api.getPrediccion(model_Base64)
+//        QuoteProvider.quotes = response
+        return response
+    }
 }

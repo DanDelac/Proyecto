@@ -12,7 +12,7 @@ interface Api {
 
     @GET
     suspend fun getAllQuotes(@Url url:String ): Response<List<QuoteModelUnidadSesion>>
-    @POST
+    @POST("Img_base64")
     suspend fun getPrediccion(@Body model_base64:Model_Base64): Response<String>
 
 //    @GET("prueba.php?Cod={id}")

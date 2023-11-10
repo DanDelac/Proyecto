@@ -12,15 +12,15 @@ import kotlinx.coroutines.launch
 class CLasificadorViewModel: ViewModel() {
     val quoteModel = MutableLiveData<String?>()
 
-//    var getPrediccion = GetPrediccion()
+    var getPrediccion = GetPrediccion()
 
-//    fun onCreate(modelBase64: Model_Base64){
-//        viewModelScope.launch {
-//            val result = getPrediccion(modelBase64)
-//            val Aux =result
-//            if(!result.isNullOrEmpty()){
-//                quoteModel.postValue(result)
-//            }
-//        }
-//    }
+    fun onCreate(modelBase64: Model_Base64){
+        viewModelScope.launch {
+            val result = getPrediccion(modelBase64)
+            val Aux =result
+            if(!result.isNullOrEmpty()){
+                quoteModel.postValue(result)
+            }
+        }
+    }
 }
