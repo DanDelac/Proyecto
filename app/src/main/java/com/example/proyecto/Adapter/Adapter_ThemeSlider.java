@@ -44,6 +44,7 @@ public class Adapter_ThemeSlider extends RecyclerView.Adapter<Adapter_ThemeSlide
         Picasso.get().load(theme.getImg())
                 .resize(200,250)
                 .into(holder.binding.itemImageView);
+
 //        holder.binding.itemImageView.setImageResource(imageArray[position]);
     }
 

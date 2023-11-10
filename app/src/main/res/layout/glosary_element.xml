@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tittle"
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="25sp"
                     android:fontFamily="@font/bungee" />
 
                 <TextView
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:text="Description"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
+                    android:textSize="20sp"
                     android:fontFamily="@font/alatsi" />
             </LinearLayout>
 

@@ -49,7 +49,8 @@ public class Resultado extends AppCompatActivity {
 
         SharedPreferences preferences1 = getSharedPreferences(LOG_PREF,0);
         idUser = preferences1.getString("idUser","nnn");
-
+        float aux = correct / total * 100;
+        binding.Porcentaje.setText(String.valueOf(aux)+" %");
         binding.Preguntas.setText(total.toString());
         binding.Correctas.setText(correct.toString());
         binding.Incorrectas.setText(incorrect.toString());
