@@ -109,6 +109,9 @@
     <string name="preguntas">Total de preguntas:</string>
     <string name="btnsgtEval">Siguiente</string>
     <string name="porcentaje">Puntaje:</string>
+    <string name="btnCapture">Captura</string>
+    <string name="btnAcept">Verificar</string>
+    <string name="clasTit">CLASIFICADOR</string>
 
 
 </resources>

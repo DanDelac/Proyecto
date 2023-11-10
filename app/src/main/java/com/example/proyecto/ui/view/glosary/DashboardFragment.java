@@ -44,6 +44,7 @@ public class DashboardFragment extends Fragment {
     private void cargarGlosario() {
         glosaries = new ArrayList<>();
         int[] imageIds = new int[]{R.drawable.abecedario,R.drawable.pagweb,R.drawable.mas};
+        glosaries.add(new Glosary(imageIds[0],"Evaluar alfabeto","Puedes practicar tomandote una foto y ver si es correcta la seña","0"));
         glosaries.add(new Glosary(imageIds[0],"Abecedario","Ver las señas del abecedario","0"));
         glosaries.add(new Glosary(imageIds[1],"CONADIS","Ingresar a la página de CONADIS","https://www.gob.pe/institucion/conadis/institucional"));
         glosaries.add(new Glosary(imageIds[1],"GUIA PARA EL APRENDIZAJE DE LA LSP","Ingresar al repositorio del ministerio","https://repositorio.minedu.gob.pe/handle/20.500.12799/5545"));

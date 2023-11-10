@@ -16,9 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyecto.MainActivity;
 import com.example.proyecto.data.model.Glosary;
 import com.example.proyecto.R;
 import com.example.proyecto.databinding.GlosaryElementBinding;
+import com.example.proyecto.ui.view.Clasificador;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -60,13 +62,16 @@ public class AdapterGlosary extends RecyclerView.Adapter<AdapterGlosary.gloHolde
             public void onClick(View view) {
                 switch (position){
                     case 0:
-                        goDialog(glosary.getTitle());
+                        goClasifier();
                         break;
                     case 1:
+                        goDialog(glosary.getTitle());
+                        break;
                     case 2:
+                    case 3:
                         goGoogle(glosary.getUrl());
                         break;
-                    case 3:
+                    case 8:
                     case 4:
                     case 5:
                     case 6:
@@ -76,6 +81,10 @@ public class AdapterGlosary extends RecyclerView.Adapter<AdapterGlosary.gloHolde
                 }
             }
         });
+    }
+
+    private void goClasifier() {
+        context.startActivity(new Intent(context, Clasificador.class));
     }
 
     private void goDialog(String sesTit) {
