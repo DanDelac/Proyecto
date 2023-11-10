@@ -11,4 +11,10 @@ object RetrofitHelper {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+    fun getRetrofit_API(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(Util.RUTA_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 }

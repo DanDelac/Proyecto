@@ -16,7 +16,7 @@ public class QuoteService {
     public ArrayList<Unit> getQuotes(){
         ArrayList<Unit> units = new ArrayList<>();
 //        Response<ArrayList<Unit>> response = RetrofitHelper.getRetrofit().create(Api.class).getAllQuotes();
-        Call<ArrayList<Unit>> response = retrofit.create(Api.class).getAllQuotes();
+        Call<ArrayList<Unit>> response = retrofit.create(Api2.class).getAllQuotes();
         ArrayList<Unit> finalUnits = units;
         response.enqueue(new Callback<ArrayList<Unit>>() {
             @Override

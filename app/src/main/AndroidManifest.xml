@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Proyecto"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.view.Clasificador"
+            android:exported="false" />
+        <activity
             android:name=".ui.view.Theme.Detail_Carousel"
             android:exported="false" />
         <activity android:name=".ui.view.Splash.Presentation" />
