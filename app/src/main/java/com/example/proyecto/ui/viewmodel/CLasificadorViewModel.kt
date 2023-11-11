@@ -5,12 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.proyecto.data.model.Model_Base64
 import com.example.proyecto.data.model.QuoteModelUnidadSesion
+import com.example.proyecto.data.model.ResPrediccion
+import com.example.proyecto.data.model.esVacio
 import com.example.proyecto.domain.GetPrediccion
-import com.example.proyecto.domain.GetQuotesUseCase
 import kotlinx.coroutines.launch
 
 class CLasificadorViewModel: ViewModel() {
-    val quoteModel = MutableLiveData<String?>()
+    val quoteModel = MutableLiveData<ResPrediccion?>()
 
     var getPrediccion = GetPrediccion()
 
@@ -18,7 +19,7 @@ class CLasificadorViewModel: ViewModel() {
         viewModelScope.launch {
             val result = getPrediccion(modelBase64)
             val Aux =result
-            if(!result.isNullOrEmpty()){
+            if(!result.esVacio()){
                 quoteModel.postValue(result)
             }
         }

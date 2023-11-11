@@ -79,11 +79,14 @@
         android:text="Respuesta"
         android:textSize="50sp"
         />
-
-    <ImageView
-        android:id="@+id/imvResp"
+    <TextView
+        android:id="@+id/txtMensaje"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/abecedario" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Respuesta"
+        android:textSize="30sp"
+        />
 
 </LinearLayout>

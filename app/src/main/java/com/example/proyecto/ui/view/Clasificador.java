@@ -21,6 +21,7 @@ import com.example.proyecto.R;
 import com.example.proyecto.data.model.ModelUnit;
 import com.example.proyecto.data.model.Model_Base64;
 import com.example.proyecto.data.model.QuoteModelUnidadSesion;
+import com.example.proyecto.data.model.ResPrediccion;
 import com.example.proyecto.databinding.ActivityClasificadorBinding;
 import com.example.proyecto.databinding.ActivityEvaluacionBinding;
 import com.example.proyecto.databinding.FragmentHomeBinding;
@@ -111,16 +112,18 @@ public class Clasificador extends AppCompatActivity {
         Model_Base64 modelBase64 = new Model_Base64(respuesta);
 
         cLasificadorViewModel.onCreate(modelBase64);
-        cLasificadorViewModel.getQuoteModel().observe(this, new Observer<String>() {
+        cLasificadorViewModel.getQuoteModel().observe(this, new Observer<ResPrediccion>() {
             @Override
-            public void onChanged(String s) {
+            public void onChanged(ResPrediccion resPrediccion) {
+                String s = resPrediccion.getText();
+                String m = resPrediccion.getMensaje();
                 binding.txtRespuesta.setText(s);
+                binding.txtRespuesta.setText(m);
 
                 String tuEncodedImageString = respuesta;
                 byte[] decodedBytes = Base64.decode(tuEncodedImageString, Base64.DEFAULT);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
 //                binding.imvCapture.setImageBitmap(bitmap);
-                binding.imvResp.setImageBitmap(bitmap);
 //                binding.imvResp.setScaleType(ImageView.ScaleType.FIT_XY);
                 if(binding.txtTit.getText().toString().equals(s))
                     Toast.makeText(Clasificador.this, "Correcto", Toast.LENGTH_SHORT).show();

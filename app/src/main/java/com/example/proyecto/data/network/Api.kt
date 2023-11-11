@@ -2,6 +2,7 @@ package com.example.proyecto.data.network
 
 import com.example.proyecto.data.model.Model_Base64
 import com.example.proyecto.data.model.QuoteModelUnidadSesion
+import com.example.proyecto.data.model.ResPrediccion
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -13,7 +14,7 @@ interface Api {
     @GET
     suspend fun getAllQuotes(@Url url:String ): Response<List<QuoteModelUnidadSesion>>
     @POST("Img_base64")
-    suspend fun getPrediccion(@Body model_base64:Model_Base64): Response<String>
+    suspend fun getPrediccion(@Body model_base64:Model_Base64): Response<ResPrediccion>
 
 //    @GET("prueba.php?Cod={id}")
 //    suspend fun getAllQuotes(@Path("id") id:Int ): Response<List<QuoteModel>>

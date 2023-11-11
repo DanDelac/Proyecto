@@ -3,6 +3,8 @@ package com.example.proyecto.data.network
 import com.example.proyecto.core.RetrofitHelper
 import com.example.proyecto.data.model.Model_Base64
 import com.example.proyecto.data.model.QuoteModelUnidadSesion
+import com.example.proyecto.data.model.ResPrediccion
+import com.example.proyecto.data.model.esVacio
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -18,11 +20,12 @@ class QuoteService {
             response.body() ?: emptyList()
         }
     }
-    suspend fun getPrediccion(model_Base64: Model_Base64):String {
+    suspend fun getPrediccion(model_Base64: Model_Base64): ResPrediccion {
         val COD=model_Base64
+//        instancia =  ResPrediccion().esVacio()
         return withContext(Dispatchers.IO){
             val response_api = retrofit_api.create(Api::class.java).getPrediccion(model_Base64)
-            response_api.body() ?: "error en la respuesta"
+            response_api.body() ?: ResPrediccion(" "," ")
         }
     }
 }
