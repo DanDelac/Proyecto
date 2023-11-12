@@ -17,13 +17,6 @@
         <activity
             android:name=".ui.view.Clasificador"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.view.Theme.Detail_Carousel"
@@ -41,6 +34,13 @@
         <activity
             android:name=".ui.view.Splash.Splash"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
