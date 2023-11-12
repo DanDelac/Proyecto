@@ -32,16 +32,38 @@
             android:textSize="20dp"
             android:gravity="center"/>
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/txtTit"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:text="A"
-        android:textSize="50sp"
-        />
+        android:gravity="center">
+        <TextView
+            android:id="@+id/txtTit1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/pregClasif"
+            android:textSize="20sp"
+            />
+        <TextView
+            android:id="@+id/txtTit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="A"
+            android:textSize="50sp"
+            />
+        <Button
+            android:id="@+id/btnRandom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ></Button>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,7 +89,7 @@
     <ImageView
         android:id="@+id/imvCapture"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="1000px"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -76,8 +98,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Respuesta"
+        android:text="@string/respClasif"
         android:textSize="50sp"
+        android:visibility="gone"
         />
     <TextView
         android:id="@+id/txtMensaje"
@@ -85,8 +108,20 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Respuesta"
+        android:text="@string/respClasif"
         android:textSize="30sp"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/txtResp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/respClasif"
+        android:textSize="30sp"
+        android:textColor="@color/green"
+        android:visibility="gone"
         />
 
 </LinearLayout>

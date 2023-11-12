@@ -7,6 +7,12 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.Paint;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -40,7 +46,7 @@ public class Clasificador extends AppCompatActivity {
 
     private CLasificadorViewModel cLasificadorViewModel;
     private ActivityClasificadorBinding binding;
-    String respuesta;
+    String respuesta;String tit;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +79,12 @@ public class Clasificador extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        binding.btnRandom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cargarOpciones();
+            }
+        });
     }
 
     private void abrirCamara() {
@@ -80,6 +92,12 @@ public class Clasificador extends AppCompatActivity {
         if(i.resolveActivity(getPackageManager())!= null){
             startActivityForResult(i,1);
         }
+        binding.txtRespuesta.getText();
+        binding.txtMensaje.getText();
+        binding.txtRespuesta.setVisibility(View.GONE);
+        binding.txtMensaje.setVisibility(View.GONE);
+        binding.txtResp.setVisibility(View.GONE);
+
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -87,10 +105,31 @@ public class Clasificador extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap img = (Bitmap) extras.get("data");
             imgBase64(img);
+            img = enhanceImageQuality(img);
             binding.imvCapture.setImageBitmap(img);
             binding.btnAcept.setEnabled(true);
 
         }
+    }
+    private Bitmap enhanceImageQuality(Bitmap bitmap) {
+        // Aplicar un filtro de mejora de imagen si es necesario
+        // Puedes experimentar con diferentes métodos de mejora de imagen aquí
+
+        // Ejemplo: Aumentar la saturación
+        ColorMatrix colorMatrix = new ColorMatrix();
+        colorMatrix.setSaturation(1.5f); // 1.0f significa sin cambios, valores superiores aumentan la saturación
+
+        ColorMatrixColorFilter filter = new ColorMatrixColorFilter(colorMatrix);
+
+        Paint paint = new Paint();
+        paint.setColorFilter(filter);
+
+        // Crear un nuevo bitmap con la mejora de calidad aplicada
+        Bitmap enhancedBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig());
+        Canvas canvas = new Canvas(enhancedBitmap);
+        canvas.drawBitmap(bitmap, 0, 0, paint);
+
+        return enhancedBitmap;
     }
 
     private void imgBase64(Bitmap img) {
@@ -104,7 +143,7 @@ public class Clasificador extends AppCompatActivity {
     private void cargarOpciones() {
         String labels [] = {"A","B","C","D","E","F","G","H","I","K","L","M","N","O","P","Q","R","S","T","U","V","X","Y"};
         int randomIndex = new Random().nextInt(labels.length);
-        String tit = labels [randomIndex];
+        tit = labels [randomIndex];
         binding.txtTit.setText(tit);
     }
 
@@ -117,18 +156,22 @@ public class Clasificador extends AppCompatActivity {
             public void onChanged(ResPrediccion resPrediccion) {
                 String s = resPrediccion.getText();
                 String m = resPrediccion.getMensaje();
+                binding.txtRespuesta.setVisibility(View.VISIBLE);
+                binding.txtMensaje.setVisibility(View.VISIBLE);
+                binding.txtResp.setVisibility(View.VISIBLE);
                 binding.txtRespuesta.setText(s);
-                binding.txtRespuesta.setText(m);
+                binding.txtMensaje.setText(m);
 
                 String tuEncodedImageString = respuesta;
-                byte[] decodedBytes = Base64.decode(tuEncodedImageString, Base64.DEFAULT);
-                Bitmap bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
-//                binding.imvCapture.setImageBitmap(bitmap);
-//                binding.imvResp.setScaleType(ImageView.ScaleType.FIT_XY);
-                if(binding.txtTit.getText().toString().equals(s))
-                    Toast.makeText(Clasificador.this, "Correcto", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(Clasificador.this, "Incorrecto", Toast.LENGTH_SHORT).show();
+                if(tit.equals(s)){
+                    binding.txtResp.setText("CORRECTO");
+                    binding.txtResp.setTextColor(getResources().getColor(R.color.green));
+                }
+                else{
+                    binding.txtResp.setText("INCORRECTO");
+                    binding.txtResp.setTextColor(getResources().getColor(R.color.red2));
+
+                }
             }
         });
     }

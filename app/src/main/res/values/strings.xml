@@ -112,6 +112,8 @@
     <string name="btnCapture">Captura</string>
     <string name="btnAcept">Verificar</string>
     <string name="clasTit">CLASIFICADOR</string>
+    <string name="respClasif">RESPUESTA</string>
+    <string name="pregClasif">Realiza la siguiente seña: </string>
 
 
 </resources>
