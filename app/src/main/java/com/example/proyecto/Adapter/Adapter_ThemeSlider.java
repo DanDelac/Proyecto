@@ -2,18 +2,20 @@ package com.example.proyecto.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyecto.R;
 import com.example.proyecto.data.model.Theme;
 import com.example.proyecto.databinding.ItemThemesliderBinding;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import pl.droidsonroids.gif.GifImageView;
 
 public class Adapter_ThemeSlider extends RecyclerView.Adapter<Adapter_ThemeSlider.ImageViewHolder>{
     private Context context;
@@ -44,8 +46,8 @@ public class Adapter_ThemeSlider extends RecyclerView.Adapter<Adapter_ThemeSlide
         Picasso.get().load(theme.getImg())
                 .resize(200,250)
                 .into(holder.binding.itemImageView);
-
-//        holder.binding.itemImageView.setImageResource(imageArray[position]);
+        holder.binding.txtTit.setText(theme.getImgTit());
+        holder.binding.gif1.setImageResource(holder.gifIds[position]);
     }
 
     @Override
@@ -55,6 +57,11 @@ public class Adapter_ThemeSlider extends RecyclerView.Adapter<Adapter_ThemeSlide
 
     public static class ImageViewHolder extends RecyclerView.ViewHolder {
         ItemThemesliderBinding binding;
+        Integer[] gifIds  = new Integer[] {R.drawable.gif_a,R.drawable.gif_b,R.drawable.gif_c,R.drawable.gif_d,
+                R.drawable.gif_e,R.drawable.gif_f,R.drawable.gif_g,R.drawable.gif_h,R.drawable.gif_i,R.drawable.gif_j
+                ,R.drawable.gif_k,R.drawable.gif_l,R.drawable.gif_m,R.drawable.gif_n,R.drawable.gif_n2,R.drawable.gif_o
+                ,R.drawable.gif_p,R.drawable.gif_q,R.drawable.gif_r,R.drawable.gif_s,R.drawable.gif_t,R.drawable.gif_u
+                ,R.drawable.gif_v,R.drawable.gif_w,R.drawable.gif_x,R.drawable.gif_y,R.drawable.gif_z};
         public ImageViewHolder(ItemThemesliderBinding binding) {
             super(binding.getRoot());
             this.binding = binding;

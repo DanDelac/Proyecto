@@ -78,10 +78,10 @@
             android:textSize="20dp"
             android:fontFamily="@font/alatsi"/>
         <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif1"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="-50dp"
-            android:src="@drawable/pizarra"
             />
 
     </LinearLayout>
@@ -130,6 +130,13 @@
             android:layout_marginStart="10dp"
             android:textSize="20dp"
             android:fontFamily="@font/alatsi"/>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="-50dp"
+            android:src="@drawable/abc1"
+            />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_S3"
@@ -174,6 +181,14 @@
             android:layout_marginStart="10dp"
             android:textSize="20dp"
             android:fontFamily="@font/alatsi"/>
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="-50dp"
+            android:src="@drawable/abc1"
+            />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_S4"
@@ -217,6 +232,14 @@
             android:layout_marginStart="10dp"
             android:textSize="20dp"
             android:fontFamily="@font/alatsi"/>
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif4"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="-50dp"
+            android:src="@drawable/abc1"
+            />
     </LinearLayout>
     <Button
         android:id="@+id/btn_item2_eval"

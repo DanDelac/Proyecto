@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -89,15 +90,23 @@ public class AdapterGlosary extends RecyclerView.Adapter<AdapterGlosary.gloHolde
 
     private void goDialog(String sesTit) {
         Dialog dialog = new Dialog(context);
-        dialog.setContentView(R.layout.item_5);
-//        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        dialog.setContentView(R.layout.item_6);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
         ImageView imv_dashboard = dialog.findViewById(R.id.dialog_img);
         TextView the = dialog.findViewById(R.id.dialog_tit);
+        Button btn = dialog.findViewById(R.id.btnBack);
         the.setText(sesTit);
-        String url="http://172.107.178.234/WebServices/project/imagenes/Alfabeto.jpg";
+        String url="https://concexion-base-datos.000webhostapp.com/imagenes/alfabeto.png";
         Picasso.get().load(url).into(imv_dashboard);
+        dialog.findViewById(R.id.dialog_tit);
         dialog.show();
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
     }
 
     private void goGoogle(String url) {

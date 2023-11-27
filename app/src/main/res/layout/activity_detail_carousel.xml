@@ -37,12 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:background="@drawable/round_bg_write"
         android:elevation="1dp"
         android:gravity="center"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
-        android:text="TituloObjeto"
         android:textColor="#1F6BB8"
         />
     <androidx.viewpager2.widget.ViewPager2

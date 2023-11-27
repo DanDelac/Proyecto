@@ -24,6 +24,7 @@ import com.example.proyecto.data.model.QuoteModelUnidadSesion;
 import com.example.proyecto.databinding.ItemUnitBinding;
 import com.example.proyecto.domain.Util.Datos_Detalles;
 import com.example.proyecto.ui.view.Theme.DetailTheme;
+import com.example.proyecto.ui.view.Theme.Detail_Carousel;
 import com.example.proyecto.ui.view.evaluation._Evaluacion;
 
 import org.jetbrains.annotations.NotNull;
@@ -31,11 +32,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
     List<ModelUnit> lista_Unit;
     ArrayList<QuoteModelUnidadSesion> List_UserSes;
     Context context;
     Integer posicion, aux;
+    Integer gifIds [];
     private static final String EVAL_SES = "ID";
     public static final String SESS_PREF="session";
 
@@ -84,6 +88,12 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
         cargarProg(holder.binding.progressBarSes3,List_UserSes.get(sesPos+2).getSesPorc());
         cargarProg(holder.binding.progressBarSes4,List_UserSes.get(sesPos+3).getSesPorc());
         cargarProg(holder.binding.progressBarUni,aux/4);
+        //Gif ses
+        gifIds  = new Integer[] {R.drawable.abc1,R.drawable.abc2,R.drawable.abc3,R.drawable.abc4,R.drawable.abc5,R.drawable.abc6,R.drawable.abc7,R.drawable.abc8,R.drawable.abc9,R.drawable.abc1,R.drawable.abc11,R.drawable.abc12,R.drawable.abc13,R.drawable.abc14,R.drawable.abc15,R.drawable.abc16};
+        cargarGif(holder.binding.gif1,sesPos+0);
+        cargarGif(holder.binding.gif2,sesPos+1);
+        cargarGif(holder.binding.gif3,sesPos+2);
+        cargarGif(holder.binding.gif4,sesPos+3);
 
         holder.binding.llS1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +148,10 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
         });
     }
 
+    private void cargarGif(GifImageView gif, int i) {
+        gif.setImageResource(gifIds[i]);
+    }
+
     private void cargarSes(TextView txt, Integer pos) {
         String desSes = String.valueOf(List_UserSes.get(pos).getOSes().getIdSes());
         txt.setText(desSes);
@@ -188,10 +202,15 @@ public class Adapter_Unit extends RecyclerView.Adapter<Adapter_Unit.UnitHolder>{
                 editor.putString("idUseSes",idUseSes);
                 editor.putString("idSes", idSes);
                 editor.commit();
-                Intent intent = new Intent(context, DetailTheme.class);
+                Intent intent;
+                if(idSes.equals("1")){
+                    intent = new Intent(context, Detail_Carousel.class);
+                }else{
+                    intent = new Intent(context, DetailTheme.class);
+                }
                 dialog.dismiss();
                 context.startActivity(intent);
-//                Intent para_datos = new Intent(context, Datos_Detalles.class);
+//                Intent para_datos = new Intent(context, Detail_Carousel.class);
 //                dialog.dismiss();
 //                context.startActivity(para_datos);
 //                Datos_Detalles datos_detalles = new Datos_Detalles();
